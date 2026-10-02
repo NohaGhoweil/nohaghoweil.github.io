@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Case study · Noha Ghoweil</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<script>try { const t = localStorage.getItem('ng-theme'); if (t) document.documentElement.dataset.theme = t; } catch {}</script>
+<script>
+/* Analytics: PostHog (US cloud). Visits, countries/cities, referrers, session replays and a few events.
+   No cookies (the visitor id lives for one tab session), typed text is masked in replays,
+   and nothing is sent from local copies (localhost or opened from the folder). */
+(() => {
+  const KEY = 'phc_nMDbhMnN8xv5XeKNchBT7YSDpiQqAW7LhuYHoDNckh79';
+  if (location.protocol === 'file:' || /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname)) return;
+  !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags identify setPersonProperties group resetGroups reset get_distinct_id get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+  posthog.init(KEY, { api_host:'https://us.i.posthog.com', persistence:'sessionStorage', person_profiles:'identified_only',
+                      session_recording:{ maskAllInputs:true } });
+})();
+// track('event', { props }) — a no-op when analytics is off
+window.track = (event, props) => { try { window.posthog && window.posthog.capture(event, props); } catch {} };
+</script>
+<style>
+:root{
+  --bg:#F6F6F4; --dot:#E0E0DC; --panel:#FFFFFF; --ink:#1A2A28; --body:#4A5856; --muted:#8C9492; --line:#E7E5E1;
+  --hover:#F1F1EF; --sel:#0D99FF; --frame:#FFFFFF; --frame-line:#ECEAE6;
+  --pine:#1A2A28; --mint:#CEE8E3; --blush:#F7D1CD; --sand:#E9DCCE; --clay:#B06E4A; --note:#FFF3C4;
+  color-scheme:light; box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ --bg:#1C1D1D; --dot:#2E3030; --panel:#262828; --ink:#F1F2F1; --body:#C3C8C6; --muted:#8E9593;
+    --line:#343737; --hover:#2F3232; --frame-line:#343737; color-scheme:dark; }
+}
+:root[data-theme="dark"]{ --bg:#1C1D1D; --dot:#2E3030; --panel:#262828; --ink:#F1F2F1; --body:#C3C8C6; --muted:#8E9593;
+  --line:#343737; --hover:#2F3232; --frame-line:#343737; color-scheme:dark; }
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;height:100%;background:var(--bg);color:var(--ink);font-family:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  -webkit-font-smoothing:antialiased;overflow:hidden}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--sel);outline-offset:3px;border-radius:4px}
+.app{display:flex;flex-direction:column;height:100%}
+
+/* ---------- top bar ---------- */
+.topbar{height:52px;flex:none;display:flex;align-items:center;gap:10px;padding:0 14px;background:var(--panel);border-bottom:1px solid var(--line);position:relative;z-index:10;font-size:13px}
+.logo{width:30px;height:30px;border-radius:8px;background:var(--pine);color:var(--mint);font-weight:700;display:grid;place-items:center;font-size:14px;flex:none;text-decoration:none}
+.back{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 10px 0 6px;border-radius:6px;text-decoration:none;color:var(--ink);flex:none}
+.back:hover{background:var(--hover)}
+.crumb{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--muted)}
+.crumb b{color:var(--ink);font-weight:500}
+.thm{width:32px;height:32px;border:0;border-radius:6px;background:transparent;color:var(--ink);display:grid;place-items:center;cursor:pointer;flex:none}
+.thm:hover{background:var(--hover)}
+.here{position:relative;width:30px;height:30px;border-radius:50%;background:var(--clay);color:#fff;display:grid;place-items:center;font-weight:600;font-size:12px;flex:none}
+.here::after{content:"";position:absolute;right:-1px;bottom:-1px;width:9px;height:9px;border-radius:50%;background:#14AE5C;border:2px solid var(--panel)}
+.cta{height:34px;padding:0 16px;border-radius:8px;background:var(--sel);color:#fff;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;flex:none}
+.cta:hover{background:#0B87E0}
+.progress{position:absolute;left:0;bottom:-1px;height:2px;width:0;background:var(--sel);transition:width .1s linear}
+
+/* ---------- canvas + grid ---------- */
+.scroll{flex:1;overflow-y:auto;overflow-x:hidden;position:relative;background-color:var(--bg);background-image:radial-gradient(var(--dot) 1px,transparent 1.2px);background-size:24px 24px}
+.page{display:grid;grid-template-columns:168px minmax(0,700px) 250px;column-gap:56px;justify-content:center;padding:72px 32px 120px;position:relative}
+.toc{grid-column:1;grid-row:1 / span 20;position:sticky;top:40px;align-self:start;font-size:13px}
+.toc a{display:flex;align-items:center;gap:10px;padding:7px 0;color:var(--muted);text-decoration:none;transition:color .2s}
+.toc a::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--line);flex:none;transition:background .2s,transform .2s}
+.toc a:hover{color:var(--ink)}
+.toc a.on{color:var(--ink);font-weight:500}
+.toc a.on::before{background:var(--sel);transform:scale(1.3)}
+.sec{scroll-margin-top:36px;grid-column:2 / 4;display:grid;grid-template-columns:minmax(0,700px) 250px;column-gap:56px;margin-bottom:112px;align-items:start}
+.main{min-width:0}
+
+/* ---------- type ---------- */
+.lbl{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);margin-bottom:14px;transition:color .25s}
+.lbl .tag{padding:2px 8px;border-radius:10px;background:var(--hover);color:var(--muted)}
+.sec.on .lbl{color:var(--sel)}
+h1{font-size:clamp(38px,6vw,60px);line-height:1.02;letter-spacing:-.035em;margin:0 0 20px;font-weight:700}
+h2{font-size:clamp(26px,3.4vw,32px);line-height:1.15;letter-spacing:-.02em;margin:0 0 16px;font-weight:700}
+.lede{font-size:clamp(18px,2.2vw,21px);line-height:1.55;color:var(--body);margin:0 0 36px;max-width:34em}
+p{font-size:17px;line-height:1.7;color:var(--body);margin:0 0 18px;max-width:38em}
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;padding:22px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:48px;font-size:14.5px;line-height:1.45}
+.facts span{display:block;color:var(--muted);font-size:12.5px;margin-bottom:3px}
+
+/* ---------- frames ---------- */
+.frame{margin-top:30px}
+.facts + .frame{margin-top:0}
+.frame .flabel{font-size:11.5px;color:var(--muted);margin-bottom:8px;display:flex;align-items:center;gap:5px}
+.fbox{background:var(--frame);border:1px solid var(--frame-line);border-radius:4px;overflow:hidden;color:var(--pine)}
+.fbox.pad{padding:clamp(20px,4vw,36px)}
+.fbox > img{display:block;width:100%;height:auto}
+.fcap{font-size:13px;color:var(--muted);margin-top:10px}
+.gal{display:grid;grid-template-columns:repeat(var(--gc,2),minmax(0,1fr));gap:0 20px}
+
+/* ---------- comment notes ---------- */
+.note{position:sticky;top:36px;display:flex;gap:10px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px;box-shadow:0 4px 14px rgba(26,42,40,.05);margin-top:30px;font-size:14px;line-height:1.55;transition:border-color .3s,box-shadow .3s}
+.sec.on .note{border-color:rgba(176,110,74,.45);box-shadow:0 8px 24px rgba(26,42,40,.08)}
+.pin{width:26px;height:26px;border-radius:50% 50% 50% 4px;background:var(--clay);color:#fff;display:grid;place-items:center;font-weight:700;font-size:11px;flex:none}
+.who{font-weight:600;font-size:12.5px;margin-bottom:3px}
+.who span{font-weight:400;color:var(--muted);margin-left:4px}
+.note p{font-size:14px;line-height:1.55;margin:0;color:var(--body)}
+
+/* ---------- cursor ---------- */
+.cur{position:absolute;left:0;top:0;pointer-events:none;z-index:5;transition:transform .5s cubic-bezier(.33,1,.68,1)}
+.cur svg{display:block;filter:drop-shadow(0 1px 1px rgba(0,0,0,.2))}
+.cur span{position:absolute;left:15px;top:17px;padding:2px 8px;border-radius:4px 10px 10px 10px;background:var(--clay);color:#fff;font-size:11.5px;font-weight:600;white-space:nowrap}
+
+/* ---------- visuals (sample mockups) ---------- */
+.phones{display:flex;justify-content:center;align-items:flex-end;gap:clamp(12px,3vw,28px);padding:40px 16px 0}
+.phone{width:clamp(92px,20vw,152px);aspect-ratio:1/2.05;background:#fff;border:clamp(4px,.9vw,6px) solid var(--pine);border-radius:clamp(16px,3.4vw,26px);
+  padding:clamp(20px,4.6vw,32px) clamp(7px,1.5vw,11px) clamp(7px,1.5vw,11px);position:relative;display:flex;flex-direction:column;gap:clamp(5px,1.1vw,8px);margin-bottom:-26px;box-shadow:0 18px 34px rgba(26,42,40,.14)}
+.phone::before{content:"";position:absolute;top:clamp(7px,1.6vw,11px);left:50%;width:32%;height:clamp(4px,.9vw,6px);border-radius:4px;background:var(--pine);transform:translateX(-50%)}
+.phone.mid{transform:translateY(-18px)}
+.ln{height:5px;border-radius:3px;background:#EAE6DF;flex:none}.ln.s{width:55%}.ln.m{width:75%}
+.blk{height:clamp(30px,7vw,50px);border-radius:8px;background:var(--mint);flex:none}
+.opt{display:flex;align-items:center;gap:6px;padding:clamp(4px,1vw,7px) clamp(5px,1.1vw,8px);border-radius:8px;border:1.5px solid #E6E1D9;font-size:clamp(8px,1.5vw,11px);font-weight:600;white-space:nowrap;overflow:hidden;flex:none}
+.opt i{width:9px;height:9px;border-radius:50%;border:2px solid var(--pine);flex:none}
+.opt.on{border-color:var(--pine)}.opt.on i{background:var(--pine)}
+.btn{margin-top:auto;height:clamp(18px,4.2vw,28px);border-radius:40px;background:var(--pine);color:#fff;font-size:clamp(8px,1.5vw,11px);font-weight:600;display:grid;place-items:center;flex:none}
+.ok{width:46%;aspect-ratio:1;border-radius:50%;background:var(--mint);margin:8px auto 4px;display:grid;place-items:center;font-size:clamp(14px,3vw,22px);color:var(--pine)}
+.ring{width:62%;aspect-ratio:1;border-radius:50%;margin:6px auto;background:conic-gradient(var(--clay) 0 68%,#EFE9E0 0);display:grid;place-items:center;flex:none}
+.ring::after{content:"";width:72%;aspect-ratio:1;border-radius:50%;background:#fff}
+.seg{display:flex;gap:4px;flex:none}.seg b{flex:1;height:6px;border-radius:3px;background:#EAE6DF}.seg b.on{background:var(--clay)}
+.dsx{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;padding:clamp(22px,5vw,44px)}
+.dsx div{background:#fff;border-radius:10px;padding:14px;display:grid;gap:9px;align-content:start;box-shadow:0 6px 16px rgba(26,42,40,.08)}
+.dsx i{display:block;height:18px;border-radius:9px;background:var(--pine)}
+.dsx i.o{background:transparent;border:2px solid var(--pine)}
+.dsx i.m{background:var(--mint)}.dsx i.b{background:var(--blush)}.dsx i.c{background:var(--clay)}
+.dsx i.f{border-radius:6px;background:transparent;border:2px solid #D9D4CB}
+
+.funnel{display:grid;gap:14px}
+.fr{display:grid;grid-template-columns:78px 1fr 44px;align-items:center;gap:14px;font-size:14px}
+.fr .track{height:10px;border-radius:5px;background:#F1EFEB;overflow:hidden}
+.fr .fill{height:100%;border-radius:5px;background:#A9CFC7}
+.fr.hot{font-weight:600}
+.fr.hot .fill{background:var(--clay)}
+.fr b{text-align:right;font-variant-numeric:tabular-nums;font-weight:500}
+.fr.hot b{font-weight:700}
+.flegend{margin-top:18px;font-size:13px;color:#7B8583}
+
+.quotes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.q{background:var(--note);color:#4A4128;padding:16px 16px 14px;font-size:14.5px;line-height:1.45;border-radius:2px;display:flex;flex-direction:column;justify-content:space-between;min-height:128px}
+.q:nth-child(6n+2),.q:nth-child(6n+6){background:#DFF0EC;color:var(--pine)}
+.q:nth-child(6n+3),.q:nth-child(6n+4){background:#FBE3E0;color:var(--pine)}
+.q small{display:block;margin-top:10px;opacity:.6;font-size:12px}
+.q.key{box-shadow:inset 0 0 0 2px var(--clay)}
+
+.ba{position:relative;--pos:50%;user-select:none;background:#F7F5F1}
+.ba .pane{padding:26px clamp(18px,4vw,34px) 44px}
+.ba .after{position:absolute;inset:0;background:#EDF6F3;clip-path:inset(0 0 0 var(--pos))}
+.ba .cap{font-size:12.5px;font-weight:600;color:#7B8583;margin-bottom:16px}
+.after .cap{text-align:right;color:var(--pine)}
+.ba.img .pane{padding:0}
+.ba.img img{display:block;width:100%;height:auto}
+.ba.img .after img{height:100%;object-fit:cover;object-position:top}
+.ba.img .cap{position:absolute;top:12px;left:12px;margin:0;padding:4px 10px;border-radius:12px;background:rgba(255,255,255,.92);box-shadow:0 2px 6px rgba(0,0,0,.1)}
+.ba.img .after .cap{left:auto;right:12px}
+.flow{display:flex;flex-direction:column;align-items:flex-start;gap:6px}
+.after .flow{align-items:flex-end}
+.node{padding:10px 14px;border-radius:8px;background:#fff;border:1.5px solid #DAD5CC;font-size:13.5px;font-weight:600;color:#6B7573}
+.after .node{border-color:var(--pine);color:var(--pine)}
+.after .node.key{background:var(--pine);color:#fff}
+.arr{width:1.5px;height:12px;background:#C4BEB3;margin-left:30px;position:relative}
+.after .arr{margin:0 30px 0 0;background:var(--pine)}
+.arr::after{content:"";position:absolute;bottom:-3px;left:-3.5px;border:4px solid transparent;border-top:5px solid #C4BEB3;border-bottom:0}
+.after .arr::after{border-top-color:var(--pine)}
+.ba .handle{position:absolute;top:0;bottom:0;left:var(--pos);width:2px;background:var(--sel);transform:translateX(-1px);pointer-events:none}
+.ba .handle::after{content:"";position:absolute;top:50%;left:50%;width:28px;height:28px;border-radius:50%;background:#fff;border:2px solid var(--sel);transform:translate(-50%,-50%);box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.ba .handle::before{content:"";position:absolute;top:50%;left:50%;width:10px;height:2px;background:var(--sel);transform:translate(-50%,-50%);z-index:1;box-shadow:0 -4px 0 var(--sel),0 4px 0 var(--sel)}
+.ba input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.ba .hint{position:absolute;left:0;right:0;bottom:14px;text-align:center;font-size:12px;color:#8C9492;pointer-events:none}
+.ba.img .hint{bottom:12px;left:50%;right:auto;transform:translateX(-50%);padding:3px 10px;border-radius:12px;background:rgba(255,255,255,.92)}
+
+.caps3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:16px;font-size:13.5px;line-height:1.5;color:var(--body)}
+.caps3 b{display:block;color:var(--ink);font-weight:600;margin-bottom:2px}
+
+.nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:8px 0 40px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.nums div{padding:26px 20px 24px}
+.nums div + div{border-left:1px solid var(--line)}
+.nums strong{display:block;font-size:clamp(34px,5vw,46px);letter-spacing:-.035em;line-height:1;margin-bottom:10px;font-weight:700}
+.nums span{font-size:14px;color:var(--body);line-height:1.45;display:block}
+.learn{list-style:none;padding:0;margin:0;display:grid;gap:14px;max-width:38em}
+.learn li{display:grid;grid-template-columns:22px 1fr;gap:10px;font-size:16.5px;line-height:1.6;color:var(--body)}
+.learn li::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--clay);margin-top:10px}
+
+.nextp{grid-column:2 / 3;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:30px 32px;background:var(--pine);color:#fff;border-radius:6px;text-decoration:none;transition:transform .25s}
+.nextp:hover{transform:translateY(-2px)}
+.nextp small{display:block;color:var(--mint);font-size:13px;margin-bottom:6px}
+.nextp strong{font-size:clamp(22px,3vw,28px);letter-spacing:-.02em}
+.nextp .go{width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.1);display:grid;place-items:center;flex:none;transition:background .25s}
+.nextp:hover .go{background:var(--mint);color:var(--pine)}
+.foot{grid-column:2 / 3;display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:40px;font-size:13px;color:var(--muted)}
+.wm{font-weight:700;color:var(--ink);font-size:15px;padding-bottom:3px;border-bottom:2px solid var(--clay)}
+
+/* ---------- wide sections (pairs, evolution) use the full width; their note sits inline ---------- */
+.page .sec.wide{grid-template-columns:minmax(0,1fr)}
+.note.inline{position:static;max-width:560px;margin:22px 0 0}
+.fbox{position:relative}
+.fbox.tall{max-height:min(720px,80vh);overflow:auto;overscroll-behavior:contain}
+
+/* ---------- browser window frame ---------- */
+.win{border-radius:12px;overflow:hidden;background:var(--panel);border:1px solid var(--line);box-shadow:0 24px 50px -24px rgba(0,0,0,.4)}
+.chrome{height:34px;display:flex;align-items:center;gap:12px;padding:0 12px;border-bottom:1px solid var(--line)}
+.dots{display:flex;gap:6px;flex:none}.dots i{width:10px;height:10px;border-radius:50%;background:#FF5F57}.dots i:nth-child(2){background:#FEBC2E}.dots i:nth-child(3){background:#28C840}
+.url{flex:1;min-width:0;max-width:380px;margin:0 auto;height:22px;line-height:22px;padding:0 10px;border-radius:6px;background:var(--bg);color:var(--muted);font-size:11.5px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.win > img{display:block;width:100%;height:auto;background:#fff}
+
+/* ---------- before / after pair: side by side by default, slider on request ---------- */
+.pairb{margin-top:60px}
+.pb-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:14px;flex-wrap:wrap}
+.pb-head h3{margin:0;font-size:21px;letter-spacing:-.015em}
+.pb-head p{margin:4px 0 0;font-size:15px;color:var(--body);max-width:none}
+.seg{display:inline-grid;grid-auto-flow:column;gap:2px;padding:3px;border-radius:10px;background:var(--panel);border:1px solid var(--line)}
+.seg button{border:0;background:none;color:var(--muted);font:inherit;font-size:13px;font-weight:500;height:30px;padding:0 12px;border-radius:7px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.pb-side{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.pb-side figure{margin:0}.pb-side a{display:block;color:inherit;text-decoration:none}
+.pb-side a:hover .win{border-color:var(--sel)}
+.pb-side figcaption{margin-top:8px;font-size:13px;color:var(--muted)}.pb-side figcaption b{color:var(--ink);margin-right:5px}
+.pb-slide{display:none}
+.pairb.slide .pb-side{display:none}.pairb.slide .pb-slide{display:block}
+.pfacts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:18px}
+.pfact{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px}
+.pfact .n{font-size:14.5px;font-weight:600;line-height:1.4}
+.pfact .n s{display:block;color:var(--muted);font-weight:500;text-decoration-color:rgba(176,110,74,.7);margin-bottom:2px}
+.pfact .n i{font-style:normal;color:var(--clay);margin-right:5px}
+.pfact p{margin:6px 0 0;font-size:13px;line-height:1.5;color:var(--body)}
+
+/* ---------- annotated screenshot ---------- */
+.anno .mk{position:absolute;width:28px;height:28px;margin:-14px 0 0 -14px;border-radius:50%;background:var(--clay);color:#fff;font-size:13px;font-weight:700;display:grid;place-items:center;box-shadow:0 0 0 4px rgba(176,110,74,.28),0 4px 10px rgba(0,0,0,.25)}
+.anno-list{list-style:none;padding:0;margin:16px 0 0;display:grid;gap:10px;counter-reset:a;max-width:38em}
+.anno-list li{display:grid;grid-template-columns:26px 1fr;gap:10px;font-size:15.5px;line-height:1.55;color:var(--body)}
+.anno-list li::before{counter-increment:a;content:counter(a);width:22px;height:22px;border-radius:50%;background:var(--clay);color:#fff;font-size:12px;font-weight:700;display:grid;place-items:center;margin-top:1px}
+
+/* ---------- design evolution ---------- */
+.evo-h{font-size:16px;margin:34px 0 10px}
+.evo{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.evo figure{margin:0}
+.evo .thumb{display:block;aspect-ratio:16/11;overflow:hidden;border-radius:10px;border:1px solid var(--line);background:#fff;box-shadow:0 10px 24px -14px rgba(0,0,0,.35);transition:transform .2s}
+.evo .thumb:hover{transform:translateY(-3px)}
+.evo .thumb img{width:100%;height:100%;object-fit:cover;object-position:top left;display:block}
+.evo figcaption{margin-top:8px;font-size:13px;color:var(--body);display:flex;align-items:center;gap:8px}
+.step{width:20px;height:20px;border-radius:50%;background:var(--ink);color:var(--bg);font-size:11px;font-weight:700;display:grid;place-items:center;flex:none}
+.evo-note{margin:12px 0 0;font-size:15px;line-height:1.6;color:var(--body);max-width:70ch}
+.evo-note b{color:var(--ink)}
+
+/* ---------- UX writing rewrites ---------- */
+.rw{margin-top:22px;display:grid;gap:10px}
+.rw-row{display:grid;grid-template-columns:minmax(0,1fr) 22px minmax(0,1fr);align-items:center;gap:6px 12px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 16px}
+.rw-row small{grid-column:1 / -1;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.07em}
+.rw-row .old{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;line-height:1.5;color:var(--muted);text-decoration:line-through;text-decoration-color:rgba(176,110,74,.6);overflow-wrap:anywhere}
+.rw-row .arrow{color:var(--clay);text-align:center}
+.rw-row .new{font-size:15px;font-weight:600;line-height:1.45;color:var(--ink)}
+.caps3.c4{grid-template-columns:repeat(4,minmax(0,1fr))}
+
+/* ---------- phone screens: feature cards, flow strips, state grids, spotlight ---------- */
+.ph{display:block;aspect-ratio:375/812;border:5px solid #16191D;border-radius:26px;overflow:hidden;background:#fff;box-shadow:0 0 0 1px var(--frame-line),0 18px 34px -20px rgba(10,40,70,.5);transition:transform .2s}
+.ph img{display:block;width:100%;height:100%;object-fit:cover;object-position:top}
+a.ph:hover{transform:translateY(-3px)}
+.screens{margin-top:44px}
+.screens h3{margin:0 0 4px;font-size:19px;letter-spacing:-.01em}
+.screens > p{margin:0;font-size:15px;color:var(--body)}
+.strip{display:grid;grid-auto-flow:column;grid-auto-columns:clamp(150px,40vw,184px);gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding:18px 2px 14px;overscroll-behavior-x:contain;scrollbar-width:thin}
+.strip figure{scroll-snap-align:start}
+.sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,220px));gap:26px 20px;padding-top:18px}
+.screens figure{margin:0;min-width:0}
+.screens figcaption{margin-top:10px;font-size:13px;line-height:1.45;color:var(--body);display:flex;gap:8px;align-items:flex-start}
+.screens figcaption b{display:block;color:var(--ink);font-size:14px;margin-bottom:2px}
+.screens .step{margin-top:1px}
+.tg{display:inline-block;padding:1px 8px;border-radius:10px;font-size:11px;font-weight:600;margin-bottom:4px;background:#FBE3E0;color:#A4372B}
+.tg.t-ok{background:#DFF0EC;color:#1E6B5C}.tg.t-info{background:#E2ECF6;color:#00578A}
+.feat{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:30px}
+.feat a{display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .2s,transform .2s}
+.feat a:hover{border-color:var(--sel);transform:translateY(-2px)}
+.feat .shot{height:170px;overflow:hidden;background:#DCE7F1;display:flex;justify-content:center;padding-top:22px}
+.feat .shot img{width:136px;align-self:flex-start;border:4px solid #16191D;border-bottom:0;border-radius:20px 20px 0 0;display:block}
+.feat .fb{padding:16px 18px 18px;display:flex;flex-direction:column;gap:6px;flex:1;font-size:14px;line-height:1.5;color:var(--body)}
+.feat small{font-size:12px;color:var(--muted)}
+.feat b{color:var(--ink);font-size:16px;line-height:1.3}
+.feat em{font-style:normal;color:var(--sel);font-weight:500;font-size:13px;margin-top:auto;padding-top:6px}
+.spot{display:grid;grid-template-columns:minmax(0,250px) minmax(0,1fr);gap:clamp(24px,5vw,56px);align-items:center;margin-top:36px;padding:clamp(22px,4vw,40px);background:#E8F0F7;border-radius:16px;color:#1A2A28}
+.spot .flabel{color:#00578A;font-size:12px;font-weight:600;margin-bottom:8px}
+.spot h3{margin:0 0 14px;font-size:clamp(22px,2.6vw,28px);letter-spacing:-.02em}
+.spot .learn li{color:#3D4B49}
+.spot .learn li::before{background:#00578A}
+
+/* ---------- components: one light card per component, variants shown at 1× with their state names ---------- */
+.dsg-h{margin:44px 0 4px;font-size:19px;letter-spacing:-.01em}
+.dsg-p{margin:0 0 16px;font-size:15px;color:var(--body)}
+.dsg{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,400px),1fr));gap:16px;grid-auto-flow:dense}
+.dsc{background:#F4F6F8;border:1px solid var(--frame-line);border-radius:14px;padding:18px 18px 20px;color:#1A2A28;min-width:0}
+.dsc.wide{grid-column:1 / -1}
+.dsc-h{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:16px}
+.dsc-h b{font-size:15px}
+.dsc-h span{font-size:12px;color:#6B7573;white-space:nowrap}
+.dsv{display:flex;flex-wrap:wrap;gap:16px 14px;align-items:flex-start}
+.dsv figure{margin:0;max-width:100%}
+.dsv img{display:block;width:calc(var(--w) * 1px);max-width:100%;height:auto}
+.dsv figcaption{margin-top:6px;font-size:11.5px;color:#6B7573}
+.sizes{display:flex;align-items:flex-end;gap:clamp(10px,2vw,22px);margin-top:28px}
+.sizes figure{margin:0;min-width:0}
+.sz-shot{border-radius:10px;overflow:hidden;border:1px solid var(--frame-line);box-shadow:0 18px 34px -22px rgba(0,0,0,.5)}
+.sz-shot img{display:block;width:100%;height:auto}
+.sizes figcaption{margin-top:8px;font-size:12.5px;color:var(--muted)}
+.sizes figcaption b{color:var(--ink);font-weight:600;margin-right:6px}
+.tblw{margin-top:24px;overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--panel)}
+.tbl{width:100%;border-collapse:collapse;font-size:14px;min-width:460px}
+.tbl th,.tbl td{padding:12px 14px;text-align:center;border-bottom:1px solid var(--line)}
+.tbl tr:last-child th,.tbl tr:last-child td{border-bottom:0}
+.tbl thead th{font-weight:600;color:var(--ink);font-size:13px}
+.tbl tbody th{text-align:left;font-weight:500;color:var(--body)}
+.tbl td.y{color:#1E6B5C;font-weight:700}.tbl td.n{color:var(--muted)}
+.tbl th:last-child,.tbl td:last-child{background:rgba(26,126,193,.08);color:#1A7EC1}
+.pal{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:14px;margin-top:24px}
+.pal div{font-size:13px;color:var(--body)}
+.pal i{display:block;height:64px;border-radius:12px;border:1px solid var(--line);margin-bottom:8px}
+.pal b{display:block;color:var(--ink);font-weight:600}
+.pal-type{font-size:15px;margin-top:16px}
+.ctab{margin-top:44px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:28px 30px;border-radius:16px;background:var(--pine);border:1px solid var(--line);color:#fff}
+.ctab h3{margin:0 0 6px;font-size:22px;letter-spacing:-.015em}
+.ctab p{margin:0;font-size:15px;line-height:1.6;color:#C9DCD8;max-width:56ch}
+.ctab-btn{flex:none;height:44px;padding:0 22px;border-radius:22px;background:#fff;color:var(--pine);font-weight:600;text-decoration:none;display:inline-flex;align-items:center;transition:background .2s}
+.ctab-btn:hover{background:var(--mint)}
+
+@media (max-width: 1200px){
+  .page{grid-template-columns:minmax(0,700px) 230px;column-gap:44px}
+  .toc{display:none}
+  .sec{grid-column:1 / 3;grid-template-columns:minmax(0,700px) 230px;column-gap:44px}
+  .nextp,.foot{grid-column:1 / 2}
+}
+@media (max-width: 920px){
+  .page{grid-template-columns:minmax(0,1fr);padding:44px 20px 90px}
+  .sec{grid-column:1;grid-template-columns:minmax(0,1fr);margin-bottom:80px}
+  .nextp,.foot{grid-column:1}
+  .note{margin-top:20px;position:static}
+  .cur{display:none}
+  .facts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .crumb{display:none}
+  .thm{margin-left:auto}
+  .pfacts,.caps3.c4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .feat{grid-template-columns:1fr}
+  .feat a{flex-direction:row}
+  .feat .shot{height:auto;width:118px;flex:none;padding:0;position:relative}
+  .feat .shot img{position:absolute;top:16px;left:13px;width:92px;border-width:3px;border-radius:14px 14px 0 0}
+}
+@media (max-width: 560px){
+  .quotes{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .caps3{grid-template-columns:1fr}
+  .nums{grid-template-columns:1fr}
+  .nums div + div{border-left:0;border-top:1px solid var(--line)}
+  .back span{display:none}
+  .gal{grid-template-columns:1fr}
+  .dsx{grid-template-columns:1fr 1fr}
+  .pb-side,.evo{grid-template-columns:1fr}
+  .caps3.c4{grid-template-columns:1fr}
+  .rw-row{grid-template-columns:1fr}
+  .rw-row .arrow{text-align:left;transform:rotate(90deg);width:14px}
+  .sgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 14px}
+  .spot{grid-template-columns:1fr}
+  .spot > .ph{width:200px;justify-self:center}
+  .ctab{flex-direction:column;align-items:flex-start;padding:24px 22px}
+  .sizes{flex-wrap:wrap}
+  .sizes figure:first-child{flex-basis:100% !important}
+}
+@media (prefers-reduced-motion: reduce){ *,*::before,*::after{transition:none!important;animation:none!important} }
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <a class="logo" href="index.html#work" id="logo" aria-label="Home"></a>
+    <a class="back" href="index.html#work">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3 5 8l5 5"/></svg><span>All work</span>
+    </a>
+    <div class="crumb">Portfolio / <b id="crumb"></b></div>
+    <button class="thm" id="themeBtn"></button>
+    <div class="here" id="here"></div>
+    <a class="cta" id="cta">Contact</a>
+    <div class="progress" id="progress"></div>
+  </header>
+
+  <div class="scroll" id="scroll">
+    <div class="page" id="page"></div>
+  </div>
+</div>
+
+<script>
+/* =====================================================================
+   CASE STUDIES — one entry per project, in the same order as the cards
+   on the home page. `slug` must match the project's slug in index.html.
+
+   A project is a list of sections. Each section can have:
+     id, nav (name in the side menu), label (small text above the heading),
+     title, lede, text: [paragraphs], blocks: [...], note (Noha's side comment)
+   The first section is the overview: its title is the big page heading.
+
+   Block types:
+     { type:'facts', items:[['Role','…'], …] }
+     { type:'image', label, src, alt, caption, bg }           one screenshot
+     { type:'gallery', cols:2, items:[{ label, src, alt, caption }, …] }
+     { type:'compare', label, before:{ cap, src | steps:[…] }, after:{ cap, src | steps:[…], key } }
+     { type:'quotes', label, items:[['quote','who', key?], …] }
+     { type:'funnel', label, rows:[['Step', percent, highlight?], …], legend }
+     { type:'caps', items:[['Title','text'], …] }
+     { type:'nums', items:[['−30%','what it means'], …] }
+     { type:'learn', heading, items:['…', …] }
+     { type:'window', url, src, alt, caption }                   screenshot in a browser frame
+     { type:'annotated', label, src, points:[{ x, y, text }] }     numbered markers (x/y in %) + list
+     { type:'pair', title, lede, url, before, after, facts:[[was, now, why]] }   side by side, slider on request
+     { type:'evolution', rows:[{ title, stages:[{ n, label, src }], lead, note }] }
+     { type:'rewrites', items:[['old wording', 'new wording', 'where'], …] }
+     { type:'image', tall:true, … }                               long page that scrolls inside its frame
+     { type:'screens', title, lede, grid?, items:[{ src, title, text, tag, tone }] }   phone screens: sideways strip, or grid:true
+     { type:'features', items:[{ id, kicker, title, text, src }] }   cards that jump to the section with that id
+     { type:'spotlight', label, title, src, alt, items:['…'] }       one phone with points beside it
+     { type:'cta', title, text, button, subject }                    "get in touch" card that emails Noha
+     { type:'sizes', items:[{ src, label, w }] }                    one section at several widths, side by side
+     { type:'table', cols:['A','B'], rows:[['Feature', true, false]], caption }   comparison table, last column highlighted
+     { type:'palette', colors:[['Primary','#1A7EC1']], font:'Typeface note' }     colour swatches
+     { type:'components', dir, groups:[{ title, text, items:[{ name, note, w, wide?, variants:[['file','state', w?], …] }] }] }
+     Section option wide:true = full width, note shown inline (for pairs and evolution)
+     { type:'phones' | 'html', … }                             drawn sample mockups
+   ===================================================================== */
+window.SITE = { name:'Noha Ghoweil', firstName:'Noha', role:'Senior UI/UX designer', email:'nohaghoweil@gmail.com' };
+
+const PHONE = {
+  cart:  '<div class="blk"></div><div class="ln"></div><div class="ln s"></div><div class="ln m"></div><div class="btn">Continue</div>',
+  pick:  '<div class="ln s"></div><div class="opt"><i></i>Card 4821</div><div class="opt"><i></i>Wallet</div><div class="opt on"><i></i>Installments</div><div class="btn">Pay EGP 4,800</div>',
+  done:  '<div class="ok">✓</div><div class="ln"></div><div class="ln s"></div><div class="seg"><b class="on"></b><b></b><b></b></div><div class="btn">Done</div>',
+  plan:  '<div class="ln s"></div><div class="seg"><b class="on"></b><b></b><b></b></div><div class="ln"></div><div class="ln s"></div><div class="btn">Confirm plan</div>',
+  ring:  '<div class="ring"></div><div class="ln"></div><div class="ln s"></div><div class="btn">Check in</div>',
+  list:  '<div class="ln s"></div><div class="blk"></div><div class="ln"></div><div class="ln m"></div><div class="ln s"></div><div class="btn">Open</div>'
+};
+
+const FA = 'assets/projects/fintech-admin/';   // screenshots for the fintech admin case study
+const MN = 'assets/projects/minenest/';        // screens for the MineNest app case study
+const FV = 'assets/projects/finvale/';         // screens for the Finvale website case study
+const BM = 'assets/projects/baymax/';          // screens for the BayMax app case study
+
+window.CASES = [
+  { slug:'fintech-admin', title:'From overwhelming to obvious',
+    sections:[
+      { id:'overview', nav:'Overview', title:'From overwhelming to obvious',
+        lede:'Redesigning a fintech back office so new users can find their way on day one.',
+        blocks:[
+          { type:'facts', items:[['Role','Senior UI/UX designer & UX writer'],['Timeline','December 2025 · 1 month'],['Team','Design team of 2 · every screen here is mine'],['Tools','Figma, Jira / Azure DevOps']] },
+          { type:'window', url:'admin.fintech.app/profiles/details', src:`${FA}profile-after.webp`, alt:'The redesigned customer profile page', caption:'The redesigned customer profile.' }
+        ],
+        note:'Every screen, component and label here was designed by hand in Figma in December 2025, from watching real ops agents work.' },
+
+      { id:'problem', nav:'The problem', label:'The problem', title:'Powerful, but hard to learn',
+        text:['The admin panel runs a whole fintech back office: profiles, transactions, AML documents, banks, services, accounting, communication and system settings. It had grown feature by feature, and it showed.',
+              'Tables were huge and dense. Buttons were scattered across every page. Labels read like database fields. And the steps to finish a task were hidden, so anyone new had to be walked through it.'],
+        blocks:[
+          { type:'annotated', label:'Old panel · customer profile', src:`${FA}profile-before-full.webp`, alt:'The old customer profile page with five problem areas marked',
+            points:[
+              { x:16.6, y:47.4, text:'11 action buttons stacked in one column, all with the same weight: “Delete User” looks exactly like “Messages”.' },
+              { x:54.9, y:16.1, text:'12 separate edit pencils scattered across the page.' },
+              { x:68.9, y:31.6, text:'About 27 “n/a” fields, given the same weight as real data.' },
+              { x:36.0, y:26.1, text:'Status, risk level and KYC status shown twice, in two places.' },
+              { x:96.7, y:8.6,  text:'Only 9 tabs visible; the rest hidden behind a carousel arrow.' }] },
+          { type:'image', label:'Old panel · transaction monitoring', src:`${FA}monitor-before-full.webp`, alt:'The old monitoring table running wider than its page',
+            caption:'The table ran wider than the page itself, so reviewing a transaction meant scrolling sideways.' }
+        ],
+        note:'The panel wasn’t missing features. It was missing a way in.' },
+
+      { id:'research', nav:'Research', label:'What I found', title:'I got lost in it too',
+        text:['I audited every screen, gathered feedback from the team, and watched the people who use the panel every day. One ops agent went through five screens just to check a single profile’s status.',
+              'Then I caught myself doing the same thing: every time I opened the old panel, I had to remember the steps for a task all over again. That changed the brief. The goal wasn’t beautiful screens. It was a panel people can actually use.'],
+        note:'If the designer forgets the steps, a new team member doesn’t stand a chance.' },
+
+      { id:'users', nav:'Who uses it', label:'Who uses it', title:'Four teams, eight modules, one panel',
+        text:['Each team lives in a different corner of the panel, so every screen had to make sense to someone who doesn’t open it every day.'],
+        blocks:[
+          { type:'caps', items:[['Support & operations','Look up customers and transactions, and answer issues fast.'],['Compliance & KYC','Review documents, approve or reject, and flag risk.'],['Finance & accounting','Reconcile, report and export the numbers.'],['Managers','Keep an eye on the team’s work and the big picture.']] }
+        ] },
+
+      { id:'redesign', nav:'Before and after', label:'Before and after', title:'Five screens, redesigned', wide:true,
+        text:['The same screens at the same size: the old panel on the left, the redesign on the right. Switch any of them to the slider to drag between the two.'],
+        note:'Customer data, IDs and logos in every screenshot are replaced with fictional values.',
+        blocks:[
+          { type:'pair', title:'Customer profile', url:'admin.fintech.app/profiles/details', before:`${FA}profile-before.webp`, after:`${FA}profile-after.webp`,
+            lede:'The page ops, compliance and finance open most: one customer, everything about them.',
+            facts:[['11 stacked buttons','1 action row','Verification first, shortcuts second, Delete set apart in red.'],
+                   ['12 pencils','1 Edit per section','Editing is where you expect it, not scattered through the page.'],
+                   ['9 visible tabs','All 12','No hidden carousel: every part of the profile is one click away.'],
+                   ['Status shown twice','Once','Status, risk and KYC live in one place, so they can’t disagree.']] },
+          { type:'pair', title:'Form builder', url:'admin.fintech.app/forms/build', before:`${FA}form-before.webp`, after:`${FA}form-after.webp`,
+            lede:'Where the team builds onboarding forms, like the company application.',
+            facts:[['Save at the top','Save & Continue at the end','The main action sits where the work is finished.'],
+                   ['9 identical blue buttons','Tool Box','Search, categories, icons and plain names for every field type.'],
+                   ['Settings hidden from view','Settings side panel','Field and page settings stay next to the canvas, always visible.'],
+                   ['No guidance','Guided start','A drag-and-drop prompt and a User guide link for new users.']] },
+          { type:'pair', title:'Crypto AML', url:'admin.fintech.app/transactions/crypto-aml', before:`${FA}crypto-before.webp`, after:`${FA}crypto-after.webp`,
+            lede:'Where compliance reviews crypto transfers and their risk.',
+            facts:[['Nested table in a table','Details side panel','Related transfers open as cards beside the list, not inside it.'],
+                   ['Plain text','Colour-coded risk','High, Medium and Low stand out at a glance.'],
+                   ['Full 42-character addresses','Short address + copy','Rows stay scannable; the full address is one click away.'],
+                   ['“Rows 1–25 of 25”','Total count + pages','1,483 transactions shown up front, with simple page numbers.']] },
+          { type:'pair', title:'Transaction monitoring', url:'admin.fintech.app/transactions/monitoring', before:`${FA}monitor-before.webp`, after:`${FA}monitor-after.webp`,
+            lede:'Where compliance reviews flagged transactions and approves, escalates or rejects them.',
+            facts:[['18 filters always open','One Filters button','The list comes first; filters open only when needed.'],
+                   ['Table wider than the page','Manage columns','Every column fits, and each team picks what it needs.'],
+                   ['Greyed-out bulk buttons','Search + clear actions','Approve, Escalate and Reject sit next to the search, colour-coded.'],
+                   ['One grey status style','Coloured status','Pending, Rejected and Finished read at a glance.']] },
+          { type:'pair', title:'AML document requests', url:'admin.fintech.app/aml-documents/requested', before:`${FA}aml-before.webp`, after:`${FA}aml-after.webp`,
+            lede:'Where compliance reviews the documents customers submit and decides on each one.',
+            facts:[['Icon-only actions','Labelled buttons','Save As, Send to KYC, Reject and Approve say exactly what they do.'],
+                   ['History squeezed into rows','A timeline','Each submission is its own card, with files, comment and screening token.'],
+                   ['Cut-off headers (“T…”)','Full column names','Every column says what it holds.'],
+                   ['Status as plain text','Status badges','A rejected submission is marked in red at a glance.']] }
+        ] },
+
+      { id:'evolution', nav:'How it evolved', label:'Process', title:'How the design evolved', wide:true,
+        text:['The first direction was blue, designed in the first week of December 2025. After stakeholder feedback it moved to the final orange design. Click any screen to see it full size.'],
+        note:'The blue direction was a real first attempt, not a mock-up for show. Stakeholder feedback shaped the final one.',
+        blocks:[
+          { type:'evolution', rows:[
+            { title:'Customer profile', stages:[
+                { n:1, label:'Old panel', src:`${FA}profile-before-full.webp`, alt:'Old panel: customer profile' },
+                { n:2, label:'First direction', src:`${FA}v1-profile.webp`, alt:'First redesign direction: customer profile in blue' },
+                { n:3, label:'Final', src:`${FA}profile-after-full.webp`, alt:'Final redesign: customer profile' }],
+              lead:'First → final:', note:'the brand colour moved from blue to orange, label-over-value fields became aligned label and value rows, service toggles became a compact checkmark grid, and a Transactions shortcut joined the action row.' },
+            { title:'Form builder', stages:[
+                { n:1, label:'Old panel', src:`${FA}form-before-full.webp`, alt:'Old panel: form builder' },
+                { n:2, label:'First direction', src:`${FA}v1-form.webp`, alt:'First redesign direction: form builder in blue' },
+                { n:3, label:'Final', src:`${FA}form-after-full.webp`, alt:'Final redesign: form builder' }],
+              lead:'First → final:', note:'the toolbox gained search and a category picker, a Field settings / Page settings panel was added beside the canvas, pages became pill-shaped steps, and a User guide link joined the header.' },
+            { title:'AML document types', stages:[
+                { n:2, label:'First direction', src:`${FA}v1-doc-types.webp`, alt:'First redesign direction: AML document types list' }],
+              lead:'An early exploration', note:'from the first direction: document types as a list, with a clear yes/no column for each rule.' }] }
+        ] },
+
+      { id:'writing', nav:'Words matter', label:'UX writing', title:'Words matter',
+        text:['Half of the clarity came from wording. The old panel spoke in database terms; the redesign speaks to the person using it.'],
+        blocks:[
+          { type:'rewrites', items:[
+            ['Display name: Company application form || Name: CompanyOnboardingFormDynamic', 'Build Form', 'Form builder · page title'],
+            ['TEXT FIELD · TEXT AREA · SELECT BOXES', 'Text input · Text area · Select', 'Form builder · toolbox'],
+            ['Save (full width, at the top)', 'Save & Continue (at the end)', 'Form builder · main action'],
+            ['(an empty canvas, no hint)', 'Start building your form by dragging elements from the toolbox', 'Form builder · empty state'],
+            ['✓  ✗  ↗  (icons only)', 'Save As · Send to KYC · Reject · Approve', 'AML document requests · actions'],
+            ['Page 1 of 1 · Rows 1–25 of 25', 'Total Transactions: 1,483', 'Crypto AML · list summary']] }
+        ],
+        note:'A good label saves a support question. A bad one creates one.' },
+
+      { id:'more', nav:'More screens', label:'Final design', title:'More from the redesign',
+        blocks:[
+          { type:'image', tall:true, label:'Transaction details', src:`${FA}txdetails.webp`, alt:'Redesigned transaction details: sender, receiver, amount and history tabs',
+            caption:'Sender, receiver and the amount first; history, documents, comments and signatures in tabs below. Scroll inside the frame to see the whole page.' }
+        ] },
+
+      { id:'next', nav:'What’s next', label:'Where it is now', title:'In development',
+        text:['The redesign is being built now. I handed it over in Figma with specs and work with the developers through Jira as each screen comes to life.'],
+        blocks:[
+          { type:'learn', heading:'What I’ll measure after launch', items:[
+            'How long a new team member needs before working without help.',
+            'Time to finish the most common tasks, like checking a profile’s status.',
+            'Mistakes on risky actions, such as rejecting or deleting by accident.'] },
+          { type:'learn', heading:'What I learned', items:[
+            'Using the product myself was some of the most useful research I did.',
+            'Clear words did as much for the panel as clear layouts.',
+            'Stakeholder feedback is design input: it gave the final direction its shape.'] }
+        ],
+        note:'Numbers come after launch. Until then, the screens have to speak for themselves.' }
+    ] },
+
+  { slug:'minenest', title:'Three features, zero guesswork',
+    sections:[
+      { id:'overview', nav:'Overview', title:'Three features, zero guesswork',
+        lede:'Designing the marketplace, e-signing and address verification for MineNest, a live crypto-mining app.',
+        blocks:[
+          { type:'facts', items:[['Role','Senior UI/UX designer'],['Timeline','Summer 2026 · live'],['Team','PM + developers · these three features are mine'],['Client','Client project at Swisstech']] },
+          { type:'image', label:'MineNest app', src:`${MN}cover-mockup.webp`, alt:'Three MineNest screens: the marketplace, the “What changed” view of the agreement, and verified withdrawal addresses' },
+          { type:'features', items:[
+            { id:'marketplace', kicker:'Marketplace', src:`${MN}thumb-market.webp`, title:'Buying a machine from a stranger, safely', text:'Buy and sell miners, or a share of one, between customers.' },
+            { id:'signing', kicker:'E-signing', src:`${MN}thumb-sign.webp`, title:'A legal contract people actually read', text:'A new agreement every customer signs in the app.' },
+            { id:'address', kicker:'Proof of address', src:`${MN}thumb-address.webp`, title:'Unlocking withdrawals without a support ticket', text:'Upload a document, get reviewed, add a withdrawal address.' }] }
+        ],
+        note:'MineNest is a made-up name. The brand, people, emails and wallet addresses are replaced with fictional ones, and this page shows a selection of the screens.' },
+
+      { id:'context', nav:'The app', label:'The product', title:'Mining, hosted for you',
+        text:['MineNest customers own crypto-mining machines that the company hosts and runs in its facility. The app is where they follow their miners, payouts and repairs, and talk to support.',
+              'In summer 2026 the app needed three new things at once: a place to buy and sell miners, a new agreement every customer had to sign, and a check before anyone could add a withdrawal address. The briefs came from customer requests and stakeholder decisions. I designed all three end to end, every state included, working with a PM and the developers.'],
+        note:'Each feature touches money or a legal right, so every screen had to say exactly what happens next.' },
+
+      { id:'marketplace', nav:'Marketplace', label:'Feature 1 · Marketplace', title:'Buying a machine from a stranger, safely', wide:true,
+        text:['Customers wanted to sell their miners, or a share of one, without leaving the platform, and buyers wanted machines faster than new stock arrives. Until then, those deals were handled by hand through support. The marketplace also earns the company an 8% fee on every sale.',
+              'Money moves between two customers who have never met, so the design had one job: show every amount and every consequence before anyone taps confirm.'],
+        note:'Every number a seller sees is the number they will actually receive.',
+        blocks:[
+          { type:'screens', grid:true, title:'Key decisions', items:[
+            { src:`${MN}s-price.webp`, title:'The fee, while you type', text:'Sellers see the 8% fee and exactly what they will receive as they set the price, next to what similar miners recently sold for.' },
+            { src:`${MN}m-offer.webp`, title:'Limited bids', text:'Each buyer gets two offer attempts per listing, so sellers aren’t flooded with low bids.' },
+            { src:`${MN}m-buynow.webp`, title:'No surprises at checkout', text:'The wallet balance after purchase is shown before paying, with a clear warning that the transfer can’t be undone.' },
+            { src:`${MN}e-lockout.webp`, tag:'Edge case', title:'A code before money moves', text:'Every purchase is confirmed with a 6-digit code. Too many wrong tries lock it, with a countdown to the next one.' }] }
+        ] },
+
+      { id:'signing', nav:'E-signing', label:'Feature 2 · E-signing', title:'A legal contract people actually read', wide:true,
+        text:['A new version of the Hosting Agreement needed every customer’s signature, and the marketplace stays locked until it’s signed. The catch: people skip long legal text, so they would miss what actually changed.',
+              'So the flow leads with the changes, lets people stop and come back, and never leaves anyone guessing whether something was signed.'],
+        note:'The decision I’m proudest of: showing what changed before asking anyone to sign.',
+        blocks:[
+          { type:'spotlight', label:'The key screen', title:'Lead with what changed', src:`${MN}c-changed.webp`, alt:'What changed: clauses grouped as changed, added and removed, each with the old and new wording',
+            items:['Changed, added and removed clauses in three tabs: 12, 4 and 1.',
+                   'Each change shows the old wording and the new one, in plain words.',
+                   '“Read this clause in full” jumps straight to it in the agreement.',
+                   'An honest footnote: the summary is a courtesy, and the signed contract is what binds you.'] },
+          { type:'screens', grid:true, title:'Key decisions', items:[
+            { src:`${MN}c-update.webp`, title:'Announced, not forced', text:'30 days to sign, about 4 minutes, and you can stop and come back at any time.' },
+            { src:`${MN}c-reader.webp`, title:'Changes flagged while reading', text:'A banner counts the changed clauses, and the contents mark each one.' },
+            { src:`${MN}c-decline.webp`, title:'Saying no is allowed', text:'“Are you sure?” explains what happens next: miners keep running, nothing is cancelled today.' },
+            { src:`${MN}c-failed.webp`, tag:'Edge case', title:'Sealing failed', text:'Nothing was signed, and the signature is kept for the retry.' }] }
+        ] },
+
+      { id:'address', nav:'Proof of address', label:'Feature 3 · Proof of address', title:'Unlocking withdrawals without a support ticket', wide:true,
+        text:['To protect customers from fraud, and to follow company rules, nobody can add or change a withdrawal address until a recent proof of address is approved.',
+              'The flow had to explain the rule up front, catch a bad file before it’s sent, and say clearly what happens while the document is in review.'],
+        note:'Every state answers one question: what do I do now?',
+        blocks:[
+          { type:'screens', grid:true, title:'Key decisions', items:[
+            { src:`${MN}p-locked.webp`, title:'The rule, up front', text:'Addresses stay locked until a recent proof of address is approved, and the screen says why.' },
+            { src:`${MN}p-upload.webp`, title:'Rules before the upload', text:'File types, size limit and what the document must show, listed before choosing a file.' },
+            { src:`${MN}p-verified.webp`, title:'Unlocked', text:'Once approved, addresses unlock, and pending changes show their review status.' },
+            { src:`${MN}p-rejected.webp`, tag:'Edge case', title:'Rejected, with the reason', text:'What was wrong, and a direct way to upload again.' }] }
+        ] },
+
+      { id:'system', nav:'Components', label:'Design system', title:'The system behind it', wide:true,
+        text:['All three features are built from one set of components I designed in Figma, each with every state it can be in. A bid row, a banner or a file row looks and behaves the same wherever it appears, so each piece only has to be built once. Here are four of them.'],
+        note:'Every component is a Figma component with variants, so changing a state is a switch, not a redraw.',
+        blocks:[
+          { type:'components', dir:`${MN}ds/`, groups:[
+            { title:'A few of the components', items:[
+              { name:'Bid row', note:'5 states', w:296, wide:true, variants:[['bid-waiting','Waiting'],['bid-accepted','Accepted'],['bid-transferred','Transferred'],['bid-rejected','Rejected, with the seller’s reason'],['bid-cancelled','Cancelled']] },
+              { name:'Countdown banner', note:'3 urgency levels', w:318, variants:[['countdown','']] },
+              { name:'Changed clause', note:'Marks what changed', w:350, variants:[['changed','']] },
+              { name:'File row', note:'3 states', w:337, variants:[['filerow-error','Error'],['filerow-uploading','Uploading'],['filerow-success','Uploaded']] }] }
+          ] },
+          { type:'cta', title:'Want the full flows?', button:'Get in touch', subject:'MineNest case study',
+            text:'This page shows a selection. The complete flows, more than 50 screens with every edge case, and the full component library are something I walk through privately. Get in touch and I’ll show you.' }
+        ] },
+
+      { id:'next', nav:'Where it is now', label:'Where it is now', title:'Live in the app',
+        text:['All three features are live. I designed every state in Figma, errors and edge cases included, so the developers never had to guess what a screen should say.'],
+        blocks:[
+          { type:'learn', heading:'What I’d measure', items:[
+            'How many customers sign before the deadline, and how many open “What changed” first.',
+            'Where marketplace purchases fail: balance, code or lockout.',
+            'How often address documents are rejected, and for which reason.'] },
+          { type:'learn', heading:'What I learned', items:[
+            'People don’t need less legal text. They need to know which part changed.',
+            'When money moves between strangers, clear numbers are the safety feature.',
+            'The unhappy paths deserve the same care as the happy ones.'] }
+        ],
+        note:'No numbers yet. These are the first things I’d look at.' }
+    ] },
+
+  { slug:'finvale', title:'Show the product, not the promise',
+    sections:[
+      { id:'overview', nav:'Overview', title:'Show the product, not the promise',
+        lede:'Redesigning the marketing website of a banking-software company: from one home page direction to a complete responsive site.',
+        blocks:[
+          { type:'facts', items:[['Role','Senior UI/UX designer'],['Timeline','Summer 2026'],['Team','Design director + developers'],['Status','In development']] },
+          { type:'image', label:'Finvale website', src:`${FV}cover-mockup.webp`, alt:'The redesigned Finvale home page on a laptop and a phone' }
+        ],
+        note:'Finvale is a made-up name. The brand, logo and product names are replaced, and this page shows a selection of the screens.' },
+
+      { id:'problem', nav:'The old site', label:'The problem', title:'A site that hid the product',
+        text:['Finvale sells white-label banking software: accounts, payments, cards, crypto and compliance that other companies launch under their own brand. The old website sold it with big promises and very little product.'],
+        blocks:[
+          { type:'image', label:'Before · old home page, hero', src:`${FV}old-hero.webp`, alt:'The old home page hero: “Own Your Banking Software With Finvale” next to a dashboard screenshot',
+            caption:'Big Title Case promises beside a dashboard screenshot that says nothing about the modules or the API.' },
+          { type:'image', label:'Before · old home page, features', src:`${FV}old-features.webp`, alt:'The old features section with half-faded text and large empty gaps',
+            caption:'Content faded in on scroll, so sections sat half visible or empty, like “Fast and Efficient” here. Captured from the live site, with the brand replaced.' },
+          { type:'caps', items:[['Product hidden','One dashboard screenshot, but no sign of the 16 modules or the API behind it, so visitors had to take the claims on trust.'],['Broken experience','Sections sat empty until their animations finished, and the use-case carousel repeated the same three cards.'],['Off-brand','It no longer matched the newer product sites the company had launched.']] }
+        ],
+        note:'People buying banking software want to see it before they talk to sales.' },
+
+      { id:'brief', nav:'The brief', label:'The brief', title:'One page in, a whole website out',
+        text:['The design director set a new direction with a reference home page. My job was to turn that direction into a complete website: every page, at every screen size, plus the parts developers would build from.'],
+        blocks:[
+          { type:'nums', items:[['12','pages, from home and modules to legal pages and a 404'],['4','screen sizes, from 390 to 1440 wide'],['48','layouts, each designed by hand']] }
+        ],
+        note:'The direction was the director’s. The pages, layouts and components here are mine.' },
+
+      { id:'home', nav:'Home page', label:'Home page', title:'The product, front and centre', wide:true,
+        text:['The home page leads with the platform itself: the real interface, the modules, an API call. Visitors see what they would get before they read a single claim.'],
+        note:'Every section answers one question a buyer has, in the order they ask it.',
+        blocks:[
+          { type:'window', label:'Hero', url:'finvale.example', src:`${FV}hero.webp`, alt:'Home page hero: “Build what’s next in finance” with the platform on four devices', caption:'The platform on every device it ships to, right in the first screen.' },
+          { type:'image', label:'Building blocks', src:`${FV}ambition.webp`, alt:'Four product areas above a live product window with personal, business and admin views', caption:'Four product areas, then the product itself: a window that switches between the personal app, the business app and the admin back office, in light or dark.' },
+          { type:'image', label:'Module library', src:`${FV}modules.webp`, alt:'Sixteen module cards grouped by interfaces, compliance, banking and digital assets, with filters', caption:'All 16 modules on one screen, grouped and filterable, each with a one-line plain description.' },
+          { type:'image', label:'For developers', src:`${FV}api.webp`, alt:'API section with a request and response example', caption:'A real request and response instead of “developer friendly”.' },
+          { type:'image', label:'White label', src:`${FV}brand.webp`, alt:'“Your brand. Your rules. Our engine.” with cards in four brand colours', caption:'The white-label promise shown, not told: the same card in four brands.' }
+        ] },
+
+      { id:'responsive', nav:'Responsive', label:'Responsive', title:'Designed at every size', wide:true,
+        text:['Every page was designed at four widths, desktop 1440, laptop 1200, tablet 810 and mobile 390, so the developers never had to guess how a section should reflow.'],
+        blocks:[
+          { type:'sizes', items:[
+            { src:`${FV}brand.webp`, label:'Desktop', w:1440, alt:'White-label section on desktop' },
+            { src:`${FV}brand-tablet.webp`, label:'Tablet', w:810, alt:'White-label section on tablet' },
+            { src:`${FV}brand-mobile.webp`, label:'Mobile', w:390, alt:'White-label section on mobile' }] }
+        ] },
+
+      { id:'pages', nav:'Inner pages', label:'Inner pages', title:'Beyond the home page', wide:true,
+        text:['Modules, API, About, Contact, two product pages, two coming-soon pages, Privacy, Terms and a 404, all built from the same parts.'],
+        blocks:[
+          { type:'gallery', cols:3, items:[
+            { label:'Modules', src:`${FV}page-modules.webp`, alt:'Modules page: the complete module library' },
+            { label:'API', src:`${FV}page-api.webp`, alt:'API page: one API between you and a licensed bank' },
+            { label:'404', src:`${FV}page-404.webp`, alt:'404 page: a message in a bottle and a way back home' }] }
+        ] },
+
+      { id:'system', nav:'Components', label:'Components', title:'Parts developers build once', wide:true,
+        text:['Behind the pages sits a shared set of components and build boards: a responsive header, FAQ rows, product windows and controls, each prepared for developers.'],
+        blocks:[
+          { type:'components', dir:`${FV}ds/`, groups:[
+            { title:'A few of the components', items:[
+              { name:'Site header', note:'Responsive', w:700, wide:true, variants:[['header-d','Desktop'],['header-m','Mobile',300]] },
+              { name:'FAQ row', note:'Open and closed', w:380, variants:[['faq','']] },
+              { name:'Segmented control', note:'Used in product windows', w:270, variants:[['pill','']] }] }
+          ] },
+          { type:'cta', title:'Want the full site?', button:'Get in touch', subject:'Finvale website case study',
+            text:'This page shows a selection. The complete site, all 48 layouts and the developer build boards, is something I walk through privately. Get in touch and I’ll show you.' }
+        ] },
+
+      { id:'next', nav:'Where it is now', label:'Where it is now', title:'In development',
+        text:['The redesign is being built now, from the layouts and build boards above.'],
+        blocks:[
+          { type:'learn', heading:'What I’d measure', items:[
+            'How many visitors reach the module library and the API page.',
+            'Demo requests from the site, before and after launch.',
+            'How mobile visitors move through the home page now that every section has its own mobile layout.'] },
+          { type:'learn', heading:'What I learned', items:[
+            'A strong direction is only the start. The work is making it hold up on every page and every screen size.',
+            'Showing the product sells better than describing it.',
+            'Developers move faster with build boards than with finished pages alone.'] }
+        ],
+        note:'No numbers yet. These are the first things I’d look at after launch.' }
+    ] },
+
+  { slug:'baymax', title:'Less paperwork, more patient time',
+    sections:[
+      { id:'overview', nav:'Overview', title:'Less paperwork, more patient time',
+        lede:'An Arabic employee app for hospital staff: attendance, leave, payslips and salary advances in one place.',
+        blocks:[
+          { type:'facts', items:[['Role','UI/UX designer · freelance'],['Year','2024'],['Platform','Mobile · Arabic, right to left'],['Scope','31 screens, research to UI']] },
+          { type:'image', label:'BayMax app', src:`${BM}cover-mockup.webp`, alt:'Three BayMax screens in Arabic: payslip details, the home screen with services, and notifications' }
+        ],
+        note:'A freelance project for a hospital-software client. The full original case study is on my Behance.' },
+
+      { id:'problem', nav:'The problem', label:'The problem', title:'Admin was eating into care time',
+        text:['Doctors and nurses handled attendance, leave, salary questions and documents through paper forms, calls and messages. It was slow, easy to get wrong, and it took time away from patients.',
+              'BayMax brings all of it into one app, written right to left in Arabic for the people who use it.'],
+        blocks:[
+          { type:'rewrites', items:[
+            ['Attendance tracked by hand, with errors', 'Automatic attendance tracking', 'Attendance'],
+            ['Leave requests got lost or delayed', 'One leave flow with a clear status', 'Leave'],
+            ['Salary details were unclear', 'A monthly payslip with every deduction', 'Payslip'],
+            ['Requests went through calls and messages', 'Requests and chat with the manager in the app', 'Requests'],
+            ['Documents spread across files', 'Documents and profile in one place', 'Profile'],
+            ['Updates missed in group chats', 'One notification centre', 'Notifications']] }
+        ],
+        note:'Every problem here became one service on the home screen.' },
+
+      { id:'users', nav:'Who it’s for', label:'Who it’s for', title:'A doctor with no time for forms',
+        text:['I talked to a few hospital staff and combined that with online research into one persona: Mohammed, a 32-year-old general practitioner in Cairo. He wants admin to take minutes, not hours, so he can focus on his patients.',
+              'Problem statement: Mohammed needs to spend more time on patient care, because manual admin is slow and full of mistakes.'],
+        blocks:[
+          { type:'caps', items:[
+            ['Thinks','“I need a tool that saves time, not one more thing to learn.”'],
+            ['Feels','Overwhelmed by paperwork, and worried about work-life balance.'],
+            ['Says','“I want leave and attendance to be simple, and salary to be clear.”'],
+            ['Does','Spends extra hours on admin and tries new tools to keep up.']] }
+        ],
+        note:'A proto-persona, built from a few conversations and online research.' },
+
+      { id:'research', nav:'Research', label:'Research', title:'What others were missing',
+        text:['I compared three HR apps to see what staff already expect, and where there was room to do better.'],
+        blocks:[
+          { type:'table', cols:['ZenHR','TimeDoctor','Software Fish','BayMax'], rows:[
+            ['Onboarding', true, true, true, true],
+            ['Personal home screen', true, true, true, true],
+            ['Chat with managers', false, true, false, true],
+            ['Announcements', true, false, true, true]],
+            caption:'Chat with a manager was the clearest gap: only one of the three offered it.' },
+          { type:'caps', items:[
+            ['Requesting leave','Show the request status clearly, and let staff add a note.'],
+            ['Checking a payslip','Let staff download it, and break down every deduction.'],
+            ['Chatting with a manager','Add read receipts, so nobody wonders if a message was seen.'],
+            ['Updating the profile','Edit several fields at once, and confirm big changes.']] }
+        ],
+        note:'The journey map turned each task into one improvement I designed for.' },
+
+      { id:'process', nav:'Process', label:'Process', title:'From paper to pixels', wide:true,
+        text:['I started with paper sketches in Arabic, moved to grey wireframes to settle the layouts, then built a small style guide and the final screens.'],
+        blocks:[
+          { type:'image', label:'Paper sketches', src:`${BM}sketches.webp`, alt:'Hand-drawn Arabic phone sketches: home, chat, profile, leave and messages' },
+          { type:'image', label:'Wireframes', src:`${BM}wireframes.webp`, alt:'Grey wireframes of the profile, documents, leave and payslip screens' },
+          { type:'palette', colors:[['Primary','#1A7EC1'],['Secondary','#EEF2FF'],['Text','#4E485E'],['Text, light','#858585'],['Text, faint','#C0C0C0'],['Alert','#E45D32'],['Weather','#F9E539']],
+            font:'Typeface: Nahdi, an Arabic font, in a small set of heading and body sizes.' },
+          { type:'image', label:'A few components', src:`${BM}components.webp`, alt:'Components: the bottom navigation in its states, attachment rows and notification items' }
+        ] },
+
+      { id:'design', nav:'Final design', label:'Final design', title:'The final screens', wide:true,
+        text:['A calm blue interface with every service one tap from home. Right-to-left from the first sketch, so nothing feels translated.'],
+        blocks:[
+          { type:'spotlight', label:'The key screen', title:'Home: every service, one tap away', src:`${BM}screen-home.webp`, alt:'Home screen: greeting with the weather, a search bar, and nine service tiles',
+            items:['A greeting with the date and the weather in the staff member’s city.',
+                   'Nine services as large tiles: advances, leave, permissions, payslip, requests, tasks and more.',
+                   'Notifications and chat always in the bottom bar.'] },
+          { type:'image', label:'Final design', src:`${BM}final-a.webp`, alt:'Final blue screens: home, documents, profile and payslip' },
+          { type:'image', label:'More screens', src:`${BM}final-b.webp`, alt:'More final screens: leave, sign up, request details, profile, salary advance and onboarding' }
+        ] },
+
+      { id:'learn', nav:'What I learned', label:'Looking back', title:'What I learned',
+        blocks:[
+          { type:'learn', items:[
+            'Designing right to left from the first sketch is easier than flipping a finished design.',
+            'For busy staff, the best feature is the one that takes the fewest taps.',
+            'Simple and complete pull against each other. Every service had to earn its tile.'] },
+          { type:'learn', heading:'What I’d do next', items:[
+            'Run usability tests with doctors and nurses on real tasks.',
+            'Connect the app to the hospital’s HR and payroll systems.',
+            'Add more HR features, such as shift swaps.'] }
+        ] }
+    ] }
+];
+</script>
+<script>
+(() => {
+'use strict';
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const SITE = window.SITE, CASES = window.CASES;
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------------- which project ---------------- */
+let slug = null;
+try { slug = new URLSearchParams(location.search).get('p'); } catch {}
+let idx = Math.max(0, CASES.findIndex(c => c.slug === slug));
+const P = CASES[idx], NEXT = CASES[(idx + 1) % CASES.length];
+const link = c => `project.html?p=${encodeURIComponent(c.slug)}`;
+
+document.title = `${P.title} · ${SITE.name}`;
+$('#logo').textContent = SITE.firstName[0];
+$('#here').textContent = SITE.firstName[0];
+$('#here').title = `${SITE.firstName} is here`;
+$('#crumb').textContent = P.title;
+$('#cta').href = 'mailto:' + SITE.email;
+
+/* analytics: which case study, and contact clicks from it */
+track('case_study_viewed', { project:P.slug, title:P.title });
+$('#cta').addEventListener('click', () => track('contact_clicked', { via:'contact_button', from:P.slug }));
+
+/* light / dark toggle: starts from the system setting, the choice is remembered on every page */
+const SUN = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v1.6M8 12.9v1.6M1.5 8h1.6M12.9 8h1.6M3.4 3.4l1.1 1.1M11.5 11.5l1.1 1.1M3.4 12.6l1.1-1.1M11.5 4.5l1.1-1.1"/></svg>';
+const MOON = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M13.5 9.6A5.7 5.7 0 0 1 6.4 2.5a5.7 5.7 0 1 0 7.1 7.1Z"/></svg>';
+const isDark = () => (document.documentElement.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')) === 'dark';
+function paintThemeBtn(){ const d = isDark(), b = $('#themeBtn'); b.innerHTML = d ? SUN : MOON; b.title = b.ariaLabel = d ? 'Switch to light theme' : 'Switch to dark theme'; }
+$('#themeBtn').onclick = () => { const t = isDark() ? 'light' : 'dark'; document.documentElement.dataset.theme = t; try { localStorage.setItem('ng-theme', t); } catch {} paintThemeBtn(); };
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change', paintThemeBtn);
+paintThemeBtn();
+
+/* ---------------- blocks ---------------- */
+const FRAME_IC = '<svg width="10" height="10" viewBox="0 0 16 16"><path d="M5.5 1.5v13M10.5 1.5v13M1.5 5.5h13M1.5 10.5h13" stroke="currentColor" stroke-width="1.6" fill="none"/></svg>';
+const flabel = t => `<div class="flabel">${FRAME_IC}${esc(t || 'Key screens')}</div>`;
+const frame = (b, inner, { pad = false, bare = false, cls = '' } = {}) =>
+  `<div class="frame">${flabel(b.label)}${bare ? inner : `<div class="fbox${pad ? ' pad' : ''}${cls ? ' ' + cls : ''}"${b.bg ? ` style="background:${b.bg}"` : ''}>${inner}</div>`}${b.caption ? `<div class="fcap">${esc(b.caption)}</div>` : ''}</div>`;
+const img = (src, alt) => `<img src="${esc(src)}" alt="${esc(alt || '')}" loading="lazy">`;
+const flow = side => side.src ? img(side.src, side.cap)
+  : `<div class="flow">${side.steps.map(s => `<span class="node${s === side.key ? ' key' : ''}">${esc(s)}</span>`).join('<span class="arr"></span>')}</div>`;
+
+const phone = (src, alt) => `<div class="ph">${img(src, alt)}</div>`;
+const chrome = url => `<div class="chrome"><div class="dots"><i></i><i></i><i></i></div>${url ? `<div class="url">${esc(url)}</div><div style="width:42px"></div>` : ''}</div>`;
+const toggle = '<div class="seg" role="group" aria-label="View"><button aria-pressed="true" data-mode="side">Side by side</button><button aria-pressed="false" data-mode="slide">Slider</button></div>';
+
+const BLOCKS = {
+  facts:   b => `<div class="facts">${b.items.map(([k, v]) => `<div><span>${esc(k)}</span>${esc(v)}</div>`).join('')}</div>`,
+  phones:  b => frame(b, `<div class="phones">${b.screens.map((s, i) => `<div class="phone${i === 1 ? ' mid' : ''}">${s}</div>`).join('')}</div>`),
+  html:    b => frame(b, b.html),
+  image:   b => frame(b, img(b.src, b.alt || b.caption), { cls:b.tall ? 'tall' : '' }),
+  window:  b => `<div class="frame">${b.label ? flabel(b.label) : ''}<div class="win">${chrome(b.url)}${img(b.src, b.alt)}</div>${b.caption ? `<div class="fcap">${esc(b.caption)}</div>` : ''}</div>`,
+  // numbered markers over a screenshot (x/y in % of the image), explained in a list below
+  annotated: b => frame(b, img(b.src, b.alt) + b.points.map((p, i) => `<span class="mk" style="left:${p.x}%;top:${p.y}%" aria-hidden="true">${i + 1}</span>`).join(''), { cls:'anno' })
+             + `<ol class="anno-list">${b.points.map(p => `<li>${esc(p.text)}</li>`).join('')}</ol>`,
+  // same screen before and after: side by side by default, drag slider on request, "what changed" cards below
+  pair:    b => `<div class="pairb" data-pair>
+      <div class="pb-head"><div><h3>${esc(b.title)}</h3>${b.lede ? `<p>${esc(b.lede)}</p>` : ''}</div>${toggle}</div>
+      <div class="pb-side">${[['Before', 'the old panel', b.before], ['After', 'the redesign', b.after]].map(([t, d, src]) =>
+        `<figure><a href="${esc(src)}" target="_blank" rel="noopener" aria-label="${t}: ${esc(b.title)}, open full size"><div class="win">${chrome()}${img(src, `${t}: ${b.title}`)}</div></a><figcaption><b>${t}</b>${d}</figcaption></figure>`).join('')}</div>
+      <div class="pb-slide"><div class="win">${chrome(b.url)}<div class="ba img">
+        <div class="pane">${img(b.before, `Before: ${b.title}`)}<div class="cap">Before</div></div>
+        <div class="pane after">${img(b.after, `After: ${b.title}`)}<div class="cap">After</div></div>
+        <div class="handle"></div><div class="hint">Drag to compare</div>
+        <input type="range" min="0" max="100" value="50" aria-label="Compare before and after: ${esc(b.title)}"></div></div></div>
+      ${b.facts ? `<div class="pfacts">${b.facts.map(([was, now, why]) => `<div class="pfact"><div class="n"><s>${esc(was)}</s><i>→</i>${esc(now)}</div><p>${esc(why)}</p></div>`).join('')}</div>` : ''}
+    </div>`,
+  evolution: b => b.rows.map(r => `<h3 class="evo-h">${esc(r.title)}</h3><div class="evo">${r.stages.map(s =>
+      `<figure><a class="thumb" href="${esc(s.src)}" target="_blank" rel="noopener">${img(s.src, s.alt || s.label)}</a><figcaption><span class="step">${s.n}</span>${esc(s.label)}</figcaption></figure>`).join('')}</div>
+      ${r.note ? `<p class="evo-note">${r.lead ? `<b>${esc(r.lead)}</b> ` : ''}${esc(r.note)}</p>` : ''}`).join(''),
+  rewrites: b => `<div class="rw">${b.items.map(([was, now, where]) => `<div class="rw-row">${where ? `<small>${esc(where)}</small>` : ''}<span class="old">${esc(was)}</span><span class="arrow" aria-hidden="true">→</span><span class="new">${esc(now)}</span></div>`).join('')}</div>`,
+  gallery: b => `<div class="gal" style="--gc:${b.cols || 2}">${b.items.map(it => frame(it, img(it.src, it.alt || it.caption))).join('')}</div>`,
+  funnel:  b => frame(b, `<div class="funnel">${b.rows.map(([n, v, hot]) =>
+             `<div class="fr${hot ? ' hot' : ''}"><span>${esc(n)}</span><div class="track"><div class="fill" style="width:${+v}%"></div></div><b>${+v}%</b></div>`).join('')}</div>${b.legend ? `<div class="flegend">${esc(b.legend)}</div>` : ''}`, { pad:true }),
+  quotes:  b => frame(b, `<div class="quotes">${b.items.map(([q, who, key]) => `<div class="q${key ? ' key' : ''}">${esc(q)}${who ? `<small>${esc(who)}</small>` : ''}</div>`).join('')}</div>`, { bare:true }),
+  compare: b => { const im = !!(b.before.src && b.after.src);
+             return frame(b, `<div class="ba${im ? ' img' : ''}"><div class="pane"><div class="cap">${esc(b.before.cap || 'Before')}</div>${flow(b.before)}</div>
+               <div class="pane after"><div class="cap">${esc(b.after.cap || 'After')}</div>${flow(b.after)}</div>
+               <div class="handle"></div><div class="hint">Drag to compare</div>
+               <input type="range" min="4" max="96" value="50" aria-label="Compare before and after"></div>`); },
+  caps:    b => `<div class="caps3${b.items.length === 4 ? ' c4' : ''}">${b.items.map(([t, d]) => `<div><b>${esc(t)}</b>${esc(d)}</div>`).join('')}</div>`,
+  nums:    b => `<div class="nums">${b.items.map(([n, d]) => `<div><strong>${esc(n)}</strong><span>${esc(d)}</span></div>`).join('')}</div>`,
+  learn:   b => `${b.heading ? `<h2>${esc(b.heading)}</h2>` : ''}<ul class="learn">${b.items.map(t => `<li>${esc(t)}</li>`).join('')}</ul>`,
+  // phone screenshots: a sideways strip (numbered flow) or a wrapping grid (states, decisions); click opens full size
+  screens: b => `<div class="screens">${b.title ? `<h3>${esc(b.title)}</h3>` : ''}${b.lede ? `<p>${esc(b.lede)}</p>` : ''}
+      <div class="${b.grid ? 'sgrid' : 'strip'}"${b.grid ? '' : ' tabindex="0" role="region" aria-label="' + esc(b.title || 'Screens') + ', scrolls sideways"'}>${b.items.map((it, i) =>
+        `<figure>${phone(it.src, it.alt || it.title || it.text)}<figcaption>${b.grid ? '' : `<span class="step">${i + 1}</span>`}<span>${it.tag ? `<span class="tg${it.tone ? ' ' + it.tone : ''}">${esc(it.tag)}</span>` : ''}${it.title ? `<b>${esc(it.title)}</b>` : ''}${esc(it.text || '')}</span></figcaption></figure>`).join('')}</div></div>`,
+  // three feature cards linking to their chapters
+  features: b => `<div class="feat">${b.items.map((it, i) => `<a href="#${esc(it.id)}" data-jump="${esc(it.id)}">
+      <div class="shot"><img src="${esc(it.src)}" alt="" loading="lazy"></div>
+      <div class="fb"><small>${String(i + 1).padStart(2, '0')} · ${esc(it.kicker)}</small><b>${esc(it.title)}</b>${esc(it.text)}<em>Read the chapter →</em></div></a>`).join('')}</div>`,
+  // design system: groups of component cards; each variant [file, state name] is shown at its design width w
+  components: b => b.groups.map(gr => `<h3 class="dsg-h">${esc(gr.title)}</h3>${gr.text ? `<p class="dsg-p">${esc(gr.text)}</p>` : ''}
+      <div class="dsg">${gr.items.map(it => `<div class="dsc${it.wide ? ' wide' : ''}"><div class="dsc-h"><b>${esc(it.name)}</b>${it.note ? `<span>${esc(it.note)}</span>` : ''}</div>
+        <div class="dsv">${it.variants.map(([f, label, vw]) => `<figure>${img(b.dir + f + '.webp', `${it.name}${label ? ', ' + label : ''}`).replace('<img', `<img style="--w:${vw || it.w}"`)}${label ? `<figcaption>${esc(label)}</figcaption>` : ''}</figure>`).join('')}</div></div>`).join('')}</div>`).join(''),
+  // the same section at several screen sizes, side by side at their relative widths
+  sizes: b => `<div class="sizes">${b.items.map(it => `<figure style="flex:${it.w} 1 0"><div class="sz-shot">${img(it.src, it.alt || it.label)}</div><figcaption><b>${esc(it.label)}</b>${it.w}px</figcaption></figure>`).join('')}</div>`,
+  // feature comparison: rows of [label, ...true/false], the last column highlighted
+  table: b => `<div class="tblw"><table class="tbl"><thead><tr><th></th>${b.cols.map(c => `<th>${esc(c)}</th>`).join('')}</tr></thead><tbody>${b.rows.map(([label, ...v]) =>
+      `<tr><th scope="row">${esc(label)}</th>${v.map(x => `<td class="${x ? 'y' : 'n'}" aria-label="${x ? 'Yes' : 'No'}">${x ? '✓' : '–'}</td>`).join('')}</tr>`).join('')}</tbody></table></div>${b.caption ? `<div class="fcap">${esc(b.caption)}</div>` : ''}`,
+  // colour swatches + typeface note
+  palette: b => `<div class="pal">${b.colors.map(([name, hex]) => `<div><i style="background:${esc(hex)}"></i><b>${esc(name)}</b><span>${esc(hex)}</span></div>`).join('')}</div>${b.font ? `<p class="pal-type">${esc(b.font)}</p>` : ''}`,
+  // invitation to see the rest privately, mailing Noha
+  cta: b => `<div class="ctab"><div><h3>${esc(b.title)}</h3><p>${esc(b.text)}</p></div>
+      <a class="ctab-btn" href="mailto:${esc(SITE.email)}${b.subject ? '?subject=' + encodeURIComponent(b.subject) : ''}">${esc(b.button)}</a></div>`,
+  // one phone with the reasoning beside it
+  spotlight: b => `<div class="spot">${phone(b.src, b.alt)}<div><div class="flabel">${esc(b.label)}</div><h3>${esc(b.title)}</h3><ul class="learn">${b.items.map(t => `<li>${esc(t)}</li>`).join('')}</ul></div></div>`
+};
+const block = b => (BLOCKS[b.type] || (() => ''))(b);
+
+/* ---------------- page ---------------- */
+const secs = P.sections;
+const noteHtml = (s, cls = '') => s.note ? `<aside class="note${cls}"><div class="pin">${esc(SITE.firstName[0])}</div><div><div class="who">${esc(SITE.firstName)} <span>design note</span></div><p>${esc(s.note)}</p></div></aside>` : '';
+const section = (s, i) => `<section class="sec${s.wide ? ' wide' : ''}" id="${esc(s.id)}">
+  <div class="main">
+    <div class="lbl">${i === 0 ? `Case study${P.sample ? ' <span class="tag">sample content</span>' : ''}` : esc(s.label || s.nav || '')}</div>
+    ${i === 0 ? `<h1>${esc(s.title)}</h1>` : `<h2>${esc(s.title)}</h2>`}
+    ${s.lede ? `<p class="lede">${esc(s.lede)}</p>` : ''}
+    ${(s.text || []).map(t => `<p>${esc(t)}</p>`).join('')}
+    ${s.wide ? noteHtml(s, ' inline') : ''}
+    ${(s.blocks || []).map(block).join('')}
+  </div>
+  ${s.wide ? '' : noteHtml(s)}
+</section>`;
+
+$('#page').innerHTML = `<nav class="toc" id="toc" aria-label="Sections">${secs.map(s => `<a href="#${esc(s.id)}" data-id="${esc(s.id)}">${esc(s.nav || s.title)}</a>`).join('')}</nav>
+  ${secs.map(section).join('')}
+  ${CASES.length > 1 ? `<a class="nextp" href="${link(NEXT)}"><div><small>Next project</small><strong>${esc(NEXT.title)}</strong></div>
+    <span class="go"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>` : ''}
+  <div class="foot"><span class="wm">${esc(SITE.name.toLowerCase())}</span><span>${esc(SITE.role)}</span></div>
+  <div class="cur" id="cur" aria-hidden="true">
+    <svg width="17" height="19" viewBox="0 0 18 20"><path d="M1.5 1.5 16 9.3l-6.6 1.6-3.3 6.4Z" fill="#B06E4A" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg>
+    <span>${esc(SITE.firstName)}</span>
+  </div>`;
+
+const scroll = $('#scroll'), page = $('#page'), cur = $('#cur');
+const secEls = [...document.querySelectorAll('.sec')];
+
+/* table of contents */
+const jump = id => document.getElementById(id).scrollIntoView({ behavior:reduced ? 'auto' : 'smooth', block:'start' });
+$('#toc').addEventListener('click', e => {
+  const a = e.target.closest('a'); if (!a) return; e.preventDefault(); jump(a.dataset.id);
+});
+document.querySelectorAll('[data-jump]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); jump(a.dataset.jump); }));
+
+/* active section + Noha's cursor next to its note */
+let active = null;
+function setActive(id){
+  if (id === active) return; active = id;
+  secEls.forEach(s => s.classList.toggle('on', s.id === id));
+  document.querySelectorAll('#toc a').forEach(a => a.classList.toggle('on', a.dataset.id === id));
+  moveCursor();
+}
+function moveCursor(){
+  const s = document.getElementById(active); if (!s) return;
+  const target = s.querySelector('.note') || s.querySelector('.main');
+  const pr = page.getBoundingClientRect(), r = target.getBoundingClientRect();
+  cur.style.transform = `translate(${r.right - pr.left - 26}px,${Math.min(r.bottom, r.top + 160) - pr.top - 10}px)`;
+}
+function onScroll(){
+  const max = scroll.scrollHeight - scroll.clientHeight;
+  $('#progress').style.width = (max > 0 ? scroll.scrollTop / max * 100 : 0) + '%';
+  const mid = scroll.getBoundingClientRect().top + scroll.clientHeight * 0.4;
+  let best = secEls[0];
+  for (const s of secEls){ if (s.getBoundingClientRect().top <= mid) best = s; }
+  if (scroll.scrollTop >= max - 4) best = secEls[secEls.length - 1];
+  setActive(best.id);
+  moveCursor();
+}
+scroll.addEventListener('scroll', onScroll, { passive:true });
+window.addEventListener('resize', () => { moveCursor(); onScroll(); });
+
+/* before / after sliders */
+document.querySelectorAll('.ba').forEach(ba => {
+  const inp = ba.querySelector('input');
+  inp.addEventListener('input', () => ba.style.setProperty('--pos', inp.value + '%'));
+});
+
+/* pair view switch: side by side (default) or slider */
+document.querySelectorAll('.ctab-btn').forEach(a => a.addEventListener('click', () => track('contact_clicked', { via:'get_in_touch', from:P.slug })));
+
+document.querySelectorAll('[data-pair]').forEach(p => p.querySelectorAll('[data-mode]').forEach(btn => btn.addEventListener('click', () => {
+  p.querySelectorAll('[data-mode]').forEach(x => x.setAttribute('aria-pressed', x === btn));
+  p.classList.toggle('slide', btn.dataset.mode === 'slide'); moveCursor();
+})));
+
+/* images load after layout: keep the cursor on its note */
+document.querySelectorAll('.page img').forEach(im => im.addEventListener('load', moveCursor));
+
+if (location.hash){ const t = document.getElementById(location.hash.slice(1)); if (t) t.scrollIntoView(); }
+onScroll(); requestAnimationFrame(moveCursor);
+})();
+</script>
+</body>
+</html>

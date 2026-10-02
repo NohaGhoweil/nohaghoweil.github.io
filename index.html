@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Noha Ghoweil · Portfolio</title>
+<meta name="description" content="Noha Ghoweil — UI/UX designer. A live, interactive portfolio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<script>try { const t = localStorage.getItem('ng-theme'); if (t) document.documentElement.dataset.theme = t; } catch {}</script>
+<script>
+/* Analytics: PostHog (US cloud). Visits, countries/cities, referrers, session replays and a few events.
+   No cookies (the visitor id lives for one tab session), typed text is masked in replays,
+   and nothing is sent from local copies (localhost or opened from the folder). */
+(() => {
+  const KEY = 'phc_nMDbhMnN8xv5XeKNchBT7YSDpiQqAW7LhuYHoDNckh79';
+  if (location.protocol === 'file:' || /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname)) return;
+  !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags identify setPersonProperties group resetGroups reset get_distinct_id get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+  posthog.init(KEY, { api_host:'https://us.i.posthog.com', persistence:'sessionStorage', person_profiles:'identified_only',
+                      session_recording:{ maskAllInputs:true } });
+})();
+// track('event', { props }) — a no-op when analytics is off
+window.track = (event, props) => { try { window.posthog && window.posthog.capture(event, props); } catch {} };
+</script>
+<style>
+:root{
+  --panel:#FFFFFF; --canvas:#F4F4F4; --dot:#D6D6D6; --ink:#1E1E1E; --muted:#8A8A8A; --line:#E6E6E6;
+  --hover:#F0F0F0; --field:#F5F5F5; --sel:#0D99FF; --shadow:0 10px 32px rgba(0,0,0,.14); --edge:rgba(0,0,0,.08);
+  --pine:#1A2A28; --mint:#CEE8E3; --blush:#F7D1CD; --sand:#E9DCCE; --clay:#B06E4A; --noha:#B06E4A;
+  color-scheme:light; box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ --panel:#2C2C2C; --canvas:#1E1E1E; --dot:#3A3A3A; --ink:#F2F2F2; --muted:#9A9A9A;
+    --line:#3B3B3B; --hover:#383838; --field:#383838; --shadow:0 10px 32px rgba(0,0,0,.5); --edge:rgba(255,255,255,.08); color-scheme:dark; }
+}
+:root[data-theme="dark"]{ --panel:#2C2C2C; --canvas:#1E1E1E; --dot:#3A3A3A; --ink:#F2F2F2; --muted:#9A9A9A;
+  --line:#3B3B3B; --hover:#383838; --field:#383838; --shadow:0 10px 32px rgba(0,0,0,.5); --edge:rgba(255,255,255,.08); color-scheme:dark; }
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;height:100%;background:var(--panel);color:var(--ink);font-family:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  font-size:12px;overflow:hidden;-webkit-font-smoothing:antialiased}
+button,input{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--sel);outline-offset:2px}
+.app{display:flex;flex-direction:column;height:100%}
+
+.toolbar{height:48px;flex:none;display:flex;align-items:center;gap:4px;padding:0 8px;background:var(--panel);border-bottom:1px solid var(--line);z-index:20}
+.tb{white-space:nowrap;height:32px;min-width:32px;border:0;border-radius:6px;background:transparent;display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:0 8px;cursor:pointer}
+.tb:hover{background:var(--hover)}
+.tb.on{background:var(--sel);color:#fff}
+.logo{width:32px;height:32px;border-radius:8px;background:var(--pine);color:var(--mint);font-weight:700;font-size:15px;display:grid;place-items:center;margin-right:4px}
+.title{flex:1;text-align:center;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.title .dim{color:var(--muted)}
+.avs{display:flex;margin:0 8px}
+.av{width:28px;height:28px;border-radius:50%;color:#fff;display:grid;place-items:center;font-weight:600;font-size:12px;box-shadow:0 0 0 2px var(--panel)}
+.av + .av{margin-left:-6px}
+.ghost{border:1px solid var(--line)}
+.blue{background:var(--sel);color:#fff;font-weight:600;padding:0 14px}
+.blue:hover{background:#0B87E0}
+
+.canvas{flex:1;position:relative;overflow:hidden;background-color:var(--canvas);
+  background-image:radial-gradient(var(--dot) 1.1px,transparent 1.3px);background-size:22px 22px;touch-action:none;
+  -webkit-user-select:none;user-select:none}   /* a design canvas: dragging moves cards instead of selecting text */
+.canvas input,.canvas textarea{-webkit-user-select:text;user-select:text}
+/* phone layout: one column, sized to the screen width, scrolls vertically */
+.canvas.scroll{overflow-x:hidden;overflow-y:auto;touch-action:pan-y;background-attachment:local;overscroll-behavior:contain}
+.world.tall #t1{font-size:40px}
+.world.tall #t2{font-size:20px}
+.canvas.mouse,.canvas.mouse *{cursor:none!important}
+.world{position:absolute;left:0;top:0;transform-origin:0 0}
+.ov{position:absolute;inset:0;pointer-events:none;z-index:10}
+
+/* objects (world px) */
+.obj{position:absolute;transition:box-shadow .2s}
+.obj.grab:not(.card){box-shadow:0 22px 40px rgba(0,0,0,.18)}
+.tbox{position:absolute;color:var(--ink);white-space:pre-wrap}
+.tbox.editing{outline:2px solid var(--noha);outline-offset:6px}
+.tbox.editing::after{content:"";display:inline-block;width:3px;height:.9em;background:var(--noha);vertical-align:-.08em;margin-left:3px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.wave{display:inline-block;height:.92em;width:auto;margin-left:.18em;vertical-align:-.1em;transform-origin:72% 88%}
+.wave.hi{animation:wave 1.8s ease-in-out .15s both}
+@keyframes wave{0%{transform:scale(.3) rotate(-30deg);opacity:0}12%{transform:scale(1) rotate(0);opacity:1}
+  24%{transform:rotate(16deg)}36%{transform:rotate(-8deg)}48%{transform:rotate(16deg)}60%{transform:rotate(-4deg)}72%,100%{transform:rotate(0)}}
+#t1{font-size:72px;font-weight:700;letter-spacing:-.03em;line-height:1}
+#t2{font-size:28px;line-height:1.45;color:var(--muted)}
+/* ---- project cards (world px, about 1.3× the design's screen px) ---- */
+.card{width:340px;display:flex;flex-direction:column;color:var(--ink);outline:none}
+.card .lbl{font-size:15.5px;color:var(--muted);margin-bottom:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:color .2s}
+.cbody{flex:1;display:flex;flex-direction:column;position:relative;border-radius:10px;border:1.3px solid var(--edge);background:#fff;transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s}
+.cbody::after{content:"";position:absolute;inset:-1.3px;border-radius:10px;border:2.6px solid var(--sel);opacity:0;transition:opacity .2s;pointer-events:none}
+.hd{position:absolute;width:10px;height:10px;background:#fff;border:2px solid var(--sel);opacity:0;transition:opacity .2s;z-index:2;pointer-events:none}
+.hd.h1{left:-5px;top:-5px}.hd.h2{right:-5px;top:-5px}.hd.h3{left:-5px;bottom:-5px}.hd.h4{right:-5px;bottom:-5px}
+.card.sel .cbody{transform:translateY(-5px)}
+.card.sel .cbody,.card.grab .cbody{box-shadow:0 21px 44px rgba(0,0,0,.32)}
+.card.sel .cbody::after,.card.sel .hd,.card.grab .cbody::after,.card.grab .hd{opacity:1}
+.card.sel .lbl,.card.grab .lbl{color:var(--sel)}
+.thumb{aspect-ratio:4/3;position:relative;overflow:hidden;border-radius:9px 9px 0 0;container-type:inline-size}
+.thumb img,.litem .sw2 img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;pointer-events:none;-webkit-user-drag:none}
+.cinfo{flex:1;display:flex;align-items:center;justify-content:space-between;gap:13px;padding:18px 18px 20px 21px;color:var(--pine)}
+.cinfo h3{margin:0;font-size:21px;font-weight:600;letter-spacing:-.01em;line-height:1.25}
+.cinfo p{margin:4px 0 0;font-size:17px;color:#6B7573;line-height:1.35}
+.cinfo p b{color:var(--pine);font-weight:600}
+.carr{width:36px;height:36px;border-radius:50%;border:1.3px solid #C9CFCD;display:grid;place-items:center;flex:none;color:var(--pine);transition:background .2s,color .2s,border-color .2s}
+.card.sel .carr{background:var(--pine);border-color:var(--pine);color:#fff}
+
+/* thumbnails, scaled to the card width (cqw = 1% of the thumbnail width) */
+.ph{position:absolute;left:50%;bottom:-10cqw;transform:translateX(-50%);width:42cqw;height:74cqw;background:#fff;border:2.4cqw solid var(--pine);border-radius:8cqw;padding:10cqw 4.5cqw 4cqw;display:flex;flex-direction:column;gap:3.2cqw}
+.ph::before{content:"";position:absolute;top:3.2cqw;left:50%;width:30%;height:2cqw;border-radius:2cqw;background:var(--pine);transform:translateX(-50%)}
+.ph i{display:block;height:2.6cqw;border-radius:2cqw;background:#E8E4DD}
+.ph i.b{height:12cqw;border-radius:3cqw;background:var(--mint)}
+.ph i.s{width:60%}
+.ph i.c{background:var(--clay);width:40%}
+.ph u{display:block;height:7cqw;border-radius:4cqw;background:var(--pine);margin-top:auto}
+.ph .ring{width:24cqw;height:24cqw;border-radius:50%;margin:1cqw auto 2cqw;background:conic-gradient(var(--clay) 0 68%,#EFE9E0 0);display:grid;place-items:center}
+.ph .ring::after{content:"";width:17cqw;height:17cqw;border-radius:50%;background:#fff}
+.ds{position:absolute;inset:14cqw 10cqw 16cqw;background:#fff;border-radius:4cqw;padding:6cqw;display:grid;gap:5cqw;align-content:start;box-shadow:0 4cqw 8cqw rgba(26,42,40,.1)}
+.ds .r{display:flex;gap:3cqw;align-items:center}
+.ds .dot{width:7cqw;height:7cqw;border-radius:50%}
+.ds .pill{height:7cqw;border-radius:4cqw;flex:1}
+.ds .pill.p{background:var(--pine)}.ds .pill.o{border:1cqw solid var(--pine)}
+.ds .bar{height:7cqw;border-radius:2cqw;border:.8cqw solid #D9D4CB}
+
+/* ---- experience timeline ---- */
+.exp{background:var(--sand);color:var(--pine);border-radius:10px;padding:42px}
+.exp-h{display:flex;align-items:baseline;justify-content:space-between;gap:21px;margin-bottom:34px}
+.exp-h h3{margin:0;font-size:29px;letter-spacing:-.015em}
+.exp-h span{font-size:17.5px;color:#6B7573}
+.tl{position:relative;display:grid;grid-template-columns:repeat(var(--cols,4),minmax(0,1fr));gap:36px 42px}
+.tl::before{content:"";position:absolute;left:0;right:0;top:8px;height:2.6px;background:rgba(176,110,74,.35);border-radius:2px}
+.world.tall .tl::before{display:none}
+.job{position:relative;padding-top:34px}
+.job::before{content:"";position:absolute;left:0;top:0;width:18px;height:18px;border-radius:50%;background:var(--sand);border:3.2px solid var(--clay);box-sizing:border-box}
+.job.now{background:rgba(255,255,255,.38);border-radius:8px;margin:-16px -18px;padding:49px 18px 18px}
+.job.now::before{left:18px;top:16px;background:var(--clay);box-shadow:0 0 0 6.5px rgba(176,110,74,.18)}
+.date{display:flex;align-items:center;gap:10px;font-size:16px;color:#7A6A5C;margin-bottom:10px;font-variant-numeric:tabular-nums}
+.pillnow{font-size:14px;font-weight:600;padding:3px 10px;border-radius:13px;background:var(--clay);color:#fff}
+.job h4{margin:0;font-size:19.5px;line-height:1.3}
+.co{font-size:17px;font-weight:600;margin-top:4px}
+.co span{font-weight:400;color:#6B7573}
+.job p{margin:13px 0 0;font-size:17.5px;line-height:1.55;color:#3C4A48}
+
+/* ---- about + contact ---- */
+.box{border-radius:10px;padding:31px}
+.box .inner{display:flex;flex-direction:column;height:100%}
+.about{background:var(--mint);color:var(--pine)}
+.ab-h{display:flex;align-items:center;gap:16px;margin-bottom:21px}
+.ab-h img{width:52px;height:52px;border-radius:50%;object-fit:cover;border:2.6px solid #fff;flex:none;pointer-events:none}
+.ab-h h3{margin:0;font-size:26px;letter-spacing:-.01em}
+.tabs{display:grid;gap:3px;padding:4px;border-radius:24px;background:rgba(26,42,40,.08)}
+.tabs button{height:39px;padding:0 6px;white-space:nowrap;border:0;border-radius:20px;background:transparent;color:#4F5F5C;font-size:16px;font-weight:500;cursor:pointer;transition:background .2s,color .2s}
+.tabs button:hover{color:var(--pine)}
+.tabs button[aria-selected="true"]{background:#fff;color:var(--pine);font-weight:600;box-shadow:0 1px 4px rgba(26,42,40,.12)}
+.tabpanel{margin-top:21px;font-size:18px;line-height:1.6;color:#3C4A48}
+.tabpanel p{margin:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{padding:6px 14px;border-radius:18px;background:rgba(255,255,255,.65);font-size:17px;color:var(--pine)}
+.tabpanel dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:8px 18px}
+.tabpanel dt{color:#6B7573;font-variant-numeric:tabular-nums}.tabpanel dd{margin:0;color:var(--pine)}
+.fade{animation:fade .3s ease}
+@keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+
+.contact{background:var(--pine);color:#fff}
+.contact h3{margin:0;font-size:34px;letter-spacing:-.02em}
+.avail{display:flex;align-items:center;gap:10px;margin-top:10px;font-size:18px;color:#BFD6D1}
+.avail i{width:10px;height:10px;border-radius:50%;background:#14AE5C;box-shadow:0 0 0 5px rgba(20,174,92,.2);flex:none}
+.ctas{margin-top:auto;padding-top:29px;display:grid;gap:13px}
+.email{height:57px;width:100%;display:flex;align-items:center;justify-content:space-between;gap:13px;padding:0 8px 0 21px;border:0;border-radius:29px;background:var(--mint);color:var(--pine);font-size:19px;font-weight:600;cursor:pointer}
+.email .addr{display:flex;align-items:center;gap:10px;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.email .cp{height:42px;padding:0 18px;border-radius:21px;background:var(--pine);color:#fff;font-size:16px;display:grid;place-items:center;flex:none;min-width:99px;transition:background .2s}
+.email.done .cp{background:#14AE5C}
+.ghosts{display:flex;flex-wrap:wrap;gap:10px}
+.gh{height:57px;flex:1 1 auto;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:0 18px;border-radius:29px;border:1.3px solid rgba(255,255,255,.25);color:#fff;text-decoration:none;font-size:17.5px;font-weight:500;white-space:nowrap;transition:background .2s,border-color .2s}
+.gh:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.5)}
+
+.drawn{overflow:hidden}
+.drawn .inner{opacity:0;transition:opacity .35s}
+.drawn.done .inner{opacity:1}
+.drawn.drawing{outline:2px solid var(--noha)}
+
+/* ---- sticky note ---- */
+.sticky{background:#FFF1B8;color:#4A4128;padding:23px 47px 23px 23px;font-size:18px;line-height:1.55;box-shadow:0 16px 31px rgba(0,0,0,.28);border-radius:3px}
+.sticky b{display:block;font-size:19.5px;margin-bottom:5px}
+.sticky kbd{font:inherit;font-weight:600;font-size:16px;background:rgba(0,0,0,.08);padding:0 8px;border-radius:5px}
+.sticky .x{position:absolute;right:8px;top:8px;width:34px;height:34px;border:0;border-radius:8px;background:none;color:#4A4128;cursor:pointer;display:grid;place-items:center}
+.sticky .x:hover{background:rgba(0,0,0,.08)}
+.pop{animation:pop .45s cubic-bezier(.2,1.4,.4,1)}
+@keyframes pop{from{transform:scale(.4) rotate(var(--r,0deg));opacity:0}to{transform:scale(1) rotate(var(--r,0deg));opacity:1}}
+.hide{display:none!important}
+
+/* cursors + chat (screen px) */
+.cur{position:absolute;left:0;top:0;will-change:transform;pointer-events:none}
+.cur svg{display:block;filter:drop-shadow(0 1px 1px rgba(0,0,0,.25))}
+.cur .tag{position:absolute;left:16px;top:18px;padding:3px 8px;border-radius:4px 10px 10px 10px;color:#fff;font-size:12px;font-weight:600;white-space:nowrap}
+.cur .chat{position:absolute;left:16px;top:18px;padding:8px 12px;border-radius:4px 16px 16px 16px;color:#fff;font-size:13.5px;line-height:1.35;max-width:240px;width:max-content;opacity:0;transform:translateY(4px);transition:.25s}
+.cur .chat.show{opacity:1;transform:none}
+.cur.chatting .tag{opacity:0}
+.cur.click svg{animation:clk .25s}
+@keyframes clk{50%{transform:scale(.8)}}
+#me .cmt{display:none}
+#me.commenting .arrow{display:none}
+#me.commenting .cmt{display:block}
+.mechat{position:absolute;left:16px;top:18px;padding:6px 8px;border-radius:4px 16px 16px 16px;display:none;pointer-events:auto}
+.mechat.show{display:block}
+.mechat input{width:220px;border:0;background:transparent;color:#fff;outline:none;font-size:13.5px}
+.mechat input::placeholder{color:rgba(255,255,255,.75)}
+.pin{position:absolute;pointer-events:auto;cursor:pointer;transform:translate(0,-100%)}
+.pin .dot{width:30px;height:30px;border-radius:50% 50% 50% 0;display:grid;place-items:center;color:#fff;font-weight:700;font-size:12px;box-shadow:0 2px 6px rgba(0,0,0,.25);border:2px solid #fff}
+.pin .bub{position:absolute;left:38px;top:0;width:240px;background:var(--panel);color:var(--ink);border-radius:10px;box-shadow:var(--shadow);padding:12px 14px;display:none}
+.pin.open .bub{display:block}
+.pin .bub b{display:block;font-size:12.5px;margin-bottom:4px}
+.pin .bub span{font-size:13.5px;line-height:1.45}
+.composer{position:absolute;pointer-events:auto;background:var(--panel);border-radius:10px;box-shadow:var(--shadow);padding:8px;display:flex;gap:6px;width:280px;transform:translate(38px,-100%)}
+.composer input{flex:1;border:1px solid var(--line);border-radius:6px;padding:0 10px;height:34px;background:var(--field);min-width:0}
+.composer button{height:34px;border:0;border-radius:6px;background:var(--sel);color:#fff;font-weight:600;padding:0 12px;cursor:pointer}
+.emote{position:absolute;font-size:30px;pointer-events:none;animation:up 1.4s ease-out forwards}
+@keyframes up{to{transform:translateY(-110px) scale(1.2);opacity:0}}
+.status{position:fixed;left:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:11;display:flex;align-items:center;gap:10px;height:40px;padding:0 14px;
+  border-radius:20px;background:var(--panel);border:1px solid var(--edge);box-shadow:var(--shadow);font-size:13.5px;font-weight:500;pointer-events:auto;
+  max-width:440px;overflow:hidden;white-space:nowrap;transition:max-width .45s ease,padding .45s ease}
+.status i{width:10px;height:10px;border-radius:50%;background:#14AE5C;flex:none;box-shadow:0 0 0 4px rgba(20,174,92,.18)}
+.status.busy i{background:var(--noha);box-shadow:none;animation:blink 1s steps(1) infinite}
+.status span{transition:opacity .3s}
+.status.mini{max-width:40px;padding:0 15px}
+.status.mini span{opacity:0}
+.status.mini:hover{max-width:440px;padding:0 14px}
+.status.mini:hover span{opacity:1}
+.touchbar{position:fixed;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));display:none;gap:8px;z-index:11}
+.touchbar button{height:40px;padding:0 14px;border:0;border-radius:20px;background:var(--panel);box-shadow:var(--shadow);font-weight:600}
+.touchbar button.on{background:var(--sel);color:#fff}
+.tchat{position:fixed;left:50%;bottom:calc(64px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);display:none;pointer-events:auto;z-index:12;background:var(--sel);border-radius:22px;padding:8px 14px}
+.tchat.show{display:block}
+.tchat input{width:min(260px,60vw);border:0;background:transparent;color:#fff;outline:none;font-size:15px}
+.tchat input::placeholder{color:rgba(255,255,255,.8)}
+
+/* overlays */
+.overlay{position:fixed;inset:0;z-index:50;display:none;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.overlay.show{display:flex;flex-direction:column}
+.list{background:rgba(0,0,0,.35);align-items:center;justify-content:center}
+.lcard{width:min(920px,calc(100% - 24px));max-height:calc(100% - 24px);background:var(--panel);border-radius:12px;box-shadow:var(--shadow);display:flex;flex-direction:column;overflow:hidden;margin:auto}
+.lhd{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--line)}
+.lhd h3{margin:0;font-size:15px}.lhd p{margin:2px 0 0;color:var(--muted)}
+.lgrid{padding:16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;overflow:auto}
+.litem{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel);text-align:left;padding:0;cursor:pointer;display:block;color:inherit;text-decoration:none}
+.litem:hover{border-color:var(--sel)}
+.litem .sw2{height:110px;overflow:hidden;position:relative;container-type:inline-size}.litem .tx{padding:12px 14px}.litem .tx b{display:block;font-size:14px;margin-bottom:3px}.litem .tx span{color:var(--muted)}
+
+.tb,.logo{flex:none}
+@media (max-width: 760px){ .title,.hn{display:none} .avs{margin-left:auto} }
+@media (max-width: 560px){ .kb,.avs{display:none} #skipBtn{margin-left:auto} .touchbar{display:flex} .toolbar{gap:6px;padding:0 10px} }
+@media (pointer: coarse){ .touchbar{display:flex} .kb{display:none} }
+@media (prefers-reduced-motion: reduce){ *,*::before,*::after{animation:none!important;transition:none!important} }
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="toolbar">
+    <div class="logo" id="logo" aria-hidden="true"></div>
+    <button class="tb on kb" id="tMove" title="Move (V)" aria-label="Move tool">
+      <svg width="16" height="16" viewBox="0 0 16 16"><path d="M3.5 2.2 12.6 7.3 8.5 8.4 6.6 12.3Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+    </button>
+    <button class="tb kb" id="tComment" title="Comment (C)" aria-label="Comment tool">
+      <svg width="16" height="16" viewBox="0 0 16 16"><path d="M8 2a6 6 0 0 1 0 12H2V8a6 6 0 0 1 6-6Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+    </button>
+    <button class="tb kb" id="tChat" title="Cursor chat (/)" aria-label="Cursor chat">
+      <svg width="16" height="16" viewBox="0 0 16 16"><path d="M2.5 3.5h11v7h-6l-3 2.5v-2.5h-2Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="title"><span class="dim">Live /</span> <span id="docName"></span> — Portfolio</div>
+    <div class="avs" id="avs"></div>
+    <button class="tb ghost" id="skipBtn">Skip intro</button>
+    <button class="tb" id="themeBtn"></button>
+    <button class="tb" id="listBtn" title="List view">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M5.5 4h8M5.5 8h8M5.5 12h8"/><circle cx="2.5" cy="4" r=".6" fill="currentColor"/><circle cx="2.5" cy="8" r=".6" fill="currentColor"/><circle cx="2.5" cy="12" r=".6" fill="currentColor"/></svg>
+      <span class="hn">List view</span>
+    </button>
+    <button class="tb blue" id="hireBtn">Contact</button>
+  </header>
+
+  <div class="canvas" id="canvas" aria-label="Live portfolio canvas">
+    <div class="world" id="world">
+      <div class="tbox" id="t1"></div>
+      <div class="tbox" id="t2"></div>
+      <div class="obj drawn exp" id="exp"><div class="inner"></div></div>
+      <div class="obj drawn box about" id="about"><div class="inner">
+        <div class="ab-h"><img id="avatar" alt="" width="52" height="52"><h3>About me</h3></div>
+        <div class="tabs" role="tablist" aria-label="About me" id="tabs"></div>
+        <div class="tabpanel" role="tabpanel" id="tabpanel" aria-live="polite"></div>
+      </div></div>
+      <div class="obj drawn box contact" id="contact"><div class="inner">
+        <h3>Let’s work together</h3>
+        <div class="avail"><i></i><span id="avail"></span></div>
+        <div class="ctas">
+          <button class="email" id="lnEmail">
+            <span class="addr"><svg width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1.8" y="3.3" width="12.4" height="9.4" rx="1.6"/><path d="m2.4 4.3 5.6 4.3 5.6-4.3"/></svg><span id="emailText"></span></span>
+            <span class="cp" id="cp">Copy</span>
+          </button>
+          <div class="ghosts">
+            <a class="gh" id="lnLinkedin" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="gh" id="lnBehance" target="_blank" rel="noopener">Behance</a>
+            <a class="gh" href="#" id="lnCv" data-cv>Download CV
+              <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M8 3v8M4.5 7.5 8 11l3.5-3.5M3 13.5h10"/></svg></a>
+          </div>
+        </div>
+      </div></div>
+      <div class="obj sticky hide" id="sticky"></div>
+    </div>
+    <div class="ov" id="ov">
+      <div class="cur" id="noha">
+        <svg width="18" height="20" viewBox="0 0 18 20"><path d="M1.5 1.5 16 9.3l-6.6 1.6-3.3 6.4Z" fill="var(--noha)" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        <div class="tag" style="background:var(--noha)"></div>
+        <div class="chat" style="background:var(--noha)"></div>
+      </div>
+      <div class="cur" id="me" hidden>
+        <svg class="arrow" width="18" height="20" viewBox="0 0 18 20"><path d="M1.5 1.5 16 9.3l-6.6 1.6-3.3 6.4Z" fill="currentColor" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        <svg class="cmt" width="26" height="26" viewBox="0 0 26 26"><path d="M13 2a11 11 0 0 1 0 22H2V13A11 11 0 0 1 13 2Z" fill="currentColor" stroke="#fff" stroke-width="2"/><path d="M13 8v10M8 13h10" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+        <div class="tag"></div>
+        <div class="chat"></div>
+        <div class="mechat"><input id="meInput" maxlength="80" placeholder="Say something…" aria-label="Cursor chat message"></div>
+      </div>
+    </div>
+    <div class="status busy" id="status"><i></i><span></span></div>
+    <div class="touchbar"><button id="tbComment">Comment</button><button id="tbChat">Chat</button></div>
+    <div class="tchat" id="tchat"><input id="tInput" maxlength="80" aria-label="Chat message"></div>
+  </div>
+</div>
+
+<div class="overlay list" id="list" role="dialog" aria-modal="true" aria-label="All work">
+  <div class="lcard">
+    <div class="lhd"><div><h3>All work</h3><p>The quick version, no intro needed.</p></div>
+      <button class="tb" id="lClose" aria-label="Close"><svg width="14" height="14" viewBox="0 0 16 16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9"/></svg></button></div>
+    <div class="lgrid" id="lgrid"></div>
+  </div>
+</div>
+
+<script>
+/* =====================================================================
+   PORTFOLIO CONTENT — edit this block to change what the site shows.
+   Images go in assets/projects/<project-folder>/ and your CV in assets/.
+   ===================================================================== */
+window.CONTENT = {
+  name: 'Noha Ghoweil',
+  firstName: 'Noha',
+  headline: 'Hey, you just joined my design file.\nI’m Noha Ghoweil',
+  intro: 'Senior UI/UX designer and Master’s student with 5+ years of experience.\nI’ve designed for fintech, crypto, healthcare, e-commerce and government,\nfor enterprises and startups, full-time or per project, from idea to production.',
+
+  email: 'nohaghoweil@gmail.com',
+  linkedin: 'https://www.linkedin.com/in/noha-ghoweil-1a288620b/',
+  behance: 'https://www.behance.net/nohaghoweil',
+  inbox: '64bee061-d8c8-4a5c-9499-18fb95d9282c',   // Web3Forms access key: visitors' comments and chat messages are emailed to you. Leave empty to send nothing.
+  cv: 'assets/Noha-Ghoweil-CV.pdf',   // leave empty to hide the file and show “coming soon”
+
+  avatar: 'assets/avatar.jpg',
+  availability: 'Available for full-time and freelance',
+
+  /* About card tabs. Each tab shows one of: text, chips (a list of tags) or list (two-column rows). */
+  about: [
+    { tab:'Designer',  text:'I design for web, mobile and admin dashboards, and build design systems that scale. A computer science background means my designs are realistic to build.' },
+    { tab:'Skills',    chips:['User research','Wireframing','Prototyping','Usability testing','Interaction design','Responsive design','Design systems','Figma'] },
+    { tab:'Education', list:[['Now','MSc Computer Science, AAST · 3.8 GPA'],['2017–21','BSc Computer Science, AAST · 3.92 GPA']] },
+    { tab:'Awards',    list:[['2024','ICPC Coach'],['2022','Google UX Certificate'],['2021','Best Mobile App UI in Aswan']] }
+  ],
+
+  /* Experience timeline, newest first. now:true highlights a current role; org is 'Company · Location'. */
+  experienceSummary: '5+ years',
+  experience: [
+    { role:'Senior UI/UX Designer', org:'Swisstech · Remote', when:'Feb 2025 – Present', now:true,
+      text:'Fintech and crypto websites, dashboards and apps: currency exchange, payments and business registration.' },
+    { role:'UI/UX Designer', org:'COMAVE · Remote, Luxembourg', when:'May – Aug 2024',
+      text:'Mobile apps and a web CMS for booking and retail, shaped by UX surveys and competitor analysis.' },
+    { role:'UI/UX Designer', org:'Aswan Digital Transformation Center', when:'Aug 2021 – Apr 2024',
+      text:'Six Play Store apps and ERP systems for public utilities, from mockups to usability testing.' },
+    { role:'Freelance UI/UX Designer', org:'Independent', when:'2021 – Present',
+      text:'Healthcare and booking products, designed end to end together with clients.' }
+  ],
+
+  /* Project cards on the canvas (exactly 4 fit). The full case study for each lives in
+     project.html, matched by `slug`.
+     out:   the result line under the title, [bold part, rest]
+     cover: image on the card (optional; falls back to the drawn thumbnail `th`) */
+  projects: [
+    { slug:'fintech-admin', title:'Fintech Back Office', kicker:'Fintech, admin dashboard', bg:'#F8E2D5',
+      cover:'assets/projects/fintech-admin/cover-mockup.webp',
+      out:['11 → 1','action row per profile'] },
+    { slug:'minenest', title:'MineNest App', kicker:'Crypto mining, mobile app', bg:'#DCE7F1',
+      cover:'assets/projects/minenest/cover-mockup.webp',
+      out:['3 features','designed end to end'] },
+    { slug:'finvale', title:'Finvale Website', kicker:'Fintech, marketing website', bg:'#EFE9E2',
+      cover:'assets/projects/finvale/cover-mockup.webp',
+      out:['48','layouts across 12 pages'] },
+    { slug:'baymax', title:'BayMax Employee App', kicker:'Healthcare, mobile app (Arabic)', bg:'#DCEBF6',
+      cover:'assets/projects/baymax/cover-mockup.webp',
+      out:['31','screens, research to UI'] }
+  ]
+};
+</script>
+<script>
+(() => {
+'use strict';
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const coarse = matchMedia('(pointer: coarse)').matches;
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------------- content (from the CONTENT block above) ---------------- */
+const C = window.CONTENT;
+const PROJECTS = C.projects;
+const TABS = C.about;
+const ME_NAME = C.firstName;
+let tab = 0;
+const T1 = C.headline;
+const T2 = C.intro;
+const thumb = p => p.cover ? `<img src="${esc(p.cover)}" alt="" loading="lazy">` : (p.th || '');
+
+document.title = `${C.name} · Portfolio`;
+$('#logo').textContent = ME_NAME[0];
+$('#docName').textContent = C.name;
+$('#noha .tag').textContent = ME_NAME;
+$('#tInput').placeholder = `Say hi to ${ME_NAME}…`;
+$('#emailText').textContent = C.email;
+$('#lnEmail').setAttribute('aria-label', `Copy email address ${C.email}`);
+$('#avail').textContent = C.availability || '';
+if (C.avatar){ $('#avatar').src = C.avatar; $('#avatar').alt = C.name; $('#avatar').onerror = () => $('#avatar').remove(); } else $('#avatar').remove();
+$('#lnLinkedin').href = C.linkedin;
+if (C.behance) $('#lnBehance').href = C.behance; else $('#lnBehance').remove();
+if (C.cv){ $('#lnCv').href = C.cv; $('#lnCv').target = '_blank'; $('#lnCv').rel = 'noopener'; $('#lnCv').removeAttribute('data-cv'); }
+
+/* ---------------- layouts (world units) ---------------- */
+// Fixed: x positions and widths. Computed by flow() from the content: every y, height and the canvas height H.
+const LAYOUTS = {
+  wide:{ W:1600, t1:[90,80], t2:[94,244,1250], top:395, gap:31, pad:70, cols:4,
+         cardW:340, cardX:[81,447,813,1179], expCol:[81,1438],
+         rowCols:{ about:[81,489], contact:[601,587], sticky:[1219,300,2] }, pin:[1200,86] },
+  tall:{ W:440, scroll:true, stack:true, t1:[20,50,400], t2:[22,190,400], top:392, gap:34, pad:90, cols:1,
+         cardW:400, cardX:[20,20,20,20], expCol:[20,400],
+         rowCols:{ about:[20,400], contact:[20,400], sticky:[60,320,-2] }, pin:[330,40] }
+};
+let L = LAYOUTS.wide, S = { x:0, y:0, s:1 };
+const canvas = $('#canvas'), world = $('#world'), ov = $('#ov');
+function pickLayout(){ return canvas.clientWidth / canvas.clientHeight < 0.95 ? LAYOUTS.tall : LAYOUTS.wide; }
+function fit(){
+  const cw = canvas.clientWidth, ch = canvas.clientHeight;
+  const s = L.scroll ? Math.min(cw / L.W, 1.4) : Math.min(cw / L.W, ch / L.H) * 0.95;
+  S = { s, x:(cw - L.W * s) / 2, y:L.scroll ? 0 : (ch - L.H * s) / 2 };
+  world.style.transform = `translate(${S.x}px,${S.y}px) scale(${s})`;
+  world.style.width = L.W + 'px'; world.style.height = L.H + 'px';
+  drawNoha(); placePins();
+}
+const w2s = (x, y) => ({ x:S.x + x * S.s, y:S.y + y * S.s });
+const s2w = (x, y) => ({ x:(x - S.x) / S.s, y:(y - S.y) / S.s });
+
+/* ---------------- objects ---------------- */
+const cards = PROJECTS.slice(0, 4).map((p, i) => {
+  const el = document.createElement('div');
+  el.className = 'obj card'; el.dataset.card = i; el.tabIndex = 0;
+  el.setAttribute('role', 'link'); el.setAttribute('aria-label', `${p.title}, open case study`);
+  el.innerHTML = `<div class="lbl">${esc(p.kicker)}</div>
+    <div class="cbody"><i class="hd h1"></i><i class="hd h2"></i><i class="hd h3"></i><i class="hd h4"></i>
+      <div class="thumb" style="background:${p.bg}">${thumb(p)}</div>
+      <div class="cinfo"><div><h3>${esc(p.title)}</h3>${p.out ? `<p><b>${esc(p.out[0])}</b> ${esc(p.out[1])}</p>` : ''}</div>
+        <span class="carr" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></div>
+    </div>`;
+  world.appendChild(el);
+  const c = { el, x:0, y:0, r:0 };
+  // hover / keyboard focus = "selected" in the design file; Noha's cursor comes over to look too
+  el.addEventListener('pointerenter', e => {
+    if (e.pointerType !== 'mouse') return;
+    el.classList.add('sel');
+    if (introDone && !dragging && !chatOpen) moveNoha(c.x + el.offsetWidth * .74, c.y + el.offsetHeight * .78, 700, () => true).catch(() => {});
+  });
+  el.addEventListener('pointerleave', () => el.classList.remove('sel'));
+  el.addEventListener('focus', () => el.classList.add('sel'));
+  el.addEventListener('blur', () => el.classList.remove('sel'));
+  el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openCase(i); } });
+  return c;
+});
+const about = { el:$('#about') }, contact = { el:$('#contact') }, sticky = { el:$('#sticky') }, exp = { el:$('#exp') };
+exp.el.querySelector('.inner').innerHTML = `<div class="exp-h"><h3>Experience</h3>${C.experienceSummary ? `<span>${esc(C.experienceSummary)}</span>` : ''}</div>
+  <div class="tl">${(C.experience || []).map(r => { const [co, ...loc] = r.org.split(' · ');
+    return `<div class="job${r.now ? ' now' : ''}"><div class="date">${esc(r.when)}${r.now ? ' <span class="pillnow">Current</span>' : ''}</div>
+      <h4>${esc(r.role)}</h4><div class="co">${esc(co)}${loc.length ? ` <span>· ${esc(loc.join(' · '))}</span>` : ''}</div><p>${esc(r.text)}</p></div>`; }).join('')}</div>`;
+function pos(o){ o.el.style.left = o.x + 'px'; o.el.style.top = o.y + 'px'; o.el.style.transform = o.r ? `rotate(${o.r}deg)` : ''; }
+const tabPanel = t => t.chips ? `<div class="chips">${t.chips.map(c => `<span>${esc(c)}</span>`).join('')}</div>`
+  : t.list ? `<dl>${t.list.map(([a, b]) => `<dt>${esc(a)}</dt><dd>${esc(b)}</dd>`).join('')}</dl>`
+  : `<p>${esc(t.text || '')}</p>`;
+function renderAbout(fade){
+  $('#tabs').style.gridTemplateColumns = `repeat(${TABS.length},minmax(0,1fr))`;
+  $('#tabs').innerHTML = TABS.map((t, i) => `<button role="tab" aria-selected="${i === tab}" data-t="${i}">${esc(t.tab)}</button>`).join('');
+  const p = $('#tabpanel'); p.innerHTML = tabPanel(TABS[tab]);
+  p.classList.remove('fade'); if (fade){ void p.offsetWidth; p.classList.add('fade'); }
+}
+$('#tabs').addEventListener('keydown', e => {
+  if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+  tab = (tab + (e.key === 'ArrowRight' ? 1 : -1) + TABS.length) % TABS.length; renderAbout(true); $(`#tabs [data-t="${tab}"]`).focus();
+});
+const X_KEY = 'ng-sticky-x';
+let stickyGone = false; try { stickyGone = !!localStorage.getItem(X_KEY); } catch {}
+sticky.el.innerHTML = (coarse
+  ? '<b>psst 👀</b>This page is a live design file.<br>Tap a card to open it, or use Comment and Chat below.'
+  : '<b>psst 👀</b>This page is a live design file.<br>Drag the cards around<br>Press <kbd>C</kbd> to comment<br>Press <kbd>/</kbd> to chat with me')
+  + '<button class="x" id="stickyX" aria-label="Dismiss note"><svg width="14" height="14" viewBox="0 0 16 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button>';
+$('#stickyX').addEventListener('click', () => { stickyGone = true; sticky.el.classList.add('hide'); try { localStorage.setItem(X_KEY, '1'); } catch {} });
+renderAbout();
+
+/* ---------------- flow: measure content, then place every row ---------------- */
+function measure(el, w){                      // natural height in world px at width w
+  const hid = el.classList.contains('hide'), s = el.style, prev = [s.width, s.height, s.visibility];
+  el.classList.remove('hide'); Object.assign(s, { visibility:'hidden', width:w + 'px', height:'auto' });
+  const h = el.offsetHeight;
+  [s.width, s.height, s.visibility] = prev; if (hid) el.classList.add('hide');
+  return Math.ceil(h);
+}
+function flow(){
+  cards.forEach(c => Object.assign(c.el.style, { width:L.cardW + 'px', height:'' }));
+  const ch = Math.max(...cards.map(c => c.el.offsetHeight));
+  cards.forEach(c => c.el.style.height = ch + 'px');
+  L.cardH = ch;
+  let y = L.top;
+  L.slots = cards.map((c, i) => { const s = [L.cardX[i], y]; if (L.stack) y += ch + L.gap; return s; });
+  if (!L.stack) y += ch + L.gap;
+  const [ex, ew] = L.expCol;
+  L.exp = [ex, y, ew, measure(exp.el, ew)]; y += L.exp[3] + L.gap;
+  // About keeps one height for every tab, so switching tabs never resizes it
+  const cur = tab, rc = L.rowCols;
+  let ah = 0; TABS.forEach((t, i) => { tab = i; renderAbout(); ah = Math.max(ah, measure(about.el, rc.about[1])); });
+  tab = cur; renderAbout();
+  const chh = measure(contact.el, rc.contact[1]);
+  sticky.el.style.height = ''; const sh = measure(sticky.el, rc.sticky[1]);
+  if (L.stack){
+    L.about = [rc.about[0], y, rc.about[1], ah]; y += ah + L.gap;
+    L.contact = [rc.contact[0], y, rc.contact[1], chh]; y += chh + L.gap;
+    L.sticky = [rc.sticky[0], y, rc.sticky[1], sh, rc.sticky[2]]; y += sh + L.gap;
+  } else {
+    const rh = Math.max(ah, chh);
+    L.about = [rc.about[0], y, rc.about[1], rh];
+    L.contact = [rc.contact[0], y, rc.contact[1], rh];
+    L.sticky = [rc.sticky[0], y, rc.sticky[1], sh, rc.sticky[2]];
+    y += Math.max(rh, sh) + L.gap;
+  }
+  L.H = y - L.gap + L.pad;
+  L.pile = L.stack ? [240, 820] : [L.W - 340, L.H - 230];
+}
+
+/* ---------------- cursors ---------------- */
+const noha = { x:0, y:0, el:$('#noha') };
+function drawNoha(){ const p = w2s(noha.x, noha.y); noha.el.style.transform = `translate(${p.x}px,${p.y}px)`; }
+const NAMES = ['Curious Recruiter 🦊','Friendly PM 🐼','Fellow Designer 🦉','Mystery Visitor 🐙','Kind Developer 🐢'];
+const COLORS = ['#0D99FF','#14AE5C','#9747FF','#F24822','#FF8C00'];
+const me = { name:NAMES[Math.floor(Math.random() * NAMES.length)], color:COLORS[Math.floor(Math.random() * COLORS.length)], x:-99, y:-99, el:$('#me') };
+me.el.style.color = me.color;
+me.el.querySelector('.tag').textContent = me.name; me.el.querySelector('.tag').style.background = me.color;
+me.el.querySelector('.chat').style.background = me.color; me.el.querySelector('.mechat').style.background = me.color;
+$('#avs').innerHTML = `<div class="av" style="background:var(--noha)" title="${esc(ME_NAME)}">${esc(ME_NAME[0])}</div><div class="av" style="background:${me.color}" title="${esc(me.name)} (you)">${me.name[0]}</div>`;
+
+function chat(el, text, ms = 3800){
+  const c = el.querySelector('.chat'); c.textContent = text; c.classList.add('show'); el.classList.add('chatting');
+  clearTimeout(c._t); c._t = setTimeout(() => { c.classList.remove('show'); el.classList.remove('chatting'); }, ms);
+}
+function clickPulse(){ noha.el.classList.remove('click'); void noha.el.offsetWidth; noha.el.classList.add('click'); }
+
+/* ---------------- motion engine ---------------- */
+let run = 0, moveTok = 0;
+const ease = k => k < .5 ? 4*k*k*k : 1 - Math.pow(-2*k + 2, 3) / 2;
+function wait(ms, alive){ return new Promise((res, rej) => setTimeout(() => alive() ? res() : rej('abort'), reduced ? Math.min(ms, 60) : ms)); }
+function moveNoha(tx, ty, dur, alive, onStep){
+  const tok = ++moveTok;
+  return new Promise((res, rej) => {
+    const sx = noha.x, sy = noha.y;
+    const cx = (sx + tx) / 2 + (ty - sy) * 0.18, cy = (sy + ty) / 2 - (tx - sx) * 0.18;
+    const t0 = performance.now(); if (reduced) dur = 1;
+    const f = now => {
+      if (!alive()) return rej('abort');
+      if (tok !== moveTok) return res();
+      const k = Math.min(1, (now - t0) / dur), e = ease(k), u = 1 - e;
+      noha.x = u*u*sx + 2*u*e*cx + e*e*tx; noha.y = u*u*sy + 2*u*e*cy + e*e*ty;
+      if (onStep) onStep(e); drawNoha();
+      k < 1 ? requestAnimationFrame(f) : res();
+    };
+    requestAnimationFrame(f);
+  });
+}
+async function type(el, text, speed, alive){
+  el.textContent = '';
+  for (const ch of Array.from(text)){ el.textContent += ch; await wait(speed + Math.random() * speed * 0.8, alive); }
+}
+async function drag(o, tx, ty, dur, alive){
+  const ox = noha.x - o.x, oy = noha.y - o.y, r0 = o.r;
+  o.el.classList.add('grab'); o.el.style.zIndex = ++zTop;
+  await moveNoha(tx + ox, ty + oy, dur, alive, e => { o.x = noha.x - ox; o.y = noha.y - oy; o.r = r0 * (1 - e); pos(o); });
+  o.x = tx; o.y = ty; o.r = 0; pos(o); o.el.classList.remove('grab');
+}
+async function drawBox(o, r, alive){
+  const [x, y, w, h] = r;
+  o.x = x; o.y = y; o.r = 0; pos(o);
+  o.el.style.width = '0px'; o.el.style.height = '0px'; o.el.classList.remove('hide', 'done'); o.el.classList.add('drawing');
+  await moveNoha(x, y, 450, alive); clickPulse();
+  await moveNoha(x + w, y + h, 550, alive, e => { o.el.style.width = w * e + 'px'; o.el.style.height = h * e + 'px'; });
+  o.el.style.width = w + 'px'; o.el.style.height = h + 'px';
+  o.el.classList.remove('drawing'); o.el.classList.add('done');
+}
+let zTop = 5;
+
+/* ---------------- states ---------------- */
+function resetScene(){
+  $('#t1').textContent = ''; $('#t2').textContent = '';
+  [$('#t1'), $('#t2')].forEach(t => t.classList.remove('editing'));
+  const [px, py] = L.pile;
+  cards.forEach((c, i) => { c.x = px - L.cardW / 2 + (i - 1.5) * 14; c.y = py - L.cardH / 2 + (i - 1.5) * 10; c.r = [-9, 6, -4, 8][i]; c.el.style.zIndex = 2 + cards.length - i; pos(c); });   // first card on top: it is the first one Noha picks up
+  [exp, about, contact].forEach(o => { o.el.classList.add('hide'); o.el.classList.remove('done', 'drawing'); });
+  sticky.el.classList.add('hide');
+  pins = pins.filter(p => !p.noha); placePins();
+  noha.x = L.W + 80; noha.y = L.H * 0.45; drawNoha();
+}
+function finalScene(){
+  $('#t1').textContent = T1; addWave(false); $('#t2').textContent = T2;
+  [$('#t1'), $('#t2')].forEach(t => t.classList.remove('editing'));
+  cards.forEach((c, i) => { c.x = L.slots[i][0]; c.y = L.slots[i][1]; c.r = 0; c.el.classList.remove('grab'); pos(c); });
+  [[exp, L.exp], [about, L.about], [contact, L.contact]].forEach(([o, r]) => {
+    o.x = r[0]; o.y = r[1]; o.r = 0; pos(o); o.el.style.width = r[2] + 'px'; o.el.style.height = r[3] + 'px';
+    o.el.classList.remove('hide', 'drawing'); o.el.classList.add('done');
+  });
+  placeSticky(false); addNohaPin();
+}
+// waving hand after the headline; falls back to the emoji if the image can't load
+function addWave(animate){
+  const t1 = $('#t1'), im = new Image();
+  im.src = C.wave || 'assets/wave.png'; im.alt = '👋'; im.className = 'wave' + (animate ? ' hi' : '');
+  im.onerror = () => im.replaceWith(' 👋');
+  t1.querySelector('.wave')?.remove(); t1.append(im);
+}
+function placeText(){
+  const [x1, y1, w1] = L.t1, [x2, y2, w2] = L.t2;
+  Object.assign($('#t1').style, { left:x1 + 'px', top:y1 + 'px', width:w1 ? w1 + 'px' : '' });
+  Object.assign($('#t2').style, { left:x2 + 'px', top:y2 + 'px', width:w2 + 'px' });
+  exp.el.style.setProperty('--cols', L.cols);
+  world.classList.toggle('tall', L === LAYOUTS.tall);
+  canvas.classList.toggle('scroll', !!L.scroll);
+  if (!L.scroll) canvas.scrollTop = 0;
+}
+function placeSticky(animate){
+  if (stickyGone) return;
+  const [x, y, w, h, r] = L.sticky;
+  Object.assign(sticky, { x, y, r }); pos(sticky);
+  Object.assign(sticky.el.style, { width:w + 'px', height:h + 'px' });
+  sticky.el.style.setProperty('--r', r + 'deg');
+  sticky.el.classList.remove('hide', 'pop'); if (animate){ void sticky.el.offsetWidth; sticky.el.classList.add('pop'); }
+}
+
+/* ---------------- intro ---------------- */
+let introDone = false;
+let miniT;
+function setBusy(b){
+  // full status while setting up; a few seconds after, it shrinks to just the green dot (hover to expand)
+  clearTimeout(miniT); $('#status').classList.remove('mini');
+  if (!b) miniT = setTimeout(() => $('#status').classList.add('mini'), 5000);
+  $('#status').classList.toggle('busy', b);
+  $('#status span').textContent = b ? `${ME_NAME} is setting things up…` : `${ME_NAME} is here, and so are you (${me.name})`;
+  $('#skipBtn').textContent = b ? 'Skip intro' : 'Replay intro';
+}
+async function intro(){
+  const id = ++run; const alive = () => id === run;
+  introDone = false; setBusy(true); resetScene();
+  try {
+    await wait(350, alive);
+    const [x1, y1] = L.t1, [x2, y2] = L.t2;
+    await moveNoha(x1 + 20, y1 + 40, 700, alive); clickPulse();
+    $('#t1').classList.add('editing'); await type($('#t1'), T1, 45, alive); $('#t1').classList.remove('editing'); addWave(true);
+    await moveNoha(x2 + 10, y2 + 24, 400, alive); clickPulse();
+    // the long subtitle is pasted in, not typed
+    $('#t2').textContent = T2; $('#t2').animate([{ opacity:0, transform:'translateY(6px)' }, { opacity:1, transform:'none' }], { duration:reduced ? 0 : 350, easing:'ease-out' });
+    await wait(300, alive);
+    for (let i = 0; i < cards.length; i++){
+      const c = cards[i];
+      await moveNoha(c.x + L.cardW / 2, c.y + 40, 380, alive); clickPulse();
+      await drag(c, L.slots[i][0], L.slots[i][1], 520, alive);
+      if (i === 0) chat(noha.el, 'my favourite project 👇', 1600);
+    }
+    await drawBox(exp, L.exp, alive);
+    await drawBox(about, L.about, alive);
+    await drawBox(contact, L.contact, alive);
+    await moveNoha(L.sticky[0] + 60, L.sticky[1] + 40, 450, alive); clickPulse(); placeSticky(true);
+    await wait(150, alive);
+    await moveNoha(L.pin[0], L.pin[1], 500, alive); clickPulse(); addNohaPin(true);
+    await wait(2200, alive);
+    const np = pins.find(q => q.noha); if (np){ np.open = false; placePins(); }
+    await moveNoha(L.W * 0.56, L.H * 0.36, 600, alive);
+    chat(noha.el, coarse ? 'Your turn. Tap a card to open it 👋' : 'Your turn. Drag a card, or press / to say hi 👋', 4200);
+  } catch (e){ if (e !== 'abort') console.error(e); return; }
+  finishIntro(id);
+}
+const SEEN = 'ng-intro-seen';
+function finishIntro(id){ introDone = true; setBusy(false); idle(id); try { sessionStorage.setItem(SEEN, '1'); } catch {} }
+function skip(){ const id = ++run; finalScene(); moveNoha(L.W * 0.62, L.H * 0.3, 500, () => id === run).catch(() => {}); finishIntro(id); }
+$('#skipBtn').onclick = () => introDone ? intro() : skip();
+
+/* ---------------- light / dark toggle: starts from the system setting, the choice is remembered on every page ---------------- */
+const SUN = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v1.6M8 12.9v1.6M1.5 8h1.6M12.9 8h1.6M3.4 3.4l1.1 1.1M11.5 11.5l1.1 1.1M3.4 12.6l1.1-1.1M11.5 4.5l1.1-1.1"/></svg>';
+const MOON = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M13.5 9.6A5.7 5.7 0 0 1 6.4 2.5a5.7 5.7 0 1 0 7.1 7.1Z"/></svg>';
+const isDark = () => (document.documentElement.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')) === 'dark';
+function paintThemeBtn(){ const d = isDark(), b = $('#themeBtn'); b.innerHTML = d ? SUN : MOON; b.title = b.ariaLabel = d ? 'Switch to light theme' : 'Switch to dark theme'; }
+$('#themeBtn').onclick = () => { const t = isDark() ? 'light' : 'dark'; document.documentElement.dataset.theme = t; try { localStorage.setItem('ng-theme', t); } catch {} paintThemeBtn(); };
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change', paintThemeBtn);
+paintThemeBtn();
+
+/* ---------------- idle life ---------------- */
+const LINES = ['hmm, what should I design next 🤔','that grid looks tidy 👌','coffee break soon ☕','psst: every card opens into a case study'];
+function idle(id){
+  (async () => {
+    const alive = () => id === run;
+    while (alive()){
+      try {
+        await wait(3200 + Math.random() * 3800, alive);
+        if (dragging || chatOpen) continue;
+        let tx, ty;
+        if (me.x > 0 && Math.random() < 0.4){ const w = s2w(me.x, me.y); tx = w.x + 70; ty = w.y + 50; }
+        else { const c = cards[Math.floor(Math.random() * cards.length)]; tx = c.x + 40 + Math.random() * 260; ty = c.y + 30 + Math.random() * 180; }
+        await moveNoha(Math.min(L.W - 40, Math.max(20, tx)), Math.min(L.H - 40, Math.max(20, ty)), 1300 + Math.random() * 900, alive);
+        if (Math.random() < 0.22) chat(noha.el, LINES[Math.floor(Math.random() * LINES.length)], 3000);
+      } catch { break; }
+    }
+  })();
+}
+
+/* ---------------- comments (stored only in the visitor's browser) ---------------- */
+const KEY = 'ng-portfolio-comments';
+// comments live only on the open page: a refresh starts clean (older versions kept them in localStorage)
+let pins = [];
+try { localStorage.removeItem(KEY); } catch {}
+function placePins(){
+  ov.querySelectorAll('.pin').forEach(n => n.remove());
+  pins.forEach(p => {
+    const s = w2s(p.x, p.y), n = document.createElement('div');
+    n.className = 'pin' + (p.open ? ' open' : '');
+    n.style.left = s.x + 'px'; n.style.top = s.y + 'px';
+    n.innerHTML = `<div class="dot" style="background:${p.color}">${esc(p.name[0])}</div><div class="bub"><b>${esc(p.name)}</b><span>${esc(p.text)}</span></div>`;
+    n.addEventListener('pointerdown', e => e.stopPropagation());
+    n.addEventListener('click', () => { p.open = !p.open; placePins(); });
+    ov.appendChild(n);
+  });
+}
+function addNohaPin(open){
+  if (pins.some(p => p.noha)) return;
+  pins.unshift({ noha:true, x:L.pin[0], y:L.pin[1], name:ME_NAME, color:'#B06E4A', text:'Welcome! This whole page is a design file. Move things around, nothing will break 🙂', open:!!open });
+  placePins();
+}
+let mode = 'move', composer = null;
+function setMode(m){
+  mode = m;
+  $('#tMove').classList.toggle('on', m === 'move'); $('#tComment').classList.toggle('on', m === 'comment');
+  $('#tbComment').classList.toggle('on', m === 'comment');
+  me.el.classList.toggle('commenting', m === 'comment');
+  if (m !== 'comment') closeComposer();
+}
+function openComposer(wx, wy){
+  closeComposer();
+  const s = w2s(wx, wy);
+  composer = document.createElement('div'); composer.className = 'composer';
+  composer.style.left = s.x + 'px'; composer.style.top = s.y + 'px';
+  composer.innerHTML = '<input maxlength="140" placeholder="Leave a comment…" aria-label="Comment"><button>Post</button>';
+  composer.addEventListener('pointerdown', e => e.stopPropagation());
+  ov.appendChild(composer);
+  const inp = composer.querySelector('input'); inp.focus(); requestAnimationFrame(() => inp.isConnected && inp.focus());
+  const post = () => {
+    const t = inp.value.trim(); if (!t) return closeComposer();
+    pins.push({ x:wx, y:wy, name:me.name, color:me.color, text:t, open:true }); deliver('comment', t); closeComposer(); placePins();
+    if (introDone) setTimeout(() => chat(noha.el, 'Thanks for the note! 💬', 3200), 900);
+    setMode('move');
+  };
+  composer.querySelector('button').onclick = post;
+  inp.addEventListener('keydown', e => { if (e.key === 'Enter') post(); if (e.key === 'Escape') closeComposer(); e.stopPropagation(); });
+}
+function closeComposer(){ if (composer){ composer.remove(); composer = null; } }
+
+/* ---------------- inbox: comments and chat messages emailed to Noha, quietly (only when C.inbox is set) ---------------- */
+let sent = 0;
+function deliver(kind, text){
+  if (!C.inbox || ++sent > 12) return;   // a small cap per page load against spam
+  fetch('https://api.web3forms.com/submit', { method:'POST', headers:{ 'Content-Type':'application/json', Accept:'application/json' },
+    body:JSON.stringify({ access_key:C.inbox, subject:`Portfolio ${kind} from ${me.name}`, from_name:'Portfolio', message:text, visitor:me.name, page:location.href }) }).catch(() => {});
+}
+
+/* ---------------- cursor chat ---------------- */
+let chatOpen = false;
+function reply(t){
+  const s = t.toLowerCase();
+  if (/hire|job|work|role|position|freelance|project/.test(s)) return 'Yes! The contact card has my email 📬';
+  if (/hi|hello|hey|salam|ahlan|مرحب|اهلا/.test(s)) return 'Hey! 👋 Thanks for dropping by';
+  if (/love|nice|cool|great|amazing|wow/.test(s)) return 'That made my day, thank you ✨';
+  return 'Ha, love that. Thanks for saying hi ✨';
+}
+function sendChat(text){
+  chat(me.el, text, 3600); deliver('chat message', text);
+  const id = run;
+  setTimeout(async () => {
+    if (introDone && me.x > 0){ const w = s2w(me.x, me.y); try { await moveNoha(w.x + 80, w.y + 60, 700, () => id === run); } catch {} }
+    chat(noha.el, reply(text), 4000);
+  }, 900);
+}
+function openMeChat(){
+  if (coarse){ $('#tchat').classList.add('show'); $('#tInput').focus(); chatOpen = true; return; }
+  if (me.x < 0){   // opened from the toolbar: the cursor is off the canvas, so show the bubble in the middle of the view
+    me.x = canvas.scrollLeft + canvas.clientWidth * 0.42; me.y = canvas.scrollTop + canvas.clientHeight * 0.4;
+    me.el.style.transform = `translate(${me.x}px,${me.y}px)`;
+  }
+  me.el.hidden = false;
+  chatOpen = true; me.el.classList.add('chatting'); const box = me.el.querySelector('.mechat'); box.classList.add('show');
+  const inp = $('#meInput'); inp.value = ''; setTimeout(() => inp.focus(), 0);
+}
+function closeMeChat(){ chatOpen = false; me.el.querySelector('.mechat').classList.remove('show'); me.el.classList.remove('chatting'); $('#tchat').classList.remove('show'); }
+$('#meInput').addEventListener('keydown', e => {
+  e.stopPropagation();
+  if (e.key === 'Enter'){ const t = e.target.value.trim(); closeMeChat(); if (t) sendChat(t); }
+  if (e.key === 'Escape') closeMeChat();
+});
+$('#tInput').addEventListener('keydown', e => {
+  if (e.key === 'Enter'){ const t = e.target.value.trim(); e.target.value = ''; closeMeChat(); if (t){ chat(noha.el, reply(t), 4000); deliver('chat message', t); } }
+  if (e.key === 'Escape') closeMeChat();
+});
+
+/* ---------------- pointer ---------------- */
+let dragging = null;
+// pointer position inside the canvas content (accounts for scrolling in the phone layout)
+const local = e => { const r = canvas.getBoundingClientRect(); return { x:e.clientX - r.left + canvas.scrollLeft, y:e.clientY - r.top + canvas.scrollTop }; };
+canvas.addEventListener('pointermove', e => {
+  if (e.pointerType === 'mouse'){
+    const p = local(e);
+    me.x = p.x; me.y = p.y; me.el.hidden = false; canvas.classList.add('mouse');
+    me.el.style.transform = `translate(${me.x}px,${me.y}px)`;
+  }
+  if (dragging){
+    const d = dragging, dx = (e.clientX - d.sx) / S.s, dy = (e.clientY - d.sy) / S.s;
+    if (!d.moved && Math.hypot(dx * S.s, dy * S.s) > 5){ d.moved = true; d.o.el.classList.add('grab'); }
+    if (d.moved){   // anywhere in the visible canvas, keeping a corner of the card on screen
+      const a = s2w(0, canvas.scrollTop), b = s2w(canvas.clientWidth, canvas.scrollTop + canvas.clientHeight);
+      d.o.x = Math.max(a.x - d.o.el.offsetWidth + 80, Math.min(b.x - 80, d.ox + dx));
+      d.o.y = Math.max(a.y - 20, Math.min(b.y - 60, d.oy + dy)); d.o.r = 0; pos(d.o);
+    }
+  }
+});
+canvas.addEventListener('pointerleave', () => { if (chatOpen) return; me.el.hidden = true; me.x = -99; });   // keep an open chat bubble in view
+canvas.addEventListener('pointerdown', e => {
+  if (e.target.closest('a, button, input, .composer, .pin')) return;
+  // preventDefault keeps the press from moving focus (e.g. onto a card) away from the new comment box
+  if (mode === 'comment'){ e.preventDefault(); const p = local(e), w = s2w(p.x, p.y); openComposer(w.x, w.y); return; }
+  closeComposer();
+  const el = e.target.closest('.obj');
+  if (!el || !introDone) return;
+  const o = [...cards, exp, about, contact, sticky].find(x => x.el === el);
+  if (!o) return;
+  // a mouse press would also start a text selection that grows across the page while dragging
+  if (e.pointerType === 'mouse'){ e.preventDefault(); window.getSelection()?.removeAllRanges(); }
+  try { canvas.setPointerCapture(e.pointerId); } catch {}
+  o.el.style.zIndex = ++zTop;
+  dragging = { o, sx:e.clientX, sy:e.clientY, ox:o.x, oy:o.y, moved:false };
+});
+const DROP_LINES = ['ooh, nice spot for it 👌','bold move, I like it 😄','hmm, maybe that is the better layout 🤔','the grid police are watching 👀','you have a designer’s eye ✨'];
+let dropN = 0, dropT;
+function reactToDrop(o){
+  clearTimeout(dropT);
+  const id = run;
+  dropT = setTimeout(async () => {
+    try { await moveNoha(o.x + o.el.offsetWidth - 40, o.y + 30, 600, () => id === run); } catch { return; }
+    chat(noha.el, DROP_LINES[dropN++ % DROP_LINES.length], 3400);
+  }, 250);
+}
+function endDrag(){
+  if (!dragging) return;
+  const d = dragging; dragging = null; d.o.el.classList.remove('grab');
+  if (!d.moved){ const i = cards.indexOf(d.o); if (i > -1) openCase(i); }
+  else reactToDrop(d.o);
+}
+canvas.addEventListener('pointerup', endDrag);
+// the browser took over the touch (e.g. to scroll): drop the drag without opening a case study
+canvas.addEventListener('pointercancel', () => { if (dragging){ dragging.o.el.classList.remove('grab'); dragging = null; } });
+canvas.addEventListener('dblclick', e => {
+  if (e.target.closest('.obj, a, button, input, .pin, .composer')) return;
+  const p = local(e);
+  ['🎉','✨','👏','💜','🔥'].forEach((em, i) => setTimeout(() => {
+    const n = document.createElement('div'); n.className = 'emote'; n.textContent = em;
+    n.style.left = (p.x - 15 + (Math.random() - .5) * 60) + 'px'; n.style.top = (p.y - 20) + 'px';
+    ov.appendChild(n); setTimeout(() => n.remove(), 1500);
+  }, i * 90));
+});
+world.addEventListener('click', e => {
+  const t = e.target.closest('[data-t]'); if (t){ tab = +t.dataset.t; renderAbout(true); $(`#tabs [data-t="${tab}"]`).focus(); return; }
+  const cv = e.target.closest('[data-cv]'); if (cv){ e.preventDefault(); chat(noha.el, 'Résumé link coming soon 📄', 2600); }
+});
+
+/* copy email (falls back to opening the mail app) */
+let copyT;
+$('#lnEmail').addEventListener('click', async () => {
+  let ok = false;
+  try { await navigator.clipboard.writeText(C.email); ok = true; } catch {
+    const t = document.createElement('textarea'); t.value = C.email; t.style.position = 'fixed'; t.style.opacity = '0';
+    document.body.appendChild(t); t.select(); try { ok = document.execCommand('copy'); } catch {} t.remove();
+  }
+  if (!ok){ location.href = 'mailto:' + C.email; return; }
+  $('#lnEmail').classList.add('done'); $('#cp').textContent = 'Copied ✓';
+  const b = $('#lnEmail'), id = run;
+  moveNoha(contact.x + b.offsetLeft + b.offsetWidth - 60, contact.y + b.offsetTop + b.offsetHeight + 8, 500, () => id === run)
+    .then(() => chat(noha.el, 'Copied! Talk soon 📬', 2600)).catch(() => {});
+  clearTimeout(copyT); copyT = setTimeout(() => { $('#lnEmail').classList.remove('done'); $('#cp').textContent = 'Copy'; }, 2400);
+});
+
+/* ---------------- toolbar + keys ---------------- */
+$('#tMove').onclick = () => setMode('move');
+$('#tComment').onclick = () => setMode(mode === 'comment' ? 'move' : 'comment');
+$('#tbComment').onclick = () => setMode(mode === 'comment' ? 'move' : 'comment');
+$('#tChat').onclick = openMeChat;
+$('#tbChat').onclick = openMeChat;
+$('#hireBtn').onclick = () => { if (!introDone) skip(); if (L.scroll) contact.el.scrollIntoView({ behavior:reduced ? 'auto' : 'smooth', block:'center' }); contact.el.animate([{ transform:'scale(1)' }, { transform:'scale(1.04)' }, { transform:'scale(1)' }], { duration:500 }); chat(noha.el, 'Right here 👇 email, LinkedIn or Behance', 3200); moveNoha(contact.x + 40, contact.y + 30, 600, () => true).catch(() => {}); };
+document.addEventListener('keydown', e => {
+  if (e.target.matches('input')) return;
+  if (e.key === 'Escape'){
+    if ($('#list').classList.contains('show')) return $('#list').classList.remove('show');
+    closeMeChat(); closeComposer(); setMode('move'); return;
+  }
+  const k = e.key.toLowerCase();
+  if (k === 'c') setMode(mode === 'comment' ? 'move' : 'comment');
+  else if (k === 'v') setMode('move');
+  else if (e.key === '/'){ e.preventDefault(); openMeChat(); }
+  else if (k === 'l') $('#list').classList.add('show');
+});
+
+/* ---------------- analytics events ---------------- */
+$('#lnCv').addEventListener('click', () => track('cv_downloaded', { from:'home' }));
+[['#lnEmail', 'copy_email'], ['#lnLinkedin', 'linkedin'], ['#lnBehance', 'behance'], ['#hireBtn', 'contact_button']]
+  .forEach(([sel, via]) => $(sel)?.addEventListener('click', () => track('contact_clicked', { via, from:'home' })));
+
+/* ---------------- case study pages + list ---------------- */
+const caseUrl = p => `project.html?p=${encodeURIComponent(p.slug)}`;
+function openCase(i){ location.href = caseUrl(PROJECTS[i]); }
+$('#lgrid').innerHTML = PROJECTS.map(p => `<a class="litem" href="${caseUrl(p)}"><div class="sw2" style="background:${p.bg}">${thumb(p)}</div><div class="tx"><b>${esc(p.title)}</b><span>${esc(p.kicker)}</span></div></a>`).join('');
+$('#listBtn').onclick = () => $('#list').classList.add('show');
+$('#lClose').onclick = () => $('#list').classList.remove('show');
+$('#list').addEventListener('click', e => { if (e.target.id === 'list') $('#list').classList.remove('show'); });
+
+/* ---------------- boot ---------------- */
+L = pickLayout(); placeText(); flow(); fit(); resetScene();
+new ResizeObserver(() => {
+  const nl = pickLayout();
+  if (nl !== L){ L = nl; placeText(); flow(); fit(); if (introDone){ finalScene(); } else { intro(); } }
+  else fit();
+}).observe(canvas);
+// the web font changes text heights once it arrives: measure again
+document.fonts?.ready.then(() => { flow(); fit(); if (introDone) finalScene(); });
+// coming back from a case study (or already watched this visit): go straight to the finished page
+let seen = location.hash === '#work';
+try { seen = seen || sessionStorage.getItem(SEEN) === '1'; } catch {}
+seen ? skip() : intro();
+})();
+</script>
+</body>
+</html>
