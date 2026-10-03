@@ -393,6 +393,12 @@ window.CONTENT = {
     { slug:'baymax', title:'BayMax Employee App', kicker:'Healthcare, mobile app (Arabic)', bg:'#DCEBF6',
       cover:'assets/projects/baymax/cover-mockup.webp',
       out:['31','screens, research to UI'] }
+  ],
+
+  /* More projects: shown only in the "All work" list (not on the canvas), each with its case study in project.html. */
+  more: [
+    { slug:'issue-tracker', title:'Employees Issue Tracker', kicker:'Government, mobile app (Arabic)', bg:'#DDEFE2',
+      cover:'assets/projects/issue-tracker/cover-mockup.webp' }
   ]
 };
 </script>
@@ -932,7 +938,7 @@ $('#lnCv').addEventListener('click', () => track('cv_downloaded', { from:'home' 
 /* ---------------- case study pages + list ---------------- */
 const caseUrl = p => `project.html?p=${encodeURIComponent(p.slug)}`;
 function openCase(i){ location.href = caseUrl(PROJECTS[i]); }
-$('#lgrid').innerHTML = PROJECTS.map(p => `<a class="litem" href="${caseUrl(p)}"><div class="sw2" style="background:${p.bg}">${thumb(p)}</div><div class="tx"><b>${esc(p.title)}</b><span>${esc(p.kicker)}</span></div></a>`).join('');
+$('#lgrid').innerHTML = [...PROJECTS, ...(C.more || [])].map(p => `<a class="litem" href="${caseUrl(p)}"><div class="sw2" style="background:${p.bg}">${thumb(p)}</div><div class="tx"><b>${esc(p.title)}</b><span>${esc(p.kicker)}</span></div></a>`).join('');
 $('#listBtn').onclick = () => $('#list').classList.add('show');
 $('#lClose').onclick = () => $('#list').classList.remove('show');
 $('#list').addEventListener('click', e => { if (e.target.id === 'list') $('#list').classList.remove('show'); });

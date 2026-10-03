@@ -439,6 +439,7 @@ const FA = 'assets/projects/fintech-admin/';   // screenshots for the fintech ad
 const MN = 'assets/projects/minenest/';        // screens for the MineNest app case study
 const FV = 'assets/projects/finvale/';         // screens for the Finvale website case study
 const BM = 'assets/projects/baymax/';          // screens for the BayMax app case study
+const IT = 'assets/projects/issue-tracker/';   // screens for the Employees Issue Tracker case study
 
 window.CASES = [
   { slug:'fintech-admin', title:'From overwhelming to obvious',
@@ -827,6 +828,108 @@ window.CASES = [
             'Run usability tests with doctors and nurses on real tasks.',
             'Connect the app to the hospital’s HR and payroll systems.',
             'Add more HR features, such as shift swaps.'] }
+        ] }
+    ] },
+
+  { slug:'issue-tracker', title:'IT help without the phone call',
+    sections:[
+      { id:'overview', nav:'Overview', title:'IT help without the phone call',
+        lede:'An Arabic app for Aswan Governorate employees to report IT and network problems, then follow them until they’re fixed.',
+        text:['The app also covers suggestions, rewards, thank-you cards, skill development and future jobs. This case study focuses on reporting network and IT issues, plus the main pages.'],
+        blocks:[
+          { type:'facts', items:[['Role','UI/UX designer'],['Year','July 2023'],['Timeline','2 weeks'],['Platform','Mobile · Arabic, right to left']] },
+          { type:'image', label:'Employees Issue Tracker', src:`${IT}cover-mockup.webp`, alt:'Three green Arabic screens: the employee home, “What’s your problem?” with report status, and the list of reports' }
+        ],
+        note:'Made at the Aswan Digital Transformation Center, for the governorate’s own staff. The original case study is on my Behance.' },
+
+      { id:'problem', nav:'The problem', label:'The problem', title:'Every level of tech skill, one app',
+        text:['Two challenges shaped the design. Government employees have very different levels of tech skill, and IT staff need to reach the exact place a problem happens.',
+              'Three people had to be served by the same app:'],
+        blocks:[
+          { type:'caps', items:[
+            ['Employee','“I want to report IT issues through a mobile app, so I can follow the status of my reports.”'],
+            ['IT employee','“I want to track all IT issues, so I can prioritise and solve them.”'],
+            ['IT manager','“I want a clear way to evaluate IT staff by how they resolve issues.”']] }
+        ],
+        note:'The goal: make reporting and solving IT issues simple for every employee, whatever their tech skills.' },
+
+      { id:'research', nav:'Research', label:'Research', title:'Listening to people using the old app',
+        text:['I ran unmoderated remote usability tests of the existing issue tracker app, and interviewed employees aged 22 to 45, chosen from the people who ask IT for help most.'],
+        blocks:[
+          { type:'quotes', label:'What employees said', items:[
+            ['I have to get a smartphone to have the app.'],
+            ['What if I don’t have internet on my phone?'],
+            ['I want to know how I can report an issue.', '', true],
+            ['I want to see the quality of the IT staff’s solutions.']] },
+          { type:'caps', items:[
+            ['Ahmed, 28, IT staff','The persona that best represents my interviews and the affinity diagram.'],
+            ['Needs','A simple way to manage IT issues and see where each one is, so he can solve them smoothly.'],
+            ['Frustrations','Spam reports and missing details from other employees, and no way to check who’s free to solve a problem.']] }
+        ],
+        note:'Ahmed is a persona, built from my interview notes.' },
+
+      { id:'define', nav:'Pain points', label:'Pain points', title:'Four groups of pain points',
+        text:['I sorted the interview notes into an affinity diagram. Four themes came out of it.'],
+        blocks:[
+          { type:'image', label:'Affinity diagram', src:`${IT}affinity.webp`, alt:'Sticky notes in four groups: unattractive look, confusing flow, impractical to use, forced to use' },
+          { type:'caps', items:[
+            ['Unattractive look','A crowded home screen, too many colours, and steps that didn’t match.'],
+            ['Confusing flow','Too many steps, and help articles mixed up with self-development courses.'],
+            ['Impractical to use','Icons with no labels, and reports sent through a separate gateway.'],
+            ['Forced to use','Employees had to type in their employee ID.']] },
+          { type:'learn', heading:'How might we…', items:[
+            'make the interface more visually appealing?',
+            'make the flow shorter and clearer?',
+            'design the system to prevent user errors?'] }
+        ],
+        note:'Each “How might we” became a rule for the redesign.' },
+
+      { id:'process', nav:'Process', label:'Process', title:'From paper to prototype', wide:true,
+        text:['With two weeks, I kept the process simple: empathise, define, ideate, prototype, test. I sketched the key screens on paper, mapped how a report branches, then built a high-fidelity prototype in Figma.'],
+        blocks:[
+          { type:'image', label:'Paper sketches', src:`${IT}sketches.webp`, alt:'Hand-drawn Arabic phone sketches: chat, network reports with status counts, and the list of reports' },
+          { type:'image', label:'How a report branches', src:`${IT}map.webp`, alt:'Map: an issue report splits into a technical issue, useful topics and internet speed, or a specific device: printer, PC or scanner' },
+          { type:'image', label:'Flow · home to my reports', src:`${IT}flow-home.webp`, alt:'Three screens linked by arrows: home, network reports, then the list of previous reports' },
+          { type:'image', label:'Flow · reporting an internet problem', src:`${IT}flow-report.webp`, alt:'Three screens linked by arrows: choose internet problem, pick the faulty device, then describe it and send' }
+        ] },
+
+      { id:'design', nav:'Final design', label:'Final design', title:'The final screens', wide:true,
+        text:['A calm green interface that leans on icons and pictures, so employees with any level of tech skill can find their way.'],
+        blocks:[
+          { type:'spotlight', label:'The key screen', title:'Report a problem in a few taps', src:`${IT}s-report.webp`, alt:'Network reports: “What’s your problem?”, a report button, reports by status, and three shortcuts',
+            items:['One big “Report a problem” button at the top.',
+                   'My reports at a glance: not started, in progress and solved.',
+                   'Speed test, the governorate’s apps and help articles one tap away.'] },
+          { type:'screens', title:'Reporting a problem', items:[
+            { src:`${IT}s-category.webp`, title:'Choose the type', text:'Internet, a specific device, or Windows, with a search on top.' },
+            { src:`${IT}s-device.webp`, title:'Pick the device', text:'Printer, computer, screen or scanner, as large icons.' },
+            { src:`${IT}s-describe.webp`, title:'Describe it', text:'Common faults as options, a note, and a photo of the problem.' },
+            { src:`${IT}s-sent.webp`, title:'Sent, with a number', text:'A report number to follow it up.' }] },
+          { type:'screens', grid:true, title:'Following it up', items:[
+            { src:`${IT}s-reports.webp`, title:'My reports', text:'Filtered by status: solved, in progress or not started.' },
+            { src:`${IT}s-chats.webp`, title:'Chats', text:'A conversation with IT for each report.' },
+            { src:`${IT}s-notifs.webp`, title:'Notifications', text:'Updates on each report as it moves along.' },
+            { src:`${IT}s-speed.webp`, title:'Speed test', text:'Check the connection before reporting it.' }] },
+          { type:'screens', grid:true, title:'The main pages', items:[
+            { src:`${IT}s-splash.webp`, title:'Splash' },
+            { src:`${IT}s-signup.webp`, title:'Sign up' },
+            { src:`${IT}s-home.webp`, title:'Home', text:'Every service as a large icon.' },
+            { src:`${IT}s-menu.webp`, title:'Menu' },
+            { src:`${IT}s-skills.webp`, title:'Develop your skills' },
+            { src:`${IT}s-courses.webp`, title:'Course videos' },
+            { src:`${IT}s-plan.webp`, title:'Personal plan' },
+            { src:`${IT}s-jobs.webp`, title:'Future jobs' }] }
+        ] },
+
+      { id:'learn', nav:'What I learned', label:'Looking back', title:'What I learned',
+        blocks:[
+          { type:'learn', items:[
+            'Testing the existing app first gave me a clear list of what to fix, even in two weeks.',
+            'For people with very different tech skills, icons need labels. Neither works as well alone.',
+            'A report split into small choices (type, device, fault) is easier than one long form.'] },
+          { type:'learn', heading:'What I’d do next', items:[
+            'Test the new flow with the same employees.',
+            'Measure how long a report takes, before and after.'] }
         ] }
     ] }
 ];
