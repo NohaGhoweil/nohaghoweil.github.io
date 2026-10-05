@@ -420,7 +420,7 @@ a.ph:hover{transform:translateY(-3px)}
      { type:'learn', heading, items:['…', …] }
      { type:'window', url, src, alt, caption }                   screenshot in a browser frame
      { type:'annotated', label, src, points:[{ x, y, text }] }     numbered markers (x/y in %) + list
-     { type:'pair', title, lede, url, before, after, facts:[[was, now, why]] }   side by side, slider on request
+     { type:'pair', title, lede, url, before, after, was, now, facts:[[was, now, why]] }   side by side, slider on request (was/now: captions)
      { type:'evolution', rows:[{ title, stages:[{ n, label, src }], lead, note }] }
      { type:'rewrites', items:[['old wording', 'new wording', 'where'], …] }
      { type:'image', tall:true, … }                               long page that scrolls inside its frame
@@ -451,6 +451,11 @@ const MN = 'assets/projects/minenest/';        // screens for the MineNest app c
 const FV = 'assets/projects/finvale/';         // screens for the Finvale website case study
 const BM = 'assets/projects/baymax/';          // screens for the BayMax app case study
 const IT = 'assets/projects/issue-tracker/';   // screens for the Employees Issue Tracker case study
+const CE = 'assets/projects/citizen-eye/';     // mockups for the Citizen Eye apps
+const SW = 'assets/projects/sono-women/';      // mockups for the Sono Women app
+const AQ = 'assets/projects/aqeelah/';         // pages for the Al-Aqeelah website redesign task
+const CA = 'assets/projects/comave/';          // screens for the ComAve login and account pages
+const PR = 'assets/projects/prime/';           // screens for the Prime water company platform
 
 window.CASES = [
   { slug:'fintech-admin', title:'From overwhelming to obvious',
@@ -842,6 +847,214 @@ window.CASES = [
         ] }
     ] },
 
+  { slug:'citizen-eye', title:'Report it, fix it, confirm it',
+    sections:[
+      { id:'overview', nav:'Overview', title:'Report it, fix it, confirm it',
+        lede:'Two apps for Aswan Governorate: citizens photograph a problem in the street and report it, officials fix it, and the citizen confirms the fix.',
+        blocks:[
+          { type:'facts', items:[['Role','UI/UX designer'],['Team','Aswan Digital Transformation Center'],['Platform','Two Android apps · Arabic'],['Status','Launched']] },
+          { type:'image', label:'Citizen Eye', src:`${CE}cover-mockup.webp`, alt:'Citizen Eye screens in Arabic: “Take a photo now”, the splash screen, a fix to confirm, the report form and a map pin' }
+        ],
+        note:'Made at the Aswan Digital Transformation Center. Both apps went live.' },
+
+      { id:'loop', nav:'The idea', label:'The idea', title:'A loop with the citizen at both ends',
+        text:['Citizen Eye (عين المواطن) is for anyone in the governorate. Citizen Eye for Officials is for the people who fix what gets reported. The same report travels through both apps:'],
+        blocks:[
+          { type:'caps', items:[
+            ['1 · The citizen reports','A photo, what the problem is, the city, and a pin on the map.'],
+            ['2 · Officials fix it','Every report on a dashboard, a list and a map, then fixed on site.'],
+            ['3 · The citizen confirms','The citizen sees the fix and taps “Solved” or “Not solved”.']] }
+        ],
+        note:'The citizen gets the last word on whether a problem is really fixed.' },
+
+      { id:'citizen', nav:'Citizen app', label:'Citizen Eye', title:'One button: take a photo', wide:true,
+        text:['Anyone in the governorate can use it, so the home screen has one job: take a photo. After that, every step is a choice from a list or a tap on the map, with no forms to type.'],
+        blocks:[
+          { type:'image', label:'Citizen Eye', src:`${CE}citizen.webp`, alt:'Citizen Eye screens: about, home with a camera button, splash, before and after photos, a fix to confirm, report sent, report form, map pin and notifications' },
+          { type:'caps', items:[
+            ['Take the photo','One big camera button on the home screen.'],
+            ['Say what it is','The violation type, then a category such as garbage piles or sidewalk encroachment.'],
+            ['Say where','The city from a list, then the exact spot on a satellite map.'],
+            ['Sent','A clear confirmation. Every report is recorded confidentially.']] },
+          { type:'gallery', cols:2, items:[
+            { label:'Start', src:`${CE}citizen-start.webp`, alt:'About page, home with “Take a photo now”, the splash screen and before and after photos', caption:'Splash, home and the before and after photos of a fixed report.' },
+            { label:'Report and confirm', src:`${CE}citizen-report.webp`, alt:'A notification with the photo of the fix and Confirm solved and Not solved buttons, the report form and the map pin', caption:'The report form, the map pin, and the notification asking the citizen to confirm the fix.' }] }
+        ] },
+
+      { id:'officials', nav:'Officials app', label:'Citizen Eye for Officials', title:'Every report, on one screen', wide:true,
+        text:['Officials see what needs doing, where it is, and how well the governorate is responding.'],
+        blocks:[
+          { type:'image', label:'Citizen Eye for Officials', src:`${CE}officials.webp`, alt:'Officials app: a list of photo reports, the dashboard with totals and a chart by category, and a map of Aswan full of report pins' },
+          { type:'caps', items:[
+            ['Dashboard','Total, solved and unsolved reports, the response rate, the fixes citizens rejected, and a chart by category.'],
+            ['Reports','Photo cards with the place and time, tabs for not handled, rejected and solved, and quick chat and map buttons.'],
+            ['Map','Every report pinned across Aswan, so it’s easy to see where problems cluster.']] }
+        ] },
+
+      { id:'results', nav:'Results', label:'Results', title:'In use across Aswan',
+        text:['From the officials’ dashboard on 22 April 2024:'],
+        blocks:[
+          { type:'nums', items:[['768','reports sent by citizens'],['648','solved'],['84%','response rate']] }
+        ],
+        note:'24 fixes were rejected by the citizens who reported them. Officials could only see that because citizens confirm each fix.' },
+
+      { id:'learn', nav:'What I learned', label:'Looking back', title:'What I learned',
+        blocks:[
+          { type:'learn', items:[
+            'For a public app, one obvious action beats a menu of options.',
+            'Letting citizens confirm the fix turned a complaint box into a feedback loop.',
+            'The same report needs two very different apps: one to send and check it, one to act on it.'] }
+        ] }
+    ] },
+
+  { slug:'sono-women', title:'A journey, not a manual',
+    sections:[
+      { id:'overview', nav:'Overview', title:'A journey, not a manual',
+        lede:'Sono Women is an Arabic app that walks women in Aswan through starting a business, from the first idea to growing it.',
+        blocks:[
+          { type:'facts', items:[['Role','UI/UX designer · illustrations with AI tools'],['Team','ISDT, Aswan Governorate'],['Platform','Mobile app · Arabic'],['Focus','Women entrepreneurs, green projects']] },
+          { type:'image', label:'Sono Women', src:`${SW}cover-mockup.webp`, alt:'Sono Women screens: the home page, choosing guidance, the growth stage, role models and the journey stages' }
+        ],
+        note:'Designed for ISDT, the information systems and digital transformation team of Aswan Governorate.' },
+
+      { id:'journey', nav:'The journey', label:'The journey', title:'Start where you are',
+        text:['A guide to starting a business can feel like a wall of text. So instead of one long manual, the app asks “Which stage of the journey are you at?” and opens a page for that stage, with a short explanation and numbered steps.'],
+        blocks:[
+          { type:'caps', items:[
+            ['Thinking','Turning an idea into a first concept that meets a real need in the market.'],
+            ['Planning','Shaping the idea into a plan before spending money.'],
+            ['Execution','Building the team, launching sustainable products, marketing and selling.'],
+            ['Growth','Expanding the product range and hiring.']] },
+          { type:'gallery', cols:2, items:[
+            { label:'Home, guidance and stages', src:`${SW}screens-journey.webp`, alt:'Home with “Your first step toward entrepreneurship”, choosing the type of guidance, the growth stage page, role models, strategy and the stage picker', caption:'Home, the two kinds of guidance, the stage picker and a stage page.' },
+            { label:'Stage pages and project models', src:`${SW}screens-stages.webp`, alt:'The thinking and execution stage pages with numbered steps, project models, and a project page with its challenge', caption:'Each stage page explains the stage, then lists the steps. Project models show a real challenge and idea.' }] }
+        ],
+        note:'One question, “Which stage are you at?”, replaces a long table of contents.' },
+
+      { id:'content', nav:'What’s inside', label:'What’s inside', title:'Role models, ideas and help', wide:true,
+        text:['Around the journey, the home page gives quick access to registering a project, training and open data.'],
+        blocks:[
+          { type:'image', label:'Sono Women', src:`${SW}screens.webp`, alt:'Fourteen Sono Women screens on a marble background' },
+          { type:'caps', items:[
+            ['Inspiring entrepreneurs','Short profiles of women from Aswan who built projects, with a button to read each story.'],
+            ['Project models','Ideas like drying, handicrafts and sustainable fashion, each with its challenge and description.'],
+            ['Guidance','General guidance, or guidance to speed up women’s projects.']] }
+        ] },
+
+      { id:'art', nav:'Illustrations', label:'Art direction', title:'One warm style, made with AI', wide:true,
+        text:['I generated the illustrations with AI tools and kept them to one style: women from the region, in warm terracotta and purple, so every stage page feels like part of the same story.'],
+        blocks:[
+          { type:'image', label:'Launch visual', src:`${SW}hero.webp`, alt:'Sono Women launch visual: the home screen on a phone next to “Start your journey in entrepreneurship”' }
+        ] },
+
+      { id:'learn', nav:'What I learned', label:'Looking back', title:'What I learned',
+        blocks:[
+          { type:'learn', items:[
+            'Splitting a big goal into stages makes it feel possible.',
+            'With AI images, a consistent style matters more than any single picture.',
+            'Real women from Aswan made the goal feel close to home.'] }
+        ] }
+    ] },
+
+  { slug:'aqeelah', title:'From a wall of banners to a real store',
+    sections:[
+      { id:'overview', nav:'Overview', title:'From a wall of banners to a real store',
+        lede:'A design task for a job application: redesign the home page of Al-Aqeelah Al-Wataniya, an online grocery store in Kuwait.',
+        blocks:[
+          { type:'facts', items:[['Role','UI/UX designer · design task'],['Year','2025'],['Platform','Website · Arabic, right to left'],['Scope','Home page redesign']] },
+          { type:'image', label:'The redesigned home page', src:`${AQ}cover-mockup.webp`, alt:'The redesigned Al-Aqeelah home page: search, categories, a delivery hero and product offers' }
+        ],
+        note:'A design task for a job application, based on the store’s live site at the time. It is not the shipped site.' },
+
+      { id:'before', nav:'The old site', label:'The old site', title:'Big banners, little shopping',
+        text:['The old home page was built from big promotional banners: phone numbers, one product per slide, and a map to the store. Categories sat far down the page, and the offers section was a single badge.'],
+        blocks:[
+          { type:'pair', title:'Home page, first screen', was:'the old site', now:'my redesign', before:`${AQ}before-top.webp`, after:`${AQ}after-top.webp`,
+            facts:[
+              ['One product per banner', 'Every category up front', 'Shoppers see the whole range before they scroll.'],
+              ['A single “Offers” badge', 'Offers with real prices', 'Each deal shows the product, the discount and the price.'],
+              ['Phone numbers as the main action', 'Order online', 'The hero leads to ordering, with search and the cart always in the header.']] }
+        ],
+        note:'The old page sold the company. The new one sells groceries.' },
+
+      { id:'design', nav:'The redesign', label:'The redesign', title:'A home page you can shop from', wide:true,
+        text:['I kept the brand’s red, white and green, and rebuilt the page around how people buy groceries: search first, then categories, offers and best sellers, with a banner for the app’s online discount.'],
+        blocks:[
+          { type:'caps', items:[
+            ['Search and categories','A big search bar and every category in the header, one click away.'],
+            ['Offers to compare','Deal cards with the product, the discount and the price.'],
+            ['Best sellers','Product cards with a rating, the old and new price, and add to cart.'],
+            ['Shop by budget','Notes like “under 5 dinars” for shoppers watching what they spend.']] },
+          { type:'gallery', cols:2, items:[
+            { label:'Before · the whole home page', src:`${AQ}before-full.webp`, alt:'The old home page from top to bottom: product banners, phone numbers, round category icons and a location map' },
+            { label:'After · the whole home page', src:`${AQ}after-full.webp`, alt:'The redesigned home page from top to bottom: hero, categories, offers, best sellers, shop by budget, app banner and footer' }] }
+        ] },
+
+      { id:'system', nav:'Style guide', label:'Style guide', title:'A small system behind it',
+        text:['Almarai in four weights for every heading and label, and a few reusable pieces: offer cards, product cards, and a slider with its arrows and dots.'],
+        blocks:[
+          { type:'image', label:'Typography and components', src:`${AQ}style.webp`, alt:'Almarai in extra bold, bold, regular and light, then an offer card, a product card, slider arrows and dots' }
+        ] },
+
+      { id:'learn', nav:'What I learned', label:'Looking back', title:'What I learned',
+        blocks:[
+          { type:'learn', items:[
+            'A design task shows how you think. I started from what shoppers come to do, not from the old layout.',
+            'For a grocery store, real products and real prices sell better than slogans.',
+            'Keeping the brand’s colours made the change feel like an upgrade, not a new company.'] }
+        ] }
+    ] },
+
+  { slug:'comave', title:'Six digits, every state designed',
+    sections:[
+      { id:'overview', nav:'Overview', title:'Six digits, every state designed',
+        lede:'Login, phone verification and the account pages around them for ComAve, a Luxembourg platform for shopping, travel booking and games.',
+        blocks:[
+          { type:'facts', items:[['Role','UI/UX designer · COMAVE'],['Year','2024'],['Platform','Mobile app + website'],['Scope','Login, OTP, sign-up and account pages']] },
+          { type:'image', label:'ComAve login', src:`${CA}cover-mockup.webp`, alt:'Three ComAve screens: login with email or phone, the six-digit code being filled in, and “Phone number verified”' }
+        ],
+        note:'Designed during my time at COMAVE. The original posts are on my Behance.' },
+
+      { id:'otp', nav:'Verification', label:'Phone verification', title:'Every state of a six-digit code', wide:true,
+        text:['Logging in with a one-time code looks simple, but the code can be slow, wrong or expired. I designed each of those moments so people always know what to do next.'],
+        blocks:[
+          { type:'spotlight', label:'Where it starts', title:'Email or phone, one screen', src:`${CA}s-login-email.webp`, alt:'Login screen with email and phone tabs, a Send OTP button, browse as a guest, and social sign-in',
+            items:['Email and phone number as two tabs, not two separate flows.',
+                   '“Send OTP” as the main action, with “Browse as a guest” right under it.',
+                   'Apple, Google and Facebook sign-in for people who don’t want another password.'] },
+          { type:'screens', title:'The verification flow', items:[
+            { src:`${CA}s-login-phone.webp`, title:'Phone number', text:'Country code and number, then Send OTP.' },
+            { src:`${CA}s-code-empty.webp`, title:'Waiting for the code', text:'Six boxes, a 2-minute timer and a Resend link.' },
+            { src:`${CA}s-code-typed.webp`, title:'Code filled in', text:'The code from the SMS appears above the keyboard, ready to tap.' },
+            { src:`${CA}s-code-invalid.webp`, tag:'Edge case', title:'Wrong code', text:'The boxes turn red with a clear message, and Resend is one tap away.' },
+            { src:`${CA}s-code-sent.webp`, tag:'Edge case', title:'Code resent', text:'A green “OTP sent” confirms a new code is on its way.' },
+            { src:`${CA}s-verified.webp`, title:'Verified', text:'A short success screen, then the app opens.' }] },
+          { type:'image', label:'The prototype in Figma', src:`${CA}prototype.webp`, alt:'Figma prototype: 14 login and register screens linked by interaction arrows' }
+        ] },
+
+      { id:'pages', nav:'Account pages', label:'Account pages', title:'The pages around sign-in', wide:true,
+        text:['Sign-up in four short steps, and the pages every product needs: newsletter, FAQ, contact and privacy, on the website and in the app.'],
+        blocks:[
+          { type:'gallery', cols:2, items:[
+            { label:'Sign-up · step 1, contact details', src:`${CA}w-signup-1.webp`, alt:'Sign-up step 1 of 4: first name, last name and email, next to the ComAve brand panel' },
+            { label:'Sign-up · step 2, secure your account', src:`${CA}w-signup-2.webp`, alt:'Sign-up step 2 of 4: create and confirm a password' },
+            { label:'Newsletter', src:`${CA}w-newsletter.webp`, alt:'Newsletter page: “Subscribe to our newsletter” with an email field' },
+            { label:'FAQ, with search', src:`${CA}w-faq.webp`, alt:'FAQ page with a search field and expandable questions' },
+            { label:'Privacy policy, with a side menu', src:`${CA}w-privacy.webp`, alt:'Privacy policy page with a section menu on the side' }] },
+          { type:'screens', grid:true, title:'In the app', items:[
+            { src:`${CA}s-subscribe.webp`, title:'Subscribe', text:'A reward for subscribing: 100 LIX.' },
+            { src:`${CA}s-subscribed.webp`, title:'Already subscribed', text:'With a clear way to unsubscribe.' },
+            { src:`${CA}s-contact.webp`, title:'Contact us', text:'Phone, email and a short form.' }] }
+        ] },
+
+      { id:'learn', nav:'What I learned', label:'Looking back', title:'What I learned',
+        blocks:[
+          { type:'learn', items:[
+            'An OTP flow is mostly edge cases. Designing the timer, the wrong code and the resend is what makes it feel calm.',
+            'Small pages like FAQ and privacy still need structure: search, a side menu and short answers.'] }
+        ] }
+    ] },
+
   { slug:'issue-tracker', title:'IT help without the phone call',
     sections:[
       { id:'overview', nav:'Overview', title:'IT help without the phone call',
@@ -942,6 +1155,79 @@ window.CASES = [
             'Test the new flow with the same employees.',
             'Measure how long a report takes, before and after.'] }
         ] }
+    ] },
+
+  { slug:'prime', title:'From paper forms to one platform',
+    sections:[
+      { id:'overview', nav:'Overview', title:'From paper forms to one platform',
+        lede:'Prime is a web and mobile platform for the Aswan water and sanitation company: accounts, warehouses, permissions and employee affairs in one place.',
+        blocks:[
+          { type:'facts', items:[['Role','UX researcher · UI/UX designer'],['Timeline','6 weeks'],['Platform','Web + mobile · Arabic'],['Tools','Adobe XD, Figma, Illustrator']] },
+          { type:'image', label:'Prime mobile app', src:`${PR}cover-mockup.webp`, alt:'Three Prime screens in Arabic: searching items, the warehouse dashboard with four counts and a chart, and the About page' }
+        ],
+        note:'Made at the Aswan Digital Transformation Center. The original case study is on my Behance.' },
+
+      { id:'problem', nav:'The problem', label:'The problem', title:'Paper, spreadsheets and too many systems',
+        text:['The company ran accounts, inventory and employee affairs on paper and in separate tools. Before designing anything, I visited the company to see how the work really happened.'],
+        blocks:[
+          { type:'caps', items:[
+            ['Efficiency','Staff switched between systems and did a lot by hand. They needed one place for everything.'],
+            ['Workflow','Manual inventory and staff records led to errors and delays.'],
+            ['Control','People felt lost in complex systems, and wanted screens that fit their role.']] },
+          { type:'quotes', label:'What staff said', items:[
+            ['I spend too much time switching between different systems.'],
+            ['I feel like I’m drowning in paperwork.'],
+            ['I wish there was an easier way to manage inventory.', '', true],
+            ['I need more visibility into employee schedules.']] }
+        ],
+        note:'These lines come from my empathy map of the people I met.' },
+
+      { id:'users', nav:'Who it’s for', label:'Who it’s for', title:'Two people, two very different days',
+        text:['Managers, office staff and field staff all use Prime. Two personas kept the design grounded:'],
+        blocks:[
+          { type:'caps', items:[
+            ['Ahmed, 32, field technician','Recently joined. Hard to get the right information on site, which delays repairs.'],
+            ['His goal','Fix problems fast, with the right equipment and tools.'],
+            ['Hala, 40, customer relations manager','15 years at the company. Complaints reach her through too many channels.'],
+            ['Her goal','Solve issues quickly and keep communication in one place.']] },
+          { type:'image', label:'Empathy map', src:`${PR}empathy.webp`, alt:'Empathy map: what staff say, think, do and feel about paperwork, manual data entry and switching systems' }
+        ],
+        note:'Personas built from my research at the company.' },
+
+      { id:'process', nav:'Process', label:'Process', title:'Structure first, then sketches', wide:true,
+        text:['I mapped the platform’s structure first: human resources, entitlements, warehouses, accounting, central administration, and attendance and leave. Then I sketched the web and mobile screens in Arabic.'],
+        blocks:[
+          { type:'image', label:'Information architecture', src:`${PR}ia.webp`, alt:'Site map: menu, about, home, profile and contact, with home branching into the company’s departments' },
+          { type:'image', label:'Paper sketches', src:`${PR}sketches.webp`, alt:'Pencil sketches of the web login, tables and forms, and the mobile login, menu and warehouse screens' }
+        ] },
+
+      { id:'design', nav:'Final design', label:'Final design', title:'The main screens', wide:true,
+        text:['A calm blue interface: tables for long days at the office, and a lighter mobile app for checking warehouses on the go.'],
+        blocks:[
+          { type:'gallery', cols:3, items:[
+            { label:'Login', src:`${PR}w-login.webp`, alt:'Web login with the company logo', caption:'Each employee signs in to a home page for their role.' },
+            { label:'Add permissions', src:`${PR}w-permissions.webp`, alt:'Permissions table with search, filters and an add button', caption:'Request and track permissions, with search and filters.' },
+            { label:'Reports', src:`${PR}w-reports.webp`, alt:'Monthly report table', caption:'Monthly reports to follow performance and trends.' }] },
+          { type:'spotlight', label:'The key screen', title:'Warehouses at a glance', src:`${PR}s-dashboard.webp`, alt:'Warehouse dashboard: four colour-coded counts and a pie chart of this month’s best-moving items',
+            items:['Out of stock, below reorder level, most bought and most used, as four colour-coded counts.',
+                   'A chart of the categories that moved most this month.',
+                   'Search and browse always at the bottom.'] },
+          { type:'screens', grid:true, title:'More of the app', items:[
+            { src:`${PR}s-items.webp`, title:'All items', text:'Every item with its code and quantity.' },
+            { src:`${PR}s-search.webp`, title:'Search', text:'Pick a warehouse or search for an item.' },
+            { src:`${PR}s-sort.webp`, title:'Sort and filter', text:'Most bought, price or quantity.' },
+            { src:`${PR}s-about.webp`, title:'About', text:'Built by the governorate’s digital transformation team.' }] },
+          { type:'palette', colors:[['Primary','#034A72'],['Text','#525458'],['Background','#F1F1F1'],['Alert','#CB3855'],['Teal','#32BDB4'],['Yellow','#E6B61C'],['Purple','#5553C9']],
+            font:'Typefaces: Almarai for text, El Messiri for headings.' }
+        ] },
+
+      { id:'learn', nav:'What I learned', label:'Looking back', title:'What I learned',
+        blocks:[
+          { type:'learn', items:[
+            'Going to the company first showed me how the work really happened.',
+            'Back-office tools need structure before style. The information architecture came first.',
+            'One platform can feel different on each device: full tables at the desk, quick counts on the phone.'] }
+        ] }
     ] }
 ];
 </script>
@@ -1005,7 +1291,7 @@ const BLOCKS = {
   // same screen before and after: side by side by default, drag slider on request, "what changed" cards below
   pair:    b => `<div class="pairb" data-pair>
       <div class="pb-head"><div><h3>${esc(b.title)}</h3>${b.lede ? `<p>${esc(b.lede)}</p>` : ''}</div>${toggle}</div>
-      <div class="pb-side">${[['Before', 'the old panel', b.before], ['After', 'the redesign', b.after]].map(([t, d, src]) =>
+      <div class="pb-side">${[['Before', b.was || 'the old panel', b.before], ['After', b.now || 'the redesign', b.after]].map(([t, d, src]) =>
         `<figure><a href="${esc(src)}" target="_blank" rel="noopener" aria-label="${t}: ${esc(b.title)}, open full size"><div class="win">${chrome()}${img(src, `${t}: ${b.title}`)}</div></a><figcaption><b>${t}</b>${d}</figcaption></figure>`).join('')}</div>
       <div class="pb-slide"><div class="win">${chrome(b.url)}<div class="ba img">
         <div class="pane">${img(b.before, `Before: ${b.title}`)}<div class="cap">Before</div></div>

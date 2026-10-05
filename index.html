@@ -138,6 +138,12 @@ button,input{font:inherit;color:inherit}
 
 /* ---- experience timeline ---- */
 .exp{background:var(--sand);color:var(--pine);border-radius:10px;padding:42px}
+/* "See all N projects" under the four cards: the way into the full list */
+.morew{display:inline-flex;align-items:center;gap:12px;height:62px;padding:0 30px;border-radius:31px;border:1px solid var(--line);background:var(--panel);color:var(--ink);
+  font-family:inherit;font-size:22px;font-weight:600;line-height:1;cursor:pointer;white-space:nowrap;box-shadow:0 6px 18px -10px rgba(0,0,0,.25);transition:border-color .2s,color .2s,transform .2s}
+.morew:hover,.morew:focus-visible{border-color:var(--sel);color:var(--sel);transform:translateY(-1px);outline:none}
+.morew.in{animation:morein .4s ease-out}
+@keyframes morein{from{opacity:0;transform:translateY(6px)}}
 .exp-h{display:flex;align-items:baseline;justify-content:space-between;gap:21px;margin-bottom:34px}
 .exp-h h3{margin:0;font-size:29px;letter-spacing:-.015em}
 .exp-h span{font-size:17.5px;color:#6B7573}
@@ -179,7 +185,8 @@ button,input{font:inherit;color:inherit}
 .contact h3{margin:0;font-size:34px;letter-spacing:-.02em}
 .avail{display:flex;align-items:center;gap:10px;margin-top:10px;font-size:18px;color:#BFD6D1}
 .avail i{width:10px;height:10px;border-radius:50%;background:#14AE5C;box-shadow:0 0 0 5px rgba(20,174,92,.2);flex:none}
-.ctas{margin-top:auto;padding-top:29px;display:grid;gap:13px}
+.ctas{margin-top:auto;padding-top:29px;display:grid;grid-template-columns:minmax(0,1fr);gap:13px}
+.contact{container-type:inline-size}
 .email{height:57px;width:100%;display:flex;align-items:center;justify-content:space-between;gap:13px;padding:0 8px 0 21px;border:0;border-radius:29px;background:var(--mint);color:var(--pine);font-size:19px;font-weight:600;cursor:pointer}
 .email .addr{display:flex;align-items:center;gap:10px;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .email .cp{height:42px;padding:0 18px;border-radius:21px;background:var(--pine);color:#fff;font-size:16px;display:grid;place-items:center;flex:none;min-width:99px;transition:background .2s}
@@ -187,6 +194,11 @@ button,input{font:inherit;color:inherit}
 .ghosts{display:flex;flex-wrap:wrap;gap:10px}
 .gh{height:57px;flex:1 1 auto;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:0 18px;border-radius:29px;border:1.3px solid rgba(255,255,255,.25);color:#fff;text-decoration:none;font-size:17.5px;font-weight:500;white-space:nowrap;transition:background .2s,border-color .2s}
 .gh:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.5)}
+/* the narrow (phone) contact card: a tighter email row so the address and Copy both fit */
+@container (max-width: 420px){
+  .email{font-size:17px;padding-left:16px;gap:10px}
+  .email .cp{min-width:0;padding:0 15px}
+}
 
 .drawn{overflow:hidden}
 .drawn .inner{opacity:0;transition:opacity .35s}
@@ -223,11 +235,13 @@ button,input{font:inherit;color:inherit}
 .pin .dot{width:30px;height:30px;border-radius:50% 50% 50% 0;display:grid;place-items:center;color:#fff;font-weight:700;font-size:12px;box-shadow:0 2px 6px rgba(0,0,0,.25);border:2px solid #fff}
 .pin .bub{position:absolute;left:38px;top:0;width:240px;background:var(--panel);color:var(--ink);border-radius:10px;box-shadow:var(--shadow);padding:12px 14px;display:none}
 .pin.open .bub{display:block}
+.pin.left .bub{left:auto;right:38px}   /* near the right edge the bubble opens to the left */
 .pin .bub b{display:block;font-size:12.5px;margin-bottom:4px}
 .pin .bub span{font-size:13.5px;line-height:1.45}
-.composer{position:absolute;pointer-events:auto;background:var(--panel);border-radius:10px;box-shadow:var(--shadow);padding:8px;display:flex;gap:6px;width:280px;transform:translate(38px,-100%)}
+.composer{position:absolute;pointer-events:auto;background:var(--panel);border-radius:10px;box-shadow:var(--shadow);padding:8px;display:flex;gap:6px;width:280px;transform:translateY(-100%)}
 .composer input{flex:1;border:1px solid var(--line);border-radius:6px;padding:0 10px;height:34px;background:var(--field);min-width:0}
 .composer button{height:34px;border:0;border-radius:6px;background:var(--sel);color:#fff;font-weight:600;padding:0 12px;cursor:pointer}
+.composer button.x,.tchat button.x{width:34px;padding:0;background:var(--field);color:var(--ink);font-size:18px;line-height:1}
 .emote{position:absolute;font-size:30px;pointer-events:none;animation:up 1.4s ease-out forwards}
 @keyframes up{to{transform:translateY(-110px) scale(1.2);opacity:0}}
 .status{position:fixed;left:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:11;display:flex;align-items:center;gap:10px;height:40px;padding:0 14px;
@@ -243,9 +257,11 @@ button,input{font:inherit;color:inherit}
 .touchbar{position:fixed;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));display:none;gap:8px;z-index:11}
 .touchbar button{height:40px;padding:0 14px;border:0;border-radius:20px;background:var(--panel);box-shadow:var(--shadow);font-weight:600}
 .touchbar button.on{background:var(--sel);color:#fff}
-.tchat{position:fixed;left:50%;bottom:calc(64px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);display:none;pointer-events:auto;z-index:12;background:var(--sel);border-radius:22px;padding:8px 14px}
-.tchat.show{display:block}
-.tchat input{width:min(260px,60vw);border:0;background:transparent;color:#fff;outline:none;font-size:15px}
+.tchat{position:fixed;left:50%;bottom:calc(64px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);display:none;align-items:center;gap:6px;pointer-events:auto;z-index:12;background:var(--sel);border-radius:22px;padding:6px 6px 6px 16px;width:min(360px,calc(100vw - 24px))}
+.tchat.show{display:flex}
+.tchat input{flex:1;min-width:0;border:0;background:transparent;color:#fff;outline:none;font-size:16px}
+.tchat button{height:32px;border:0;border-radius:16px;padding:0 14px;background:#fff;color:var(--sel);font-weight:600;cursor:pointer}
+.tchat button.x{border-radius:50%;width:32px;background:rgba(255,255,255,.2);color:#fff}
 .tchat input::placeholder{color:rgba(255,255,255,.8)}
 
 /* overlays */
@@ -255,7 +271,7 @@ button,input{font:inherit;color:inherit}
 .lcard{width:min(920px,calc(100% - 24px));max-height:calc(100% - 24px);background:var(--panel);border-radius:12px;box-shadow:var(--shadow);display:flex;flex-direction:column;overflow:hidden;margin:auto}
 .lhd{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--line)}
 .lhd h3{margin:0;font-size:15px}.lhd p{margin:2px 0 0;color:var(--muted)}
-.lgrid{padding:16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;overflow:auto}
+.lgrid{padding:16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));grid-auto-rows:max-content;gap:14px;overflow:auto;min-height:0}
 .litem{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel);text-align:left;padding:0;cursor:pointer;display:block;color:inherit;text-decoration:none}
 .litem:hover{border-color:var(--sel)}
 .litem .sw2{height:110px;overflow:hidden;position:relative;container-type:inline-size}.litem .tx{padding:12px 14px}.litem .tx b{display:block;font-size:14px;margin-bottom:3px}.litem .tx span{color:var(--muted)}
@@ -284,9 +300,9 @@ button,input{font:inherit;color:inherit}
     <div class="avs" id="avs"></div>
     <button class="tb ghost" id="skipBtn">Skip intro</button>
     <button class="tb" id="themeBtn"></button>
-    <button class="tb" id="listBtn" title="List view">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M5.5 4h8M5.5 8h8M5.5 12h8"/><circle cx="2.5" cy="4" r=".6" fill="currentColor"/><circle cx="2.5" cy="8" r=".6" fill="currentColor"/><circle cx="2.5" cy="12" r=".6" fill="currentColor"/></svg>
-      <span class="hn">List view</span>
+    <button class="tb" id="listBtn" title="All work (L)">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9" y="2" width="5" height="5" rx="1"/><rect x="2" y="9" width="5" height="5" rx="1"/><rect x="9" y="9" width="5" height="5" rx="1"/></svg>
+      <span class="hn">All work</span>
     </button>
     <button class="tb blue" id="hireBtn">Contact</button>
   </header>
@@ -296,6 +312,11 @@ button,input{font:inherit;color:inherit}
       <div class="tbox" id="t1"></div>
       <div class="tbox" id="t2"></div>
       <div class="obj drawn exp" id="exp"><div class="inner"></div></div>
+      <button class="obj morew hide" id="moreLink" type="button">
+        <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9" y="2" width="5" height="5" rx="1"/><rect x="2" y="9" width="5" height="5" rx="1"/><rect x="9" y="9" width="5" height="5" rx="1"/></svg>
+        <span id="moreText"></span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </button>
       <div class="obj drawn box about" id="about"><div class="inner">
         <div class="ab-h"><img id="avatar" alt="" width="52" height="52"><h3>About me</h3></div>
         <div class="tabs" role="tablist" aria-label="About me" id="tabs"></div>
@@ -335,7 +356,7 @@ button,input{font:inherit;color:inherit}
     </div>
     <div class="status busy" id="status"><i></i><span></span></div>
     <div class="touchbar"><button id="tbComment">Comment</button><button id="tbChat">Chat</button></div>
-    <div class="tchat" id="tchat"><input id="tInput" maxlength="80" aria-label="Chat message"></div>
+    <div class="tchat" id="tchat"><input id="tInput" maxlength="80" aria-label="Chat message" enterkeyhint="send"><button id="tSend" type="button">Send</button><button class="x" id="tClose" type="button" aria-label="Close chat">×</button></div>
   </div>
 </div>
 
@@ -409,8 +430,18 @@ window.CONTENT = {
 
   /* More projects: shown only in the "All work" list (not on the canvas), each with its case study in project.html. */
   more: [
+    { slug:'citizen-eye', title:'Citizen Eye', kicker:'Government, two mobile apps (Arabic)', bg:'#E6EFE0',
+      cover:'assets/projects/citizen-eye/cover-mockup.webp' },
+    { slug:'sono-women', title:'Sono Women', kicker:'Women entrepreneurs, mobile app (Arabic)', bg:'#F3E4DC',
+      cover:'assets/projects/sono-women/cover-mockup.webp' },
+    { slug:'aqeelah', title:'Al-Aqeelah Market Website', kicker:'E-commerce, website redesign task', bg:'#F6E1DE',
+      cover:'assets/projects/aqeelah/cover-mockup.webp' },
+    { slug:'comave', title:'ComAve Login & Account', kicker:'Rewards platform, app and web', bg:'#FFE9DA',
+      cover:'assets/projects/comave/cover-mockup.webp' },
     { slug:'issue-tracker', title:'Employees Issue Tracker', kicker:'Government, mobile app (Arabic)', bg:'#DDEFE2',
-      cover:'assets/projects/issue-tracker/cover-mockup.webp' }
+      cover:'assets/projects/issue-tracker/cover-mockup.webp' },
+    { slug:'prime', title:'Prime Water Platform', kicker:'Utilities, web and mobile (Arabic)', bg:'#DDE9F1',
+      cover:'assets/projects/prime/cover-mockup.webp' }
   ]
 };
 </script>
@@ -425,6 +456,9 @@ const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 /* ---------------- content (from the CONTENT block above) ---------------- */
 const C = window.CONTENT;
 const PROJECTS = C.projects;
+const ALL_WORK = [...PROJECTS, ...(C.more || [])], MORE_N = ALL_WORK.length;
+const moreLink = $('#moreLink');
+$('#moreText').textContent = 'See all projects';
 const TABS = C.about;
 const ME_NAME = C.firstName;
 let tab = 0;
@@ -538,6 +572,14 @@ function flow(){
   let y = L.top;
   L.slots = cards.map((c, i) => { const s = [L.cardX[i], y]; if (L.stack) y += ch + L.gap; return s; });
   if (!L.stack) y += ch + L.gap;
+  // "See all N projects": right under the cards, right-aligned (full width when stacked)
+  if (MORE_N > 4){
+    const m = moreLink, was = m.classList.contains('hide'); m.classList.remove('hide');
+    m.style.width = L.stack ? L.cardW + 'px' : ''; m.style.justifyContent = L.stack ? 'center' : '';
+    const w = m.offsetWidth, mh = m.offsetHeight, top = y - L.gap + 18;
+    if (was) m.classList.add('hide');
+    L.more = [L.stack ? L.cardX[0] : L.cardX[3] + L.cardW - w, top]; y = top + mh + L.gap;
+  }
   const [ex, ew] = L.expCol;
   L.exp = [ex, y, ew, measure(exp.el, ew)]; y += L.exp[3] + L.gap;
   // About keeps one height for every tab, so switching tabs never resizes it
@@ -627,7 +669,7 @@ function resetScene(){
   const [px, py] = L.pile;
   cards.forEach((c, i) => { c.x = px - L.cardW / 2 + (i - 1.5) * 14; c.y = py - L.cardH / 2 + (i - 1.5) * 10; c.r = [-9, 6, -4, 8][i]; c.el.style.zIndex = 2 + cards.length - i; pos(c); });   // first card on top: it is the first one Noha picks up
   [exp, about, contact].forEach(o => { o.el.classList.add('hide'); o.el.classList.remove('done', 'drawing'); });
-  sticky.el.classList.add('hide');
+  sticky.el.classList.add('hide'); moreLink.classList.add('hide');
   pins = pins.filter(p => !p.noha); placePins();
   noha.x = L.W + 80; noha.y = L.H * 0.45; drawNoha();
 }
@@ -639,7 +681,12 @@ function finalScene(){
     o.x = r[0]; o.y = r[1]; o.r = 0; pos(o); o.el.style.width = r[2] + 'px'; o.el.style.height = r[3] + 'px';
     o.el.classList.remove('hide', 'drawing'); o.el.classList.add('done');
   });
-  placeSticky(false); addNohaPin();
+  placeSticky(false); addNohaPin(); placeMore(false);
+}
+function placeMore(animate){
+  if (!L.more) return;
+  Object.assign(moreLink.style, { left:L.more[0] + 'px', top:L.more[1] + 'px' });
+  moreLink.classList.remove('hide', 'in'); if (animate){ void moreLink.offsetWidth; moreLink.classList.add('in'); }
 }
 // waving hand after the headline; falls back to the emoji if the image can't load
 function addWave(animate){
@@ -695,6 +742,7 @@ async function intro(){
       await drag(c, L.slots[i][0], L.slots[i][1], 520, alive);
       if (i === 0) chat(noha.el, 'my favourite project 👇', 1600);
     }
+    placeMore(true);
     await drawBox(exp, L.exp, alive);
     await drawBox(about, L.about, alive);
     await drawBox(contact, L.contact, alive);
@@ -749,10 +797,10 @@ try { localStorage.removeItem(KEY); } catch {}
 function placePins(){
   ov.querySelectorAll('.pin').forEach(n => n.remove());
   pins.forEach(p => {
-    const s = w2s(p.x, p.y), n = document.createElement('div');
-    n.className = 'pin' + (p.open ? ' open' : '');
+    const s = w2s(p.x, p.y), n = document.createElement('div'), view = viewBox(), bw = Math.min(240, view.w - 70);
+    n.className = 'pin' + (p.open ? ' open' : '') + (s.x + 38 + bw > view.r ? ' left' : '');
     n.style.left = s.x + 'px'; n.style.top = s.y + 'px';
-    n.innerHTML = `<div class="dot" style="background:${p.color}">${esc(p.name[0])}</div><div class="bub"><b>${esc(p.name)}</b><span>${esc(p.text)}</span></div>`;
+    n.innerHTML = `<div class="dot" style="background:${p.color}">${esc(p.name[0])}</div><div class="bub" style="width:${bw}px"><b>${esc(p.name)}</b><span>${esc(p.text)}</span></div>`;
     n.addEventListener('pointerdown', e => e.stopPropagation());
     n.addEventListener('click', () => { p.open = !p.open; placePins(); });
     ov.appendChild(n);
@@ -764,29 +812,34 @@ function addNohaPin(open){
   placePins();
 }
 let mode = 'move', composer = null;
+// the visible part of the canvas, in canvas-content pixels: overlays stay inside it so nothing scrolls the page sideways
+function viewBox(){ const l = canvas.scrollLeft, w = canvas.clientWidth; return { l:l + 8, r:l + w - 8, w }; }
 function setMode(m){
   mode = m;
   $('#tMove').classList.toggle('on', m === 'move'); $('#tComment').classList.toggle('on', m === 'comment');
-  $('#tbComment').classList.toggle('on', m === 'comment');
+  $('#tbComment').classList.toggle('on', m === 'comment'); $('#tbComment').textContent = m === 'comment' ? 'Cancel' : 'Comment';
   me.el.classList.toggle('commenting', m === 'comment');
   if (m !== 'comment') closeComposer();
 }
 function openComposer(wx, wy){
   closeComposer();
-  const s = w2s(wx, wy);
+  const s = w2s(wx, wy), view = viewBox(), w = Math.min(280, view.w - 16);
+  // to the right of the tap, or to its left when there's no room, and never past either edge
+  let x = s.x + 38; if (x + w > view.r) x = s.x - w - 8; x = Math.max(view.l, Math.min(x, view.r - w));
   composer = document.createElement('div'); composer.className = 'composer';
-  composer.style.left = s.x + 'px'; composer.style.top = s.y + 'px';
-  composer.innerHTML = '<input maxlength="140" placeholder="Leave a comment…" aria-label="Comment"><button>Post</button>';
+  Object.assign(composer.style, { left:x + 'px', top:Math.max(s.y, canvas.scrollTop + 60) + 'px', width:w + 'px' });
+  composer.innerHTML = '<input maxlength="140" placeholder="Leave a comment…" aria-label="Comment" enterkeyhint="send"><button class="post">Post</button><button class="x" aria-label="Cancel comment">×</button>';
   composer.addEventListener('pointerdown', e => e.stopPropagation());
+  composer.querySelector('.x').onclick = () => { closeComposer(); setMode('move'); };
   ov.appendChild(composer);
-  const inp = composer.querySelector('input'); inp.focus(); requestAnimationFrame(() => inp.isConnected && inp.focus());
+  const inp = composer.querySelector('input'); inp.focus({ preventScroll:true }); requestAnimationFrame(() => inp.isConnected && inp.focus({ preventScroll:true }));
   const post = () => {
     const t = inp.value.trim(); if (!t) return closeComposer();
     pins.push({ x:wx, y:wy, name:me.name, color:me.color, text:t, open:true }); deliver('comment', t); closeComposer(); placePins();
     if (introDone) setTimeout(() => chat(noha.el, 'Thanks for the note! 💬', 3200), 900);
     setMode('move');
   };
-  composer.querySelector('button').onclick = post;
+  composer.querySelector('.post').onclick = post;
   inp.addEventListener('keydown', e => { if (e.key === 'Enter') post(); if (e.key === 'Escape') closeComposer(); e.stopPropagation(); });
 }
 function closeComposer(){ if (composer){ composer.remove(); composer = null; } }
@@ -816,8 +869,10 @@ function sendChat(text){
     chat(noha.el, reply(text), 4000);
   }, 900);
 }
+// phones and narrow windows use the chat bar at the bottom; the cursor bubble needs room beside the cursor
+const barChat = () => coarse || canvas.clientWidth < 600;
 function openMeChat(){
-  if (coarse){ $('#tchat').classList.add('show'); $('#tInput').focus(); chatOpen = true; return; }
+  if (barChat()){ $('#tchat').classList.add('show'); $('#tInput').focus({ preventScroll:true }); chatOpen = true; $('#tbChat').classList.add('on'); return; }
   if (me.x < 0){   // opened from the toolbar: the cursor is off the canvas, so show the bubble in the middle of the view
     me.x = canvas.scrollLeft + canvas.clientWidth * 0.42; me.y = canvas.scrollTop + canvas.clientHeight * 0.4;
     me.el.style.transform = `translate(${me.x}px,${me.y}px)`;
@@ -826,16 +881,21 @@ function openMeChat(){
   chatOpen = true; me.el.classList.add('chatting'); const box = me.el.querySelector('.mechat'); box.classList.add('show');
   const inp = $('#meInput'); inp.value = ''; setTimeout(() => inp.focus(), 0);
 }
-function closeMeChat(){ chatOpen = false; me.el.querySelector('.mechat').classList.remove('show'); me.el.classList.remove('chatting'); $('#tchat').classList.remove('show'); }
+function closeMeChat(){ chatOpen = false; me.el.querySelector('.mechat').classList.remove('show'); me.el.classList.remove('chatting'); $('#tchat').classList.remove('show'); $('#tbChat').classList.remove('on'); }
 $('#meInput').addEventListener('keydown', e => {
   e.stopPropagation();
   if (e.key === 'Enter'){ const t = e.target.value.trim(); closeMeChat(); if (t) sendChat(t); }
   if (e.key === 'Escape') closeMeChat();
 });
+function sendBarChat(){ const i = $('#tInput'), t = i.value.trim(); i.value = ''; closeMeChat(); if (t){ chat(noha.el, reply(t), 4000); deliver('chat message', t); } }
 $('#tInput').addEventListener('keydown', e => {
-  if (e.key === 'Enter'){ const t = e.target.value.trim(); e.target.value = ''; closeMeChat(); if (t){ chat(noha.el, reply(t), 4000); deliver('chat message', t); } }
+  if (e.key === 'Enter') sendBarChat();
   if (e.key === 'Escape') closeMeChat();
 });
+$('#tSend').onclick = sendBarChat;
+$('#tClose').onclick = closeMeChat;
+// overlays and focused inputs must never scroll the canvas sideways (into empty space)
+canvas.addEventListener('scroll', () => { if (canvas.scrollLeft) canvas.scrollLeft = 0; if (!L.scroll && canvas.scrollTop) canvas.scrollTop = 0; });
 
 /* ---------------- pointer ---------------- */
 let dragging = null;
@@ -927,7 +987,7 @@ $('#tMove').onclick = () => setMode('move');
 $('#tComment').onclick = () => setMode(mode === 'comment' ? 'move' : 'comment');
 $('#tbComment').onclick = () => setMode(mode === 'comment' ? 'move' : 'comment');
 $('#tChat').onclick = openMeChat;
-$('#tbChat').onclick = openMeChat;
+$('#tbChat').onclick = () => chatOpen ? closeMeChat() : openMeChat();
 $('#hireBtn').onclick = () => { if (!introDone) skip(); if (L.scroll) contact.el.scrollIntoView({ behavior:reduced ? 'auto' : 'smooth', block:'center' }); contact.el.animate([{ transform:'scale(1)' }, { transform:'scale(1.04)' }, { transform:'scale(1)' }], { duration:500 }); chat(noha.el, 'Right here 👇 email, LinkedIn or Behance', 3200); moveNoha(contact.x + 40, contact.y + 30, 600, () => true).catch(() => {}); };
 document.addEventListener('keydown', e => {
   if (e.target.matches('input')) return;
@@ -950,7 +1010,8 @@ $('#lnCv').addEventListener('click', () => track('cv_downloaded', { from:'home' 
 /* ---------------- case study pages + list ---------------- */
 const caseUrl = p => `project.html?p=${encodeURIComponent(p.slug)}`;
 function openCase(i){ location.href = caseUrl(PROJECTS[i]); }
-$('#lgrid').innerHTML = [...PROJECTS, ...(C.more || [])].map(p => `<a class="litem" href="${caseUrl(p)}"><div class="sw2" style="background:${p.bg}">${thumb(p)}</div><div class="tx"><b>${esc(p.title)}</b><span>${esc(p.kicker)}</span></div></a>`).join('');
+moreLink.onclick = () => { $('#list').classList.add('show'); window.track('all_work_opened', { from:'canvas' }); };
+$('#lgrid').innerHTML = ALL_WORK.map(p => `<a class="litem" href="${caseUrl(p)}"><div class="sw2" style="background:${p.bg}">${thumb(p)}</div><div class="tx"><b>${esc(p.title)}</b><span>${esc(p.kicker)}</span></div></a>`).join('');
 $('#listBtn').onclick = () => $('#list').classList.add('show');
 $('#lClose').onclick = () => $('#list').classList.remove('show');
 $('#list').addEventListener('click', e => { if (e.target.id === 'list') $('#list').classList.remove('show'); });
