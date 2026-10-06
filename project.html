@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
-<script>try { const t = localStorage.getItem('ng-theme'); if (t) document.documentElement.dataset.theme = t; } catch {}</script>
+<script>/* dark by default; a visitor's own choice (the sun/moon button) wins */ (() => { let t = 'dark'; try { t = localStorage.getItem('ng-theme') || t; } catch {} document.documentElement.dataset.theme = t; })();</script>
 <script>
 /* Analytics: PostHog (US cloud). Visits, countries/cities, referrers, session replays and a few events.
    No cookies (the visitor id lives for one tab session), typed text is masked in replays,
@@ -448,7 +448,8 @@ const PHONE = {
 
 const BM = 'assets/projects/baymax/';          // screens for the BayMax app case study
 const IT = 'assets/projects/issue-tracker/';   // screens for the Employees Issue Tracker case study
-const CE = 'assets/projects/citizen-eye/';     // mockups for the Citizen Eye apps
+const CE = 'assets/projects/citizen-eye/';     // mockups for the Citizen Eye app
+const CO = 'assets/projects/citizen-eye-officials/';   // mockup for Citizen Eye for Officials
 const SW = 'assets/projects/sono-women/';      // mockups for the Sono Women app
 const AQ = 'assets/projects/aqeelah/';         // pages for the Al-Aqeelah website redesign task
 const CA = 'assets/projects/comave/';          // screens for the ComAve login and account pages
@@ -542,18 +543,18 @@ window.CASES = [
         ] }
     ] },
 
-  { slug:'citizen-eye', title:'Report it, fix it, confirm it',
+  { slug:'citizen-eye', title:'Take a photo, report the problem',
     sections:[
-      { id:'overview', nav:'Overview', title:'Report it, fix it, confirm it',
-        lede:'Two apps for Aswan Governorate: citizens photograph a problem in the street and report it, officials fix it, and the citizen confirms the fix.',
+      { id:'overview', nav:'Overview', title:'Take a photo, report the problem',
+        lede:'Citizen Eye (عين المواطن) lets anyone in Aswan Governorate photograph a problem in the street, report it in a few taps, and confirm when it’s fixed.',
         blocks:[
-          { type:'facts', items:[['Role','UI/UX designer'],['Team','Aswan Digital Transformation Center'],['Platform','Two Android apps · Arabic'],['Status','Launched']] },
+          { type:'facts', items:[['Role','UI/UX designer'],['Team','Aswan Digital Transformation Center'],['Platform','Android app · Arabic'],['Status','Launched']] },
           { type:'image', label:'Citizen Eye', src:`${CE}cover-mockup.webp`, alt:'Citizen Eye screens in Arabic: “Take a photo now”, the splash screen, a fix to confirm, the report form and a map pin' }
         ],
-        note:'Made at the Aswan Digital Transformation Center. Both apps went live.' },
+        note:'Made at the Aswan Digital Transformation Center. It went live, together with its sister app for officials.' },
 
       { id:'loop', nav:'The idea', label:'The idea', title:'A loop with the citizen at both ends',
-        text:['Citizen Eye (عين المواطن) is for anyone in the governorate. Citizen Eye for Officials is for the people who fix what gets reported. The same report travels through both apps:'],
+        text:['Citizen Eye is for anyone in the governorate. Its sister app, Citizen Eye for Officials, is for the people who fix what gets reported. The same report travels through both apps:'],
         blocks:[
           { type:'caps', items:[
             ['1 · The citizen reports','A photo, what the problem is, the city, and a pin on the map.'],
@@ -576,14 +577,46 @@ window.CASES = [
             { label:'Report and confirm', src:`${CE}citizen-report.webp`, alt:'A notification with the photo of the fix and Confirm solved and Not solved buttons, the report form and the map pin', caption:'The report form, the map pin, and the notification asking the citizen to confirm the fix.' }] }
         ] },
 
-      { id:'officials', nav:'Officials app', label:'Citizen Eye for Officials', title:'Every report, on one screen', wide:true,
-        text:['Officials see what needs doing, where it is, and how well the governorate is responding.'],
+      { id:'results', nav:'Results', label:'Results', title:'Used across Aswan',
+        text:['By 22 April 2024, citizens had sent 768 reports through the app, and 648 of them were solved.'],
+        note:'The numbers come from the officials’ dashboard in Citizen Eye for Officials.' },
+
+      { id:'learn', nav:'What I learned', label:'Looking back', title:'What I learned',
         blocks:[
-          { type:'image', label:'Citizen Eye for Officials', src:`${CE}officials.webp`, alt:'Officials app: a list of photo reports, the dashboard with totals and a chart by category, and a map of Aswan full of report pins' },
+          { type:'learn', items:[
+            'For a public app, one obvious action beats a menu of options.',
+            'Letting citizens confirm the fix turned a complaint box into a feedback loop.',
+            'Choices from a list and a pin on a map beat a form that people have to type.'] }
+        ] }
+    ] },
+
+  { slug:'citizen-eye-officials', title:'Every report, on one screen',
+    sections:[
+      { id:'overview', nav:'Overview', title:'Every report, on one screen',
+        lede:'Citizen Eye for Officials (عين المواطن للتنفيذيين) gives the officials of Aswan Governorate every citizen report on a dashboard, a list and a map, so they can fix problems and see how well they’re responding.',
+        blocks:[
+          { type:'facts', items:[['Role','UI/UX designer'],['Team','Aswan Digital Transformation Center'],['Platform','Android app · Arabic'],['Status','Launched']] },
+          { type:'image', label:'Citizen Eye for Officials', src:`${CO}cover-mockup.webp`, alt:'Officials app: a list of photo reports, the dashboard with totals and a chart by category, and a map of Aswan full of report pins' }
+        ],
+        note:'The sister app of Citizen Eye, made at the Aswan Digital Transformation Center. Both went live.' },
+
+      { id:'problem', nav:'The job', label:'The job', title:'From a pile of reports to a plan',
+        text:['Citizens send reports with a photo, a category, the city and a pin on the map. The officials who fix them need three things: what needs doing, where it is, and whether the work is getting done.'],
+        blocks:[
           { type:'caps', items:[
-            ['Dashboard','Total, solved and unsolved reports, the response rate, the fixes citizens rejected, and a chart by category.'],
-            ['Reports','Photo cards with the place and time, tabs for not handled, rejected and solved, and quick chat and map buttons.'],
-            ['Map','Every report pinned across Aswan, so it’s easy to see where problems cluster.']] }
+            ['What needs doing','Reports by status, newest first, with the photo and the place.'],
+            ['Where it is','Every report on a map of the governorate.'],
+            ['How it’s going','Totals, the response rate, and the fixes citizens rejected.']] }
+        ],
+        note:'Citizens confirm each fix in their own app, so a “solved” report really is solved.' },
+
+      { id:'design', nav:'The app', label:'The app', title:'Three views of the same reports', wide:true,
+        text:['Three tabs at the bottom: the dashboard, the list of reports and the map.'],
+        blocks:[
+          { type:'gallery', cols:3, items:[
+            { label:'Dashboard', src:`${CO}s-dashboard.webp`, alt:'Dashboard: 768 reports, 648 solved, 118 not solved, 84% response rate, 24 rejected by citizens, and a chart by category', caption:'Total, solved and unsolved reports, the response rate, the fixes citizens rejected, and a chart by category.' },
+            { label:'Reports', src:`${CO}s-reports.webp`, alt:'Reports list: photo cards with the place and time, chat and map buttons, and tabs for not handled, rejected and solved', caption:'Photo cards with the place and time, tabs for not handled, rejected and solved, and quick chat and map buttons.' },
+            { label:'Map', src:`${CO}s-map.webp`, alt:'Map of Aswan with red pins for every report along the Nile', caption:'Every report pinned across Aswan, so it’s easy to see where problems cluster.' }] }
         ] },
 
       { id:'results', nav:'Results', label:'Results', title:'In use across Aswan',
@@ -596,9 +629,9 @@ window.CASES = [
       { id:'learn', nav:'What I learned', label:'Looking back', title:'What I learned',
         blocks:[
           { type:'learn', items:[
-            'For a public app, one obvious action beats a menu of options.',
-            'Letting citizens confirm the fix turned a complaint box into a feedback loop.',
-            'The same report needs two very different apps: one to send and check it, one to act on it.'] }
+            'The same report needs two very different apps: one to send and check it, one to act on it.',
+            'A few big numbers up front tell officials how they’re doing before they dive into the list.',
+            'A map shows patterns a list never will, like which neighbourhoods need attention.'] }
         ] }
     ] },
 
@@ -703,9 +736,9 @@ window.CASES = [
   { slug:'comave', title:'Six digits, every state designed',
     sections:[
       { id:'overview', nav:'Overview', title:'Six digits, every state designed',
-        lede:'Login, phone verification and the account pages around them for ComAve, a Luxembourg platform for shopping, travel booking and games.',
+        lede:'Login and phone verification for the ComAve app, a Luxembourg platform for shopping, travel booking and games.',
         blocks:[
-          { type:'facts', items:[['Role','UI/UX designer · COMAVE'],['Year','2024'],['Platform','Mobile app + website'],['Scope','Login, OTP, sign-up and account pages']] },
+          { type:'facts', items:[['Role','UI/UX designer · COMAVE'],['Year','2024'],['Platform','Mobile app'],['Scope','Login and OTP verification']] },
           { type:'image', label:'ComAve login', src:`${CA}cover-mockup.webp`, alt:'Three ComAve screens: login with email or phone, the six-digit code being filled in, and “Phone number verified”' }
         ],
         note:'Designed during my time at COMAVE. The original posts are on my Behance.' },
@@ -727,7 +760,25 @@ window.CASES = [
           { type:'image', label:'The prototype in Figma', src:`${CA}prototype.webp`, alt:'Figma prototype: 14 login and register screens linked by interaction arrows' }
         ] },
 
-      { id:'pages', nav:'Account pages', label:'Account pages', title:'The pages around sign-in', wide:true,
+      { id:'learn', nav:'What I learned', label:'Looking back', title:'What I learned',
+        blocks:[
+          { type:'learn', items:[
+            'An OTP flow is mostly edge cases. Designing the timer, the wrong code and the resend is what makes it feel calm.',
+            'Offering email or phone on one screen, plus a guest option, keeps people from leaving at the first step.'] }
+        ] }
+    ] },
+
+  { slug:'comave-pages', title:'The pages around sign-in',
+    sections:[
+      { id:'overview', nav:'Overview', title:'The pages around sign-in',
+        lede:'Sign-up, newsletter, FAQ, privacy and contact pages for ComAve, a Luxembourg platform for shopping, travel booking and games, on the website and in the app.',
+        blocks:[
+          { type:'facts', items:[['Role','UI/UX designer · COMAVE'],['Year','2024'],['Platform','Website + mobile app'],['Scope','Sign-up and CMS pages']] },
+          { type:'image', label:'ComAve pages', src:`${CA}card-cover-pages.webp`, alt:'ComAve web pages in browser windows: sign-up steps, newsletter, FAQ and privacy policy' }
+        ],
+        note:'Designed during my time at COMAVE. The original post is on my Behance.' },
+
+      { id:'pages', nav:'The pages', label:'The pages', title:'Small pages, still designed with care', wide:true,
         text:['Sign-up in four short steps, and the pages every product needs: newsletter, FAQ, contact and privacy, on the website and in the app.'],
         blocks:[
           { type:'gallery', cols:2, items:[
@@ -745,8 +796,8 @@ window.CASES = [
       { id:'learn', nav:'What I learned', label:'Looking back', title:'What I learned',
         blocks:[
           { type:'learn', items:[
-            'An OTP flow is mostly edge cases. Designing the timer, the wrong code and the resend is what makes it feel calm.',
-            'Small pages like FAQ and privacy still need structure: search, a side menu and short answers.'] }
+            'Small pages like FAQ and privacy still need structure: search, a side menu and short answers.',
+            'Splitting sign-up into short steps makes a long form feel quick.'] }
         ] }
     ] },
 

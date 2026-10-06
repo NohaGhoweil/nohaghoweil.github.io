@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
-<script>try { const t = localStorage.getItem('ng-theme'); if (t) document.documentElement.dataset.theme = t; } catch {}</script>
+<script>/* dark by default; a visitor's own choice (the sun/moon button) wins */ (() => { let t = 'dark'; try { t = localStorage.getItem('ng-theme') || t; } catch {} document.documentElement.dataset.theme = t; })();</script>
 <style>
 :root{ --panel:#FFFFFF; --canvas:#F4F4F4; --dot:#D6D6D6; --ink:#1E1E1E; --muted:#8A8A8A; --line:#E6E6E6;
   --sel:#0D99FF; --clay:#B06E4A; color-scheme:light }

@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
-<script>try { const t = localStorage.getItem('ng-theme'); if (t) document.documentElement.dataset.theme = t; } catch {}</script>
+<script>/* dark by default; a visitor's own choice (the sun/moon button) wins */ (() => { let t = 'dark'; try { t = localStorage.getItem('ng-theme') || t; } catch {} document.documentElement.dataset.theme = t; })();</script>
 <script>
 /* Analytics: PostHog (US cloud). Visits, countries/cities, referrers, session replays and a few events.
    No cookies (the visitor id lives for one tab session), typed text is masked in replays,
@@ -473,7 +473,7 @@ window.CONTENT = {
      out:   the result line under the title, [bold part, rest]
      cover: image on the card (optional; falls back to the drawn thumbnail `th`) */
   projects: [
-    { slug:'citizen-eye', title:'Citizen Eye', kicker:'Government, two mobile apps (Arabic)', bg:'#E6EFE0',
+    { slug:'citizen-eye', title:'Citizen Eye', kicker:'Government, mobile app (Arabic)', bg:'#E6EFE0',
       cover:'assets/projects/citizen-eye/cover-mockup.webp',
       out:['768','reports sent by citizens'] },
     { slug:'baymax', title:'BayMax Employee App', kicker:'Healthcare, mobile app (Arabic)', bg:'#DCEBF6',
@@ -505,10 +505,14 @@ window.CONTENT = {
 
   /* More projects: shown only in the "All work" list (not on the canvas), each with its case study in project.html. */
   more: [
+    { slug:'citizen-eye-officials', title:'Citizen Eye for Officials', kicker:'Government, dashboard app (Arabic)', bg:'#EDE3F0',
+      cover:'assets/projects/citizen-eye-officials/cover-mockup.webp' },
     { slug:'aqeelah', title:'Al-Aqeelah Market Website', kicker:'E-commerce, website redesign task', bg:'#F6E1DE',
       cover:'assets/projects/aqeelah/card-cover.webp' },
-    { slug:'comave', title:'ComAve Login & Account', kicker:'Rewards platform, app and web', bg:'#FFE9DA',
+    { slug:'comave', title:'ComAve OTP Login', kicker:'Rewards platform, mobile app', bg:'#FFE9DA',
       cover:'assets/projects/comave/card-cover.webp' },
+    { slug:'comave-pages', title:'ComAve Account Pages', kicker:'Rewards platform, website and app', bg:'#FFE9DA',
+      cover:'assets/projects/comave/card-cover-pages.webp' },
     { slug:'issue-tracker', title:'Employees Issue Tracker', kicker:'Government, mobile app (Arabic)', bg:'#DDEFE2',
       cover:'assets/projects/issue-tracker/card-cover.webp' }
   ]
