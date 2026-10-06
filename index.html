@@ -221,6 +221,7 @@ button,input{font:inherit;color:inherit}
 .cur .tag{position:absolute;left:16px;top:18px;padding:3px 8px;border-radius:4px 10px 10px 10px;color:#fff;font-size:12px;font-weight:600;white-space:nowrap}
 .cur .chat{position:absolute;left:16px;top:18px;padding:8px 12px;border-radius:4px 16px 16px 16px;color:#fff;font-size:13.5px;line-height:1.35;max-width:240px;width:max-content;opacity:0;transform:translateY(4px);transition:.25s}
 .cur .chat.show{opacity:1;transform:none}
+.cur.flip .chat{left:auto;right:4px;border-radius:16px 4px 16px 16px}   /* near the right edge the bubble opens to the left */
 .cur.chatting .tag{opacity:0}
 .cur.click svg{animation:clk .25s}
 @keyframes clk{50%{transform:scale(.8)}}
@@ -254,6 +255,12 @@ button,input{font:inherit;color:inherit}
 .status.mini span{opacity:0}
 .status.mini:hover{max-width:440px;padding:0 14px}
 .status.mini:hover span{opacity:1}
+/* "Tidy up": appears once something on the canvas has been moved, puts everything back */
+.tidy{position:fixed;left:50%;top:calc(58px + env(safe-area-inset-top,0px));z-index:12;display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 12px;
+  border:0;border-radius:15px;background:var(--ink);color:var(--panel);font:inherit;font-size:12.5px;font-weight:600;cursor:pointer;box-shadow:var(--shadow);
+  opacity:0;transform:translate(-50%,-8px);pointer-events:none;transition:opacity .25s,transform .25s}
+.tidy.show{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+.tidy:hover{background:var(--sel);color:#fff}
 .touchbar{position:fixed;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));display:none;gap:8px;z-index:11}
 .touchbar button{height:40px;padding:0 14px;border:0;border-radius:20px;background:var(--panel);box-shadow:var(--shadow);font-weight:600}
 .touchbar button.on{background:var(--sel);color:#fff}
@@ -274,6 +281,43 @@ button,input{font:inherit;color:inherit}
 .lgrid{padding:16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));grid-auto-rows:max-content;gap:14px;overflow:auto;min-height:0}
 .litem{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel);text-align:left;padding:0;cursor:pointer;display:block;color:inherit;text-decoration:none}
 .litem:hover{border-color:var(--sel)}
+button.litem{font:inherit;width:100%;display:flex;flex-direction:column;justify-content:flex-start}
+/* NDA card art: an abstract design file behind a lock (sizes in cqw so it fits the card and the list thumbnail) */
+.nda-art{position:absolute;inset:0;overflow:hidden;background:linear-gradient(140deg,#DCEBE7,#B9D2CC)}
+.nda-art .nw{position:absolute;left:12cqw;right:12cqw;top:12cqw;bottom:-6cqw;background:#fff;border-radius:3cqw;box-shadow:0 3cqw 8cqw -4cqw rgba(26,42,40,.35);overflow:hidden;filter:saturate(.6)}
+.nda-art .bar{display:block;height:6cqw;background:#EEF1F1;border-bottom:1px solid #E1E6E6}
+.nda-art .nb{display:flex;height:100%}
+.nda-art .side{display:block;width:16cqw;background:#F5F7F7;border-right:1px solid #E7EBEB}
+.nda-art .nm{flex:1;padding:4cqw;display:flex;flex-direction:column;gap:2.6cqw}
+.nda-art .nm i{display:block;height:2.6cqw;width:62%;border-radius:2cqw;background:#E6EBEB}
+.nda-art .nm i.h{height:4cqw;width:44%;background:#D6DEDE}
+.nda-art .nm i.w{height:9cqw;width:100%;border-radius:2cqw;background:#F1F4F4;border:1px solid #E6EBEB}
+.nda-art .lock{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3.4cqw;background:rgba(206,232,227,.45);backdrop-filter:blur(2px)}
+.nda-art .ic{width:21cqw;height:21cqw;border-radius:50%;background:var(--pine);color:var(--mint);display:grid;place-items:center;box-shadow:0 2cqw 6cqw -2cqw rgba(26,42,40,.6)}
+.nda-art .ic svg{width:9cqw;height:9cqw}
+.nda-art .tx{padding:1.6cqw 4cqw;border-radius:6cqw;background:#fff;color:var(--pine);font-weight:600;font-size:max(11px,5.2cqw);box-shadow:0 1cqw 3cqw rgba(26,42,40,.15)}
+/* NDA tag on the current job in Experience */
+.ndatag{display:inline-flex;align-items:center;gap:8px;margin-top:16px;height:36px;padding:0 14px;border:1.3px solid rgba(26,42,40,.22);border-radius:18px;background:rgba(255,255,255,.55);
+  color:var(--pine);font:inherit;font-size:15.5px;font-weight:600;cursor:pointer;transition:background .2s,border-color .2s}
+.ndatag:hover{background:#fff;border-color:var(--pine)}
+.ndatag span{opacity:.6}
+/* NDA line above the cards */
+.ndaline{position:absolute;display:inline-flex;align-items:center;flex-wrap:wrap;gap:6px 10px;padding:10px 16px;border:1px solid var(--line);border-radius:12px;background:var(--panel);
+  color:var(--ink);font:inherit;font-size:18px;text-align:left;cursor:pointer;box-shadow:0 6px 18px -12px rgba(0,0,0,.3);transition:border-color .2s}
+.ndaline svg{width:17px;height:17px;flex:none;color:var(--clay)}
+.ndaline b{color:var(--sel);font-weight:600}
+.ndaline:hover{border-color:var(--sel)}
+.world.tall .ndaline{font-size:16px}
+/* the NDA note */
+.ndac{width:min(520px,calc(100% - 24px));position:relative;padding:32px 30px 28px;overflow:auto}
+.ndac #ndaClose{position:absolute;right:12px;top:12px}
+.ndaic{width:52px;height:52px;border-radius:50%;background:var(--pine);color:var(--mint);display:grid;place-items:center;margin-bottom:18px}
+.ndac h3{margin:0 0 12px;font-size:23px;letter-spacing:-.01em}
+.ndac p{margin:0 0 12px;font-size:15.5px;line-height:1.6;color:var(--muted)}
+.ndac p:first-child{color:var(--ink)}
+.ndab{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.ndab .tb{height:40px;padding:0 18px;font-weight:600;font-size:14.5px}
+.ndab .tb.ghost{border:1px solid var(--line)}
 .litem .sw2{height:110px;overflow:hidden;position:relative;container-type:inline-size}.litem .tx{padding:12px 14px}.litem .tx b{display:block;font-size:14px;margin-bottom:3px}.litem .tx span{color:var(--muted)}
 
 .tb,.logo{flex:none}
@@ -311,6 +355,7 @@ button,input{font:inherit;color:inherit}
     <div class="world" id="world">
       <div class="tbox" id="t1"></div>
       <div class="tbox" id="t2"></div>
+      <button class="ndaline hide" id="ndaLine" type="button" data-nda-open></button>
       <div class="obj drawn exp" id="exp"><div class="inner"></div></div>
       <button class="obj morew hide" id="moreLink" type="button">
         <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9" y="2" width="5" height="5" rx="1"/><rect x="2" y="9" width="5" height="5" rx="1"/><rect x="9" y="9" width="5" height="5" rx="1"/></svg>
@@ -355,8 +400,22 @@ button,input{font:inherit;color:inherit}
       </div>
     </div>
     <div class="status busy" id="status"><i></i><span></span></div>
+    <button class="tidy" id="tidyBtn" type="button" aria-hidden="true" tabindex="-1">
+      <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.8 7.2A5.3 5.3 0 1 1 4 11.6"/><path d="M2.5 3.5v3.9h3.9"/></svg>
+      Tidy up
+    </button>
     <div class="touchbar"><button id="tbComment">Comment</button><button id="tbChat">Chat</button></div>
     <div class="tchat" id="tchat"><input id="tInput" maxlength="80" aria-label="Chat message" enterkeyhint="send"><button id="tSend" type="button">Send</button><button class="x" id="tClose" type="button" aria-label="Close chat">×</button></div>
+  </div>
+</div>
+
+<div class="overlay list" id="nda" role="dialog" aria-modal="true" aria-labelledby="ndaTitle">
+  <div class="lcard ndac">
+    <button class="tb" id="ndaClose" aria-label="Close"><svg width="14" height="14" viewBox="0 0 16 16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9"/></svg></button>
+    <span class="ndaic" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span>
+    <h3 id="ndaTitle"></h3>
+    <div id="ndaText"></div>
+    <div class="ndab"><button class="tb blue" id="ndaGo">Get in touch</button><button class="tb ghost" id="ndaWork">See my other work</button></div>
   </div>
 </div>
 
@@ -414,34 +473,44 @@ window.CONTENT = {
      out:   the result line under the title, [bold part, rest]
      cover: image on the card (optional; falls back to the drawn thumbnail `th`) */
   projects: [
-    { slug:'fintech-admin', title:'Fintech Back Office', kicker:'Fintech, admin dashboard', bg:'#F8E2D5',
-      cover:'assets/projects/fintech-admin/cover-mockup.webp',
-      out:['11 → 1','action row per profile'] },
-    { slug:'minenest', title:'MineNest App', kicker:'Crypto mining, mobile app', bg:'#DCE7F1',
-      cover:'assets/projects/minenest/cover-mockup.webp',
-      out:['3 features','designed end to end'] },
-    { slug:'finvale', title:'Finvale Website', kicker:'Fintech, marketing website', bg:'#EFE9E2',
-      cover:'assets/projects/finvale/cover-mockup.webp',
-      out:['48','layouts across 12 pages'] },
+    { slug:'citizen-eye', title:'Citizen Eye', kicker:'Government, two mobile apps (Arabic)', bg:'#E6EFE0',
+      cover:'assets/projects/citizen-eye/cover-mockup.webp',
+      out:['768','reports sent by citizens'] },
     { slug:'baymax', title:'BayMax Employee App', kicker:'Healthcare, mobile app (Arabic)', bg:'#DCEBF6',
-      cover:'assets/projects/baymax/cover-mockup.webp',
-      out:['31','screens, research to UI'] }
+      cover:'assets/projects/baymax/card-cover.webp',
+      out:['31','screens, research to UI'] },
+    { slug:'sono-women', title:'Sono Women', kicker:'Women entrepreneurs, mobile app (Arabic)', bg:'#F3E4DC',
+      cover:'assets/projects/sono-women/cover-mockup.webp',
+      out:['4','stages, from idea to growth'] },
+    { slug:'prime', title:'Prime Water Platform', kicker:'Utilities, web and mobile (Arabic)', bg:'#DDE9F1',
+      cover:'assets/projects/prime/card-cover.webp',
+      out:['6','weeks, research to final UI'] }
   ],
+
+  /* Current work under NDA: never any designs, only a note (text below) that opens on click.
+     placement: 'experience' (a tag on the current job), 'line' (one line above the cards),
+                'card-first' / 'card-last' (a locked card among the 4), 'list' (only in All work).
+     The locked card is also always listed at the end of All work. */
+  nda: {
+    placement: 'card-last',
+    card: { slug:'nda', nda:true, title:'Recent fintech work', kicker:'Fintech & crypto · under NDA', bg:'#CFE3DE', out:['Under NDA','2025 – now'] },
+    line: 'My latest fintech work (2025 – now) is under NDA',
+    title: 'My recent work is under NDA',
+    text: [
+      'Since February 2025 I’ve been the Senior UI/UX Designer at Swisstech, designing fintech and crypto products: currency exchange, payments and business registration, across websites, dashboards and mobile apps.',
+      'The designs belong to the company and are covered by an NDA, so I can’t share them here or privately.',
+      'In an interview, I’m happy to talk through my role, my process and the problems I solved.'
+    ]
+  },
 
   /* More projects: shown only in the "All work" list (not on the canvas), each with its case study in project.html. */
   more: [
-    { slug:'citizen-eye', title:'Citizen Eye', kicker:'Government, two mobile apps (Arabic)', bg:'#E6EFE0',
-      cover:'assets/projects/citizen-eye/cover-mockup.webp' },
-    { slug:'sono-women', title:'Sono Women', kicker:'Women entrepreneurs, mobile app (Arabic)', bg:'#F3E4DC',
-      cover:'assets/projects/sono-women/cover-mockup.webp' },
     { slug:'aqeelah', title:'Al-Aqeelah Market Website', kicker:'E-commerce, website redesign task', bg:'#F6E1DE',
-      cover:'assets/projects/aqeelah/cover-mockup.webp' },
+      cover:'assets/projects/aqeelah/card-cover.webp' },
     { slug:'comave', title:'ComAve Login & Account', kicker:'Rewards platform, app and web', bg:'#FFE9DA',
-      cover:'assets/projects/comave/cover-mockup.webp' },
+      cover:'assets/projects/comave/card-cover.webp' },
     { slug:'issue-tracker', title:'Employees Issue Tracker', kicker:'Government, mobile app (Arabic)', bg:'#DDEFE2',
-      cover:'assets/projects/issue-tracker/cover-mockup.webp' },
-    { slug:'prime', title:'Prime Water Platform', kicker:'Utilities, web and mobile (Arabic)', bg:'#DDE9F1',
-      cover:'assets/projects/prime/cover-mockup.webp' }
+      cover:'assets/projects/issue-tracker/card-cover.webp' }
   ]
 };
 </script>
@@ -455,8 +524,12 @@ const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* ---------------- content (from the CONTENT block above) ---------------- */
 const C = window.CONTENT;
-const PROJECTS = C.projects;
-const ALL_WORK = [...PROJECTS, ...(C.more || [])], MORE_N = ALL_WORK.length;
+// where the NDA mention goes (see CONTENT.nda.placement)
+const NDA_AT = C.nda ? C.nda.placement : '', NDA_CARD = C.nda && C.nda.card;
+const PROJECTS = NDA_AT === 'card-first' ? [NDA_CARD, ...C.projects.slice(0, 3)]
+  : NDA_AT === 'card-last' ? [...C.projects.slice(0, 3), NDA_CARD] : C.projects;
+const MORE = [...C.projects.filter(p => !PROJECTS.includes(p)), ...(C.more || [])];
+const ALL_WORK = [...PROJECTS, ...MORE, ...(NDA_CARD && !PROJECTS.includes(NDA_CARD) ? [NDA_CARD] : [])], MORE_N = ALL_WORK.length;
 const moreLink = $('#moreLink');
 $('#moreText').textContent = 'See all projects';
 const TABS = C.about;
@@ -464,7 +537,11 @@ const ME_NAME = C.firstName;
 let tab = 0;
 const T1 = C.headline;
 const T2 = C.intro;
-const thumb = p => p.cover ? `<img src="${esc(p.cover)}" alt="" loading="lazy">` : (p.th || '');
+const LOCK_SVG = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>';
+// the NDA card's picture: an abstract locked design file, drawn in CSS (never real screens)
+const NDA_ART = `<div class="nda-art" aria-hidden="true"><div class="nw"><i class="bar"></i><div class="nb"><i class="side"></i><div class="nm"><i class="h"></i><i></i><i></i><i class="w"></i><i class="w"></i><i class="w"></i></div></div></div>
+  <div class="lock"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span><span class="tx">Under NDA</span></div></div>`;
+const thumb = p => p.nda ? NDA_ART : p.cover ? `<img src="${esc(p.cover)}" alt="" loading="lazy">` : (p.th || '');
 
 document.title = `${C.name} · Portfolio`;
 $('#logo').textContent = ME_NAME[0];
@@ -532,7 +609,7 @@ const about = { el:$('#about') }, contact = { el:$('#contact') }, sticky = { el:
 exp.el.querySelector('.inner').innerHTML = `<div class="exp-h"><h3>Experience</h3>${C.experienceSummary ? `<span>${esc(C.experienceSummary)}</span>` : ''}</div>
   <div class="tl">${(C.experience || []).map(r => { const [co, ...loc] = r.org.split(' · ');
     return `<div class="job${r.now ? ' now' : ''}"><div class="date">${esc(r.when)}${r.now ? ' <span class="pillnow">Current</span>' : ''}</div>
-      <h4>${esc(r.role)}</h4><div class="co">${esc(co)}${loc.length ? ` <span>· ${esc(loc.join(' · '))}</span>` : ''}</div><p>${esc(r.text)}</p></div>`; }).join('')}</div>`;
+      <h4>${esc(r.role)}</h4><div class="co">${esc(co)}${loc.length ? ` <span>· ${esc(loc.join(' · '))}</span>` : ''}</div><p>${esc(r.text)}</p>${r.now && NDA_AT === 'experience' ? `<button type="button" class="ndatag" data-nda-open>${LOCK_SVG}Work under NDA<span aria-hidden="true">→</span></button>` : ''}</div>`; }).join('')}</div>`;
 function pos(o){ o.el.style.left = o.x + 'px'; o.el.style.top = o.y + 'px'; o.el.style.transform = o.r ? `rotate(${o.r}deg)` : ''; }
 const tabPanel = t => t.chips ? `<div class="chips">${t.chips.map(c => `<span>${esc(c)}</span>`).join('')}</div>`
   : t.list ? `<dl>${t.list.map(([a, b]) => `<dt>${esc(a)}</dt><dd>${esc(b)}</dd>`).join('')}</dl>`
@@ -569,7 +646,8 @@ function flow(){
   const ch = Math.max(...cards.map(c => c.el.offsetHeight));
   cards.forEach(c => c.el.style.height = ch + 'px');
   L.cardH = ch;
-  let y = L.top;
+  const lineGap = NDA_AT === 'line' ? (L.stack ? 112 : 58) : 0;   // room for the NDA line above the cards
+  let y = L.top + lineGap;
   L.slots = cards.map((c, i) => { const s = [L.cardX[i], y]; if (L.stack) y += ch + L.gap; return s; });
   if (!L.stack) y += ch + L.gap;
   // "See all N projects": right under the cards, right-aligned (full width when stacked)
@@ -616,7 +694,10 @@ $('#avs').innerHTML = `<div class="av" style="background:var(--noha)" title="${e
 
 function chat(el, text, ms = 3800){
   const c = el.querySelector('.chat'); c.textContent = text; c.classList.add('show'); el.classList.add('chatting');
-  clearTimeout(c._t); c._t = setTimeout(() => { c.classList.remove('show'); el.classList.remove('chatting'); }, ms);
+  // keep the bubble on screen: open it to the left when it would run past the right edge
+  el.classList.remove('flip');
+  if (c.getBoundingClientRect().right > canvas.getBoundingClientRect().right - 8) el.classList.add('flip');
+  clearTimeout(c._t); c._t = setTimeout(() => { c.classList.remove('show'); el.classList.remove('chatting', 'flip'); }, ms);
 }
 function clickPulse(){ noha.el.classList.remove('click'); void noha.el.offsetWidth; noha.el.classList.add('click'); }
 
@@ -664,6 +745,7 @@ let zTop = 5;
 
 /* ---------------- states ---------------- */
 function resetScene(){
+  showTidy(false); $('#ndaLine').classList.add('hide');
   $('#t1').textContent = ''; $('#t2').textContent = '';
   [$('#t1'), $('#t2')].forEach(t => t.classList.remove('editing'));
   const [px, py] = L.pile;
@@ -674,6 +756,7 @@ function resetScene(){
   noha.x = L.W + 80; noha.y = L.H * 0.45; drawNoha();
 }
 function finalScene(){
+  showTidy(false); showNdaLine(false);
   $('#t1').textContent = T1; addWave(false); $('#t2').textContent = T2;
   [$('#t1'), $('#t2')].forEach(t => t.classList.remove('editing'));
   cards.forEach((c, i) => { c.x = L.slots[i][0]; c.y = L.slots[i][1]; c.r = 0; c.el.classList.remove('grab'); pos(c); });
@@ -735,12 +818,13 @@ async function intro(){
     await moveNoha(x2 + 10, y2 + 24, 400, alive); clickPulse();
     // the long subtitle is pasted in, not typed
     $('#t2').textContent = T2; $('#t2').animate([{ opacity:0, transform:'translateY(6px)' }, { opacity:1, transform:'none' }], { duration:reduced ? 0 : 350, easing:'ease-out' });
+    showNdaLine(true);
     await wait(300, alive);
     for (let i = 0; i < cards.length; i++){
       const c = cards[i];
       await moveNoha(c.x + L.cardW / 2, c.y + 40, 380, alive); clickPulse();
       await drag(c, L.slots[i][0], L.slots[i][1], 520, alive);
-      if (i === 0) chat(noha.el, 'my favourite project 👇', 1600);
+      if (i === 0) chat(noha.el, PROJECTS[0].nda ? 'my latest work, under NDA 🤫' : 'my favourite project 👇', 1600);
     }
     placeMore(true);
     await drawBox(exp, L.exp, alive);
@@ -935,11 +1019,17 @@ canvas.addEventListener('pointerdown', e => {
 });
 const DROP_LINES = ['ooh, nice spot for it 👌','bold move, I like it 😄','hmm, maybe that is the better layout 🤔','the grid police are watching 👀','you have a designer’s eye ✨'];
 let dropN = 0, dropT;
+// a world point pulled inside the part of the canvas that's on screen (phones scroll, so most of the page is out of view)
+function inView(x, y){
+  const a = s2w(0, canvas.scrollTop), b = s2w(canvas.clientWidth, canvas.scrollTop + canvas.clientHeight), m = 24 / S.s;
+  return { x:Math.max(a.x + m, Math.min(b.x - m * 2, x)), y:Math.max(a.y + m * 2, Math.min(b.y - m * 5, y)) };
+}
 function reactToDrop(o){
   clearTimeout(dropT);
   const id = run;
   dropT = setTimeout(async () => {
-    try { await moveNoha(o.x + o.el.offsetWidth - 40, o.y + 30, 600, () => id === run); } catch { return; }
+    const p = inView(o.x + o.el.offsetWidth - 40, o.y + 30);
+    try { await moveNoha(p.x, p.y, 600, () => id === run); } catch { return; }
     chat(noha.el, DROP_LINES[dropN++ % DROP_LINES.length], 3400);
   }, 250);
 }
@@ -947,8 +1037,31 @@ function endDrag(){
   if (!dragging) return;
   const d = dragging; dragging = null; d.o.el.classList.remove('grab');
   if (!d.moved){ const i = cards.indexOf(d.o); if (i > -1) openCase(i); }
-  else reactToDrop(d.o);
+  else { reactToDrop(d.o); showTidy(true); }
 }
+/* ---------------- tidy up: everything back to its place ---------------- */
+const tidyBtn = $('#tidyBtn');
+function showTidy(on){ tidyBtn.classList.toggle('show', on); tidyBtn.setAttribute('aria-hidden', String(!on)); tidyBtn.tabIndex = on ? 0 : -1; }
+function tidyUp(){
+  showTidy(false); clearTimeout(dropT); window.track('canvas_tidied');
+  const moves = [
+    ...cards.map((c, i) => [c, L.slots[i][0], L.slots[i][1], 0]),
+    ...[[exp, L.exp], [about, L.about], [contact, L.contact]].map(([o, r]) => [o, r[0], r[1], 0]),
+    ...(stickyGone ? [] : [[sticky, L.sticky[0], L.sticky[1], L.sticky[4]]])
+  ].map(([o, x, y, r]) => ({ o, x0:o.x, y0:o.y, r0:o.r || 0, x, y, r }));
+  const t0 = performance.now(), dur = reduced ? 1 : 650;
+  const step = now => {
+    const k = Math.min(1, (now - t0) / dur), e = ease(k);
+    moves.forEach(m => { m.o.x = m.x0 + (m.x - m.x0) * e; m.o.y = m.y0 + (m.y - m.y0) * e; m.o.r = m.r0 + (m.r - m.r0) * e; pos(m.o); });
+    if (k < 1) return requestAnimationFrame(step);
+    placeSticky(false);
+    const id = run;
+    const p = inView(L.W * 0.56, L.scroll ? s2w(0, canvas.scrollTop + canvas.clientHeight * 0.35).y : L.H * 0.3);
+    moveNoha(p.x, p.y, 600, () => id === run).then(() => chat(noha.el, 'All tidy again ✨', 2600)).catch(() => {});
+  };
+  requestAnimationFrame(step);
+}
+tidyBtn.onclick = tidyUp;
 canvas.addEventListener('pointerup', endDrag);
 // the browser took over the touch (e.g. to scroll): drop the drag without opening a case study
 canvas.addEventListener('pointercancel', () => { if (dragging){ dragging.o.el.classList.remove('grab'); dragging = null; } });
@@ -992,6 +1105,7 @@ $('#hireBtn').onclick = () => { if (!introDone) skip(); if (L.scroll) contact.el
 document.addEventListener('keydown', e => {
   if (e.target.matches('input')) return;
   if (e.key === 'Escape'){
+    if ($('#nda').classList.contains('show')) return closeNda();
     if ($('#list').classList.contains('show')) return $('#list').classList.remove('show');
     closeMeChat(); closeComposer(); setMode('move'); return;
   }
@@ -1009,9 +1123,30 @@ $('#lnCv').addEventListener('click', () => track('cv_downloaded', { from:'home' 
 
 /* ---------------- case study pages + list ---------------- */
 const caseUrl = p => `project.html?p=${encodeURIComponent(p.slug)}`;
-function openCase(i){ location.href = caseUrl(PROJECTS[i]); }
+function openCase(i){ if (PROJECTS[i].nda) return openNda('canvas'); location.href = caseUrl(PROJECTS[i]); }
+// the NDA note
+function openNda(from){ $('#list').classList.remove('show'); $('#nda').classList.add('show'); $('#ndaGo').focus({ preventScroll:true }); window.track('nda_note_opened', { from }); }
+const closeNda = () => $('#nda').classList.remove('show');
+if (C.nda){ $('#ndaTitle').textContent = C.nda.title; $('#ndaText').innerHTML = C.nda.text.map(t => `<p>${esc(t)}</p>`).join(''); }
+$('#ndaClose').onclick = closeNda;
+// any [data-nda-open] (the Experience tag, the line above the cards) opens the note
+document.addEventListener('click', e => { const t = e.target.closest('[data-nda-open]'); if (t) openNda(t.id === 'ndaLine' ? 'line' : 'experience'); });
+if (C.nda) $('#ndaLine').innerHTML = `${LOCK_SVG}<span>${esc(C.nda.line)}</span><b>Read more →</b>`;
+function showNdaLine(animate){
+  if (NDA_AT !== 'line') return;
+  const el = $('#ndaLine'); Object.assign(el.style, { left:L.t2[0] + 'px', top:L.top + 'px', maxWidth:(L.stack ? L.cardW : L.cardW * 4 + 66) + 'px' });
+  el.classList.remove('hide');
+  if (animate && !reduced) el.animate([{ opacity:0, transform:'translateY(6px)' }, { opacity:1, transform:'none' }], { duration:350, easing:'ease-out' });
+}
+$('#nda').addEventListener('click', e => { if (e.target.id === 'nda') closeNda(); });
+$('#ndaGo').onclick = () => { closeNda(); $('#hireBtn').click(); };
+$('#ndaWork').onclick = () => { closeNda(); $('#list').classList.add('show'); };
 moreLink.onclick = () => { $('#list').classList.add('show'); window.track('all_work_opened', { from:'canvas' }); };
-$('#lgrid').innerHTML = ALL_WORK.map(p => `<a class="litem" href="${caseUrl(p)}"><div class="sw2" style="background:${p.bg}">${thumb(p)}</div><div class="tx"><b>${esc(p.title)}</b><span>${esc(p.kicker)}</span></div></a>`).join('');
+$('#lgrid').innerHTML = ALL_WORK.map(p => {
+  const inner = `<div class="sw2" style="background:${p.bg}">${thumb(p)}</div><div class="tx"><b>${esc(p.title)}</b><span>${esc(p.kicker)}</span></div>`;
+  return p.nda ? `<button type="button" class="litem" data-nda>${inner}</button>` : `<a class="litem" href="${caseUrl(p)}">${inner}</a>`;
+}).join('');
+$('#lgrid [data-nda]')?.addEventListener('click', () => openNda('list'));
 $('#listBtn').onclick = () => $('#list').classList.add('show');
 $('#lClose').onclick = () => $('#list').classList.remove('show');
 $('#list').addEventListener('click', e => { if (e.target.id === 'list') $('#list').classList.remove('show'); });
