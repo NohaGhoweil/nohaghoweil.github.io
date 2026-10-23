@@ -448,6 +448,7 @@ const PHONE = {
 
 const BM = 'assets/projects/baymax/';          // screens for the BayMax app case study
 const IT = 'assets/projects/issue-tracker/';   // screens for the Employees Issue Tracker case study
+const DH = 'assets/projects/dhofar/';          // screens for the Dhofar operations app (names and IDs blurred)
 const CE = 'assets/projects/citizen-eye/';     // mockups for the Citizen Eye app
 const CO = 'assets/projects/citizen-eye-officials/';   // mockup for Citizen Eye for Officials
 const SW = 'assets/projects/sono-women/';      // mockups for the Sono Women app
@@ -456,6 +457,92 @@ const CA = 'assets/projects/comave/';          // screens for the ComAve login a
 const PR = 'assets/projects/prime/';           // screens for the Prime water company platform
 
 window.CASES = [
+  { slug:'dhofar', title:'From walls of text to a clear office',
+    sections:[
+      { id:'overview', nav:'Overview', title:'From walls of text to a clear office',
+        lede:'A redesign of the Dhofar Operations System, the Arabic employee app of Dhofar Governorate in Oman: requests, tasks, decisions and messages in one clear digital office.',
+        text:['I designed the structure, the screens and the design system. The brand colours and the typeface (Oman Typeface) were the client’s request.'],
+        blocks:[
+          { type:'facts', items:[['Role','UI/UX designer · freelance, solo'],['Year','2026'],['Platform','Mobile app · Arabic, right to left'],['Status','In development']] },
+          { type:'image', label:'Dhofar Operations App', src:`${DH}cover-mockup.webp`, alt:'Three screens of the redesigned app: request tracking, the home grid with four modules, and an approval path' }
+        ],
+        note:'A freelance project for Dhofar Governorate, shown with the client’s permission. Names and personal details in the screens are blurred.' },
+
+      { id:'before', nav:'The old app', label:'The old app', title:'An office that was hard to read',
+        text:['The existing app already covered the basics: requests, tasks, decisions and messages. But employees had to dig for services, and most screens were long blocks of text.',
+              'Requirements and feedback came from the client. Three problems stood out:'],
+        blocks:[
+          { type:'caps', items:[
+            ['Hard to find things','Request types sat in long nested lists, and services were spread across menus.'],
+            ['Walls of text','Decisions and announcements were unformatted text, and approval steps were raw field lists.'],
+            ['Outdated look','No design system behind it: small labels, uneven spacing and inconsistent screens.']] },
+          { type:'image', label:'Before → after · home', src:`${DH}ba-home.webp`, alt:'Old home with five large outline icons, next to the new home with four module tiles, badges, quick actions and recent activity' },
+          { type:'image', label:'Before → after · reading a decision', src:`${DH}ba-reading.webp`, alt:'Old announcement as a long block of text, next to the new decision reader with numbered articles and a PDF download' },
+          { type:'image', label:'Before → after · the approval path', src:`${DH}ba-path.webp`, alt:'Old approval path as repeated field lists, next to the new path as cards with the decision and date' }
+        ],
+        note:'Old screens are from the app in use before the redesign; names are blurred.' },
+
+      { id:'structure', nav:'Structure', label:'Structure', title:'Structure first', wide:true,
+        text:['I mapped every service into one sitemap with five areas (home, requests, tasks, decisions and messages), then followed a request from the employee to the manager and back.'],
+        blocks:[
+          { type:'image', label:'Information architecture', src:`${DH}ia.webp`, alt:'Sitemap: login, home, messages, decisions, tasks, requests and my profile, each with its screens' },
+          { type:'image', label:'User flow · the life of a request', src:`${DH}flow.webp`, alt:'Flow: login, choose a request type, fill the form, send, manager review, approve or return, notification and certificate' }
+        ] },
+
+      { id:'home', nav:'Home', label:'Navigation', title:'Three ways to get around', wide:true,
+        text:['I explored three home layouts: a dashboard with counters, a list of modules, and a grid of four large tiles. The grid keeps every module one tap away, with badges for what needs attention, and quick actions underneath.'],
+        blocks:[
+          { type:'image', label:'Home options', src:`${DH}nav-options.webp`, alt:'Three home layouts side by side: dashboard, list and the chosen grid' }
+        ] },
+
+      { id:'screens', nav:'Final screens', label:'Final screens', title:'Every request, easy to follow', wide:true,
+        text:['Each module follows the same pattern: a clear list, a detail screen, and a status you can always see.'],
+        blocks:[
+          { type:'screens', title:'Requests', items:[
+            { src:`${DH}s-70-3984.webp`, title:'Requests', text:'Start a new request or follow the ones you sent.' },
+            { src:`${DH}s-70-3999.webp`, title:'New request', text:'Request types grouped by department, in collapsible sections.' },
+            { src:`${DH}s-70-4019.webp`, title:'Leave request', text:'Pick the dates and the number of days is worked out for you.' },
+            { src:`${DH}s-70-4065.webp`, title:'Track requests', text:'Status badges: under review, completed or returned.' },
+            { src:`${DH}s-70-4127.webp`, title:'Approval path', text:'Every step: who decided, the decision and the date.' }] },
+          { type:'screens', grid:true, title:'Tasks and manager approval', items:[
+            { src:`${DH}s-124-2722.webp`, title:'Task inbox', text:'Requests waiting for you, with their status.' },
+            { src:`${DH}s-124-2834.webp`, title:'Request details', text:'Employee and request data on one screen.' },
+            { src:`${DH}s-124-2886.webp`, title:'Approve or return', text:'The manager decides at the end of the path.' },
+            { src:`${DH}s-124-2821.webp`, title:'Empty state', text:'A calm message when there’s nothing to do.' }] },
+          { type:'screens', grid:true, title:'Decisions and messages', items:[
+            { src:`${DH}s-162-4655.webp`, title:'Decisions', text:'Ministerial and administrative decisions, circulars and announcements.' },
+            { src:`${DH}s-162-4685.webp`, title:'Decision reader', text:'Numbered articles instead of a wall of text, with a PDF download.' },
+            { src:`${DH}s-162-4707.webp`, title:'Inbox', text:'Messages tagged by type, unread ones highlighted.' },
+            { src:`${DH}s-162-4715.webp`, title:'Conversation', text:'Replies and attachments in one thread.' }] },
+          { type:'screens', grid:true, title:'Account', items:[
+            { src:`${DH}s-9-14.webp`, title:'Login', text:'Arabic and English from the first screen.' },
+            { src:`${DH}s-9-18.webp`, title:'Profile', text:'Personal and job details in one place.' },
+            { src:`${DH}s-9-16.webp`, title:'Settings', text:'Language switch and sign out.' }] }
+        ] },
+
+      { id:'system', nav:'Design system', label:'Design system', title:'A design system to build on', wide:true,
+        text:['The colours and the typeface came from the client: they asked for their brand colours and Oman Typeface. My job was to turn them into a working system.',
+              'Everything is built from Figma variables and components: colour scales, spacing and radius tokens, text styles, and components with their variants. Developers get one source of truth.'],
+        note:'Brand colours and Oman Typeface were the client’s requirement. The scales, tokens and components built from them are mine.',
+        blocks:[
+          { type:'palette', colors:[['Purple','#5E1488'],['Teal','#005850'],['Gold','#AA7D43'],['Maroon','#640038'],['Success','#16A34A'],['Warning','#EA580C'],['Info','#2563EB'],['Danger','#DC2626']],
+            font:'Brand colours and Oman Typeface, as requested by the client, set up as 11 text styles from 12 to 24 px. Spacing on a 4 px scale, corner radii from 8 to 32 px.' },
+          { type:'image', label:'Colour', src:`${DH}ds-color.webp`, alt:'Colour scales: purple, teal, gray, status colours, accents and semantic colours' },
+          { type:'image', label:'Type scale', src:`${DH}ds-type.webp`, alt:'Text styles in Oman Typeface, from display to badge' },
+          { type:'image', label:'Components', src:`${DH}ds-components.webp`, alt:'Components: buttons, badges, text fields, icon tiles, module card, request card, stat cards and app bar' },
+          { type:'image', label:'Effects and gradients', src:`${DH}ds-effects.webp`, alt:'Elevation levels and brand gradients for the module tiles' }
+        ] },
+
+      { id:'learn', nav:'What I learned', label:'Where it is now', title:'In development',
+        text:['The app is being built now, from these screens and the design system.'],
+        blocks:[
+          { type:'learn', items:[
+            'An app can have every feature and still feel hard to use. Structure and readability were the real work.',
+            'Designing right to left in Arabic from the start keeps the interface feeling native.',
+            'A design system with variables keeps a large app consistent and quicker to build.'] }
+        ] }
+    ] },
+
   { slug:'baymax', title:'Less paperwork, more patient time',
     sections:[
       { id:'overview', nav:'Overview', title:'Less paperwork, more patient time',
